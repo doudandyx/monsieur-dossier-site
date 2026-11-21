@@ -503,14 +503,14 @@ fr:{
   okL:["Une pièce d’identité (CNI, passeport, titre de séjour)","Un justificatif de domicile (3 dernières quittances, attestation d’hébergement…)","Contrat de travail ou attestation employeur","Les 3 derniers bulletins de salaire","Le dernier avis d’imposition"],
   noL:["Relevés de compte bancaire","Carte Vitale","Extrait de casier judiciaire","Dossier médical","Autorisation de prélèvement signée","Un versement d’argent avant la signature du bail"],
   lSrc:"Liste indicative, non exhaustive. Référence : décret n° 2015-1437 du 5 novembre 2015 (modifié en 2019), annexes I et II. Vérifiez le texte en vigueur sur legifrance.gouv.fr.",
-  dH:"Monsieur Dossier pour Mac", dP:"L’application est en cours de finalisation. Elle arrive très vite.",
+  dH:"Monsieur Dossier pour Mac", dP:"Pour les Mac Intel et Apple Silicon. Vos documents restent sur votre Mac.",
   soEy:"Bientôt disponible", soH:"Ça arrive très vite.", soP:"Monsieur Dossier n’est pas encore téléchargeable. L’application est en cours de finalisation : revenez bientôt.", soBtn:"D’accord",
   dBtn:"Télécharger pour Mac", dReq:"Mac Intel et Apple Silicon",
   qH:"Questions fréquentes",
   faq:[
     ["Quelle différence avec DossierFacile ?","DossierFacile est le service de l’État : il vérifie votre dossier et le partage par lien, sans rien masquer. Monsieur Dossier ne vérifie rien : il protège les fichiers que vous envoyez vous-même, en masquant le superflu et en nommant le destinataire. Les deux se complètent.",{t:"Voir la comparaison détaillée",h:"dossierfacile.html"}],
     ["Monsieur Dossier est-il un service officiel ?","Non. C’est une application indépendante, sans lien avec l’État ni avec DossierFacile. Elle ne certifie pas vos pièces."],
-    ["Quand l’application sera-t-elle disponible ?","Très bientôt. Elle est en cours de finalisation, d’abord pour Mac."],
+    ["L’application est-elle disponible ?","Oui, pour Mac : téléchargez-la depuis cette page."],
     ["Mes documents sont-ils envoyés quelque part ?","Non. Le traitement se fait entièrement sur votre Mac. L’application n’a pas de serveur, ne crée pas de compte et ne collecte aucune statistique. Elle fonctionne sans connexion Internet."],
     ["Un bailleur peut-il refuser une copie masquée ?","Aucun texte ne tranche. Masquez seulement ce qui ne sert ni à juger votre solvabilité ni à vérifier la pièce, et gardez vos originaux : un bailleur peut demander à les voir."],
     ["Pourquoi pas un simple flou ?","Parce qu’un flou ou une pixelisation peuvent être inversés. Seuls des masques opaques sont proposés : une bande noire, ou un effet « dépoli » généré à partir de bruit aléatoire, jamais à partir de ce qui est caché."],
@@ -562,14 +562,14 @@ en:{
   okL:["One ID document (ID card, passport, residence permit)","Proof of address (last 3 rent receipts, host certificate…)","Employment contract or employer certificate","Last 3 payslips","Latest tax notice"],
   noL:["Bank statements","Carte Vitale (health card)","Criminal record","Medical records","Signed direct-debit authorisation","Any payment before the lease is signed"],
   lSrc:"Indicative, non-exhaustive list. Reference: French décret n° 2015-1437 of 5 November 2015 (amended 2019), annexes I and II. Check the current text on legifrance.gouv.fr.",
-  dH:"Monsieur Dossier for Mac", dP:"The app is being finalised. It’s coming very soon.",
+  dH:"Monsieur Dossier for Mac", dP:"For Intel and Apple Silicon Macs. Your documents stay on your Mac.",
   soEy:"Coming soon", soH:"It’s coming very soon.", soP:"Monsieur Dossier isn’t available to download yet. The app is being finalised: check back soon.", soBtn:"Got it",
   dBtn:"Download for Mac", dReq:"Intel and Apple Silicon Macs",
   qH:"Frequently asked questions",
   faq:[
     ["How is this different from DossierFacile?","DossierFacile is the government service: it verifies your file and shares it by link, without hiding anything. Monsieur Dossier verifies nothing: it protects the files you send yourself, by hiding what isn’t needed and naming the recipient. They work together.",{t:"See the detailed comparison",h:"dossierfacile.html"}],
     ["Is Monsieur Dossier an official service?","No. It is an independent app, with no link to the French government or to DossierFacile. It does not certify your documents."],
-    ["When will the app be available?","Very soon. It’s being finalised, for Mac first."],
+    ["Is the app available?","Yes, for Mac: download it from this page."],
     ["Are my documents sent anywhere?","No. Processing happens entirely on your Mac. The app has no server, creates no account and collects no analytics. It works without an internet connection."],
     ["Can a landlord refuse a redacted copy?","No law settles it. Hide only what serves neither to assess your income nor to verify the document, and keep your originals: a landlord may ask to see them."],
     ["Why not just blur?","Because blur and pixelation can be reversed. Only opaque masks are offered: a black bar, or a “frosted” look generated from random noise, never from what’s hidden."],
@@ -613,9 +613,12 @@ function setOn(on){
 document.getElementById("bBefore").addEventListener("click", () => setOn(false));
 document.getElementById("bAfter").addEventListener("click", () => setOn(true));
 
-/* "coming soon" dialog */
+/* Download: the latest published release. Leave DOWNLOAD_URL empty to show the "coming soon" dialog instead. */
+const DOWNLOAD_URL = "https://github.com/doudandyx/monsieur-dossier-site/releases/latest/download/MonsieurDossier.dmg";
 const soon = document.getElementById("soon");
-document.querySelectorAll("[data-open-soon]").forEach(b => b.addEventListener("click", () => soon.showModal()));
+document.querySelectorAll("[data-open-soon]").forEach(b => b.addEventListener("click", () => {
+  if (DOWNLOAD_URL) location.href = DOWNLOAD_URL; else soon.showModal();
+}));
 document.querySelectorAll("[data-close-soon]").forEach(b => b.addEventListener("click", () => soon.close()));
 soon.addEventListener("click", e => { if (e.target === soon) soon.close(); });   /* click on the backdrop */
 
