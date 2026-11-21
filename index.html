@@ -64,6 +64,8 @@ nav .wrap{display:flex;align-items:center;gap:20px;padding-block:14px}
 .brand svg{flex:none}
 nav .links{display:flex;gap:22px;margin-left:auto;font-size:14.5px}
 nav .links a{color:var(--ink-2);text-decoration:none}
+.brand,nav .links a,nav .btn{white-space:nowrap}
+@media (max-width:1100px){ nav .links{display:none} nav .lang{margin-left:auto} }
 nav .links a:hover{color:var(--ink)}
 .lang{display:flex;border:1px solid var(--rule);border-radius:9px;padding:2px;background:var(--sheet)}
 .lang button{border:0;background:transparent;font:600 12.5px/1 var(--f-body);color:var(--ink-2);padding:6px 9px;border-radius:7px;cursor:pointer}
@@ -191,6 +193,23 @@ details p{color:var(--ink-2);padding:0 0 18px;font-size:15px;max-width:65ch}
 .prob.four{grid-template-columns:repeat(4,1fr)}
 .brand .short{display:none}
 
+/* launch sign-up dialog */
+button.btn{font-family:var(--f-body)}
+dialog#signup{border:0;border-radius:20px;padding:0;background:var(--sheet);color:var(--ink);box-shadow:var(--shadow);width:min(480px,calc(100vw - 32px))}
+dialog#signup::backdrop{background:rgba(10,16,32,.55);backdrop-filter:blur(3px)}
+#suForm{padding:32px 28px 26px;position:relative}
+#suForm h2{font-size:28px;line-height:1.1;font-weight:800;margin:10px 0 10px}
+#suForm .su-p{color:var(--ink-2);margin-bottom:20px}
+#suForm label{display:block;font-weight:600;font-size:14px;margin-bottom:8px}
+.su-row{display:flex;gap:10px}
+.su-row input{flex:1;min-width:0;font:16px/1.2 var(--f-body);padding:13px 14px;border-radius:12px;border:1px solid var(--rule);background:var(--paper);color:var(--ink)}
+.su-row input:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 45%,transparent);outline-offset:1px}
+.su-err{color:var(--no);font-size:14px;margin-top:10px}
+.su-small{color:var(--ink-2);font-size:12.5px;margin-top:14px}
+#suForm .x{position:absolute;top:12px;right:14px;border:0;background:transparent;color:var(--ink-2);font:400 26px/1 var(--f-body);cursor:pointer;padding:6px 10px;border-radius:8px}
+#suForm .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+@media (max-width:520px){ .su-row{flex-direction:column} .su-row .btn{justify-content:center} }
+
 footer{padding-block:40px 56px;color:var(--ink-2);font-size:13.5px}
 footer .wrap{display:flex;gap:16px;justify-content:space-between;flex-wrap:wrap;border-top:1px solid var(--rule);padding-top:24px}
 
@@ -257,7 +276,7 @@ footer .wrap{display:flex;gap:16px;justify-content:space-between;flex-wrap:wrap;
     <div class="lang" role="group" aria-label="Language">
       <button type="button" data-l="fr">FR</button><button type="button" data-l="en">EN</button>
     </div>
-    <a class="btn primary" href="#download" style="padding:10px 14px;font-size:14px" data-i="navDl"></a>
+    <button type="button" class="btn primary" data-open-signup style="padding:10px 14px;font-size:14px" data-i="navDl"></button>
   </div>
 </nav>
 
@@ -268,10 +287,10 @@ footer .wrap{display:flex;gap:16px;justify-content:space-between;flex-wrap:wrap;
       <h1 data-i="h1"></h1>
       <p class="lede" data-i="lede"></p>
       <div class="cta">
-        <a class="btn primary" href="#download">
+        <button type="button" class="btn primary" data-open-signup>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.7-1-2.7-4.1zM13.9 5c.7-.9 1.2-2 1-3.2-1 0-2.3.7-3 1.6-.7.8-1.3 2-1.1 3.1 1.2.1 2.3-.6 3.1-1.5z"/></svg>
           <span data-i="ctaDl"></span>
-        </a>
+        </button>
         <a class="btn" href="#how" data-i="ctaHow"></a>
       </div>
       <div class="facts">
@@ -433,13 +452,8 @@ Monsieur  IPv4  <span class="g">127.0.0.1:49716 (LISTEN)</span><br><br>
       <div>
         <h2 data-i="dH"></h2>
         <p data-i="dP"></p>
-        <a class="btn primary" id="dlBtn" href="#download">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>
-          <span data-i="dBtn"></span>
-        </a>
-        <p class="dl-note" id="dlNote" hidden data-i="dSoon"></p>
-        <div class="meta"><span>v1.0</span><span>MonsieurDossier.dmg · 70 MB</span><span data-i="dReq"></span></div>
-        <div class="first"><b data-i="fH"></b><ol data-list="fL"></ol></div>
+        <button type="button" class="btn primary" data-open-signup><span data-i="dBtn"></span></button>
+        <p class="dl-note" data-i="dNote"></p>
       </div>
     </div>
   </div>
@@ -452,6 +466,31 @@ Monsieur  IPv4  <span class="g">127.0.0.1:49716 (LISTEN)</span><br><br>
   </div>
 </section>
 
+<dialog id="signup" aria-labelledby="suH">
+  <form id="suForm" novalidate>
+    <button type="button" class="x" id="suClose" aria-label="Close">×</button>
+    <div id="suAsk">
+      <span class="eyebrow" data-i="suEy"></span>
+      <h2 id="suH" data-i="suH"></h2>
+      <p class="su-p" data-i="suP"></p>
+      <label for="suEmail" data-i="suLabel"></label>
+      <div class="su-row">
+        <input id="suEmail" name="email" type="email" autocomplete="email" inputmode="email" required placeholder="vous@exemple.fr">
+        <button type="submit" class="btn primary" id="suSend" data-i="suSend"></button>
+      </div>
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp">
+      <p class="su-err" id="suErr" role="alert" hidden></p>
+      <p class="su-small" data-i="suSmall"></p>
+    </div>
+    <div id="suDone" hidden>
+      <span class="eyebrow" data-i="suEy"></span>
+      <h2 data-i="suOkH"></h2>
+      <p class="su-p" data-i="suOkP"></p>
+      <button type="button" class="btn" id="suOkClose" data-i="suOkBtn"></button>
+    </div>
+  </form>
+</dialog>
+
 <footer>
   <div class="wrap">
     <span data-i="foot1"></span>
@@ -460,17 +499,16 @@ Monsieur  IPv4  <span class="g">127.0.0.1:49716 (LISTEN)</span><br><br>
 </footer>
 
 <script>
-/* Link to MonsieurDossier.dmg in this repository's latest release. Empty = "coming soon" message.
-   Once a release is published: "https://github.com/doudandyx/monsieur-dossier-site/releases/latest/download/MonsieurDossier.dmg" */
-const DOWNLOAD_URL = "";
+/* Where sign-ups are sent (a form endpoint that accepts a POST with an "email" field). */
+const SIGNUP_ENDPOINT = "";
 
 const T = {
 fr:{
-  navHow:"Comment ça marche", navDf:"Avec DossierFacile", navPriv:"Confidentialité", navLegal:"Pièces autorisées", navFaq:"FAQ", navDl:"Télécharger",
-  eyebrow:"Dossier de location en France",
+  navHow:"Comment ça marche", navDf:"Avec DossierFacile", navPriv:"Confidentialité", navLegal:"Pièces autorisées", navFaq:"FAQ", navDl:"Me prévenir",
+  eyebrow:"Bientôt sur Mac · Dossier de location en France",
   h1:"Votre dossier de location, <em>prêt et protégé.</em>",
   lede:"Monsieur Dossier vous dit ce qu’un bailleur a le droit de demander, masque ce qui ne le regarde pas (IBAN, numéro de sécu) et marque chaque copie à son nom. En français ou en anglais, sur votre Mac, sans compte ni envoi.",
-  ctaDl:"Télécharger pour Mac", ctaHow:"Voir les 4 étapes",
+  ctaDl:"Me prévenir de la sortie", ctaHow:"Voir les 4 étapes",
   f1:"Sans compte", f2:"100 % hors ligne", f3:"Français et anglais",
   stamp:"Prêt à envoyer",
   docT:"Bulletin de paie", docSub:"Document d’exemple", kName:"Salarié", kAddr:"Adresse", kSecu:"N° de sécurité sociale", kPay:"Rémunération", kPeriod:"Période", kPeriodV:"Octobre 2026", kGross:"Salaire brut", kNet:"Net à payer", kBank:"Paiement par virement",
@@ -523,29 +561,33 @@ fr:{
   okL:["Une pièce d’identité (CNI, passeport, titre de séjour)","Un justificatif de domicile (3 dernières quittances, attestation d’hébergement…)","Contrat de travail ou attestation employeur","Les 3 derniers bulletins de salaire","Le dernier avis d’imposition"],
   noL:["Relevés de compte bancaire","Carte Vitale","Extrait de casier judiciaire","Dossier médical","Autorisation de prélèvement signée","Un versement d’argent avant la signature du bail"],
   lSrc:"Liste indicative, non exhaustive. Référence : décret n° 2015-1437 du 5 novembre 2015 (modifié en 2019), annexes I et II. Vérifiez le texte en vigueur sur legifrance.gouv.fr.",
-  dH:"Monsieur Dossier pour Mac", dP:"Une seule application, à glisser dans Applications. Au premier lancement, macOS demande une confirmation.",
-  dBtn:"Télécharger pour Mac", dSoon:"Le lien de téléchargement public arrive bientôt.", dReq:"Mac Intel et Apple Silicon",
-  fH:"Premier lancement", fL:["Ouvrez MonsieurDossier.dmg et glissez Monsieur Dossier dans Applications.","Faites un clic droit sur Monsieur Dossier › Ouvrir, puis confirmez « Ouvrir ».","Si macOS bloque encore : Réglages Système › Confidentialité et sécurité › « Ouvrir quand même »."],
+  dH:"Bientôt disponible sur Mac", dP:"Monsieur Dossier est en cours de finalisation. Laissez votre e-mail : vous recevrez un message le jour de la sortie.",
+  dNote:"Un seul e-mail, le jour de la sortie.",
+  suEy:"Bientôt disponible", suH:"Monsieur Dossier arrive.", suP:"L’application n’est pas encore sortie. Laissez votre adresse e-mail : nous vous écrirons le jour où elle sera disponible.",
+  suLabel:"Votre adresse e-mail", suSend:"Me prévenir", suBad:"Cette adresse e-mail ne semble pas valide.", suFail:"L’inscription n’a pas fonctionné. Réessayez dans un instant.",
+  suSmall:"Votre adresse sert uniquement à vous annoncer la sortie. Elle n’est ni partagée ni revendue, et vous pouvez demander sa suppression à tout moment.",
+  suOkH:"C’est noté.", suOkP:"Vous recevrez un e-mail le jour de la sortie. Merci de votre intérêt.", suOkBtn:"Fermer",
+  dBtn:"Me prévenir de la sortie", dReq:"Mac Intel et Apple Silicon",
   qH:"Questions fréquentes",
   faq:[
     ["Quelle différence avec DossierFacile ?","DossierFacile est le service de l’État : il vérifie votre dossier et le partage par lien, sans rien masquer. Monsieur Dossier ne vérifie rien : il protège les fichiers que vous envoyez vous-même, en masquant le superflu et en nommant le destinataire. Les deux se complètent."],
     ["Monsieur Dossier est-il un service officiel ?","Non. C’est une application indépendante, sans lien avec l’État ni avec DossierFacile. Elle ne certifie pas vos pièces."],
+    ["Quand l’application sera-t-elle disponible ?","Elle est en cours de finalisation, d’abord pour Mac. Laissez votre e-mail avec le bouton « Me prévenir » pour être averti le jour de la sortie. L’application sera payante ; le prix sera annoncé à ce moment-là."],
     ["Mes documents sont-ils envoyés quelque part ?","Non. Le traitement se fait entièrement sur votre Mac. L’application n’a pas de serveur, ne crée pas de compte et ne collecte aucune statistique. Elle fonctionne sans connexion Internet."],
     ["Un bailleur peut-il refuser une copie masquée ?","Aucun texte ne tranche. Masquez seulement ce qui ne sert ni à juger votre solvabilité ni à vérifier la pièce, et gardez vos originaux : un bailleur peut demander à les voir."],
     ["Pourquoi pas un simple flou ?","Parce qu’un flou ou une pixelisation peuvent être inversés. Seuls des masques opaques sont proposés : une bande noire, ou un effet « dépoli » généré à partir de bruit aléatoire, jamais à partir de ce qui est caché."],
     ["Comment savoir que le fichier est sûr ?","Après chaque export, le PDF est rouvert et contrôlé : plus de texte, de police, de métadonnées ni de pièce jointe, et chaque zone masquée ne ressemble plus à l’original. Si un contrôle échoue, le fichier n’est pas enregistré."],
     ["Que faut-il écrire dans le filigrane ?","Le destinataire, l’objet et la date, par exemple : « Copie – Dossier location 12 rue des Lilas – Usage exclusif Agence Saône – 11/2026 ». Une copie volée devient difficile à réutiliser ailleurs."],
     ["Faut-il masquer le QR code de l’avis d’imposition ?","Non. Le bailleur s’en sert pour vérifier l’authenticité du document. Les QR codes et 2D-Doc sont détectés et laissés sans filigrane ; vous êtes prévenu si un masque en couvre un, et l’export contrôle qu’ils sont toujours détectés."],
-    ["Pourquoi macOS affiche-t-il un avertissement au premier lancement ?","Cette version n’est pas encore notariée par Apple. Faites un clic droit › Ouvrir la première fois ; macOS s’en souviendra ensuite."]
   ],
-  foot1:"Monsieur Dossier — votre dossier de location, prêt et protégé.", foot2:"Application indépendante, non affiliée à l’État. Aucune donnée collectée."
+  foot1:"Monsieur Dossier — votre dossier de location, prêt et protégé.", foot2:"Application indépendante, non affiliée à l’État. L’application ne collecte aucune donnée."
 },
 en:{
-  navHow:"How it works", navDf:"With DossierFacile", navPriv:"Privacy", navLegal:"What’s allowed", navFaq:"FAQ", navDl:"Download",
-  eyebrow:"Renting a home in France",
+  navHow:"How it works", navDf:"With DossierFacile", navPriv:"Privacy", navLegal:"What’s allowed", navFaq:"FAQ", navDl:"Notify me",
+  eyebrow:"Coming soon to Mac · Renting a home in France",
   h1:"Your French rental file, <em>ready and protected.</em>",
   lede:"Monsieur Dossier tells you what a landlord is allowed to ask for, hides what’s none of their business (IBAN, social security number) and marks every copy with their name. In English or French, on your Mac, no account, nothing uploaded.",
-  ctaDl:"Download for Mac", ctaHow:"See the 4 steps",
+  ctaDl:"Notify me at launch", ctaHow:"See the 4 steps",
   f1:"No account", f2:"100% offline", f3:"English and French",
   stamp:"Ready to send",
   docT:"Payslip", docSub:"Sample document", kName:"Employee", kAddr:"Address", kSecu:"Social security no.", kPay:"Pay", kPeriod:"Period", kPeriodV:"October 2026", kGross:"Gross pay", kNet:"Net pay", kBank:"Paid by bank transfer",
@@ -598,22 +640,26 @@ en:{
   okL:["One ID document (ID card, passport, residence permit)","Proof of address (last 3 rent receipts, host certificate…)","Employment contract or employer certificate","Last 3 payslips","Latest tax notice"],
   noL:["Bank statements","Carte Vitale (health card)","Criminal record","Medical records","Signed direct-debit authorisation","Any payment before the lease is signed"],
   lSrc:"Indicative, non-exhaustive list. Reference: French décret n° 2015-1437 of 5 November 2015 (amended 2019), annexes I and II. Check the current text on legifrance.gouv.fr.",
-  dH:"Monsieur Dossier for Mac", dP:"A single app to drag into Applications. On first launch, macOS asks you to confirm.",
-  dBtn:"Download for Mac", dSoon:"The public download link is coming soon.", dReq:"Intel and Apple Silicon Macs",
-  fH:"First launch", fL:["Open MonsieurDossier.dmg and drag Monsieur Dossier into Applications.","Right-click Monsieur Dossier › Open, then confirm “Open”.","If macOS still blocks it: System Settings › Privacy & Security › “Open Anyway”."],
+  dH:"Coming soon to Mac", dP:"Monsieur Dossier is being finalised. Leave your email: you’ll get one message on launch day.",
+  dNote:"One email, on launch day.",
+  suEy:"Coming soon", suH:"Monsieur Dossier is on its way.", suP:"The app isn’t out yet. Leave your email address and we’ll write to you the day it’s available.",
+  suLabel:"Your email address", suSend:"Notify me", suBad:"This email address doesn’t look valid.", suFail:"Sign-up didn’t work. Please try again in a moment.",
+  suSmall:"Your address is used only to announce the launch. It is never shared or sold, and you can ask for it to be deleted at any time.",
+  suOkH:"You’re on the list.", suOkP:"You’ll get an email on launch day. Thanks for your interest.", suOkBtn:"Close",
+  dBtn:"Notify me at launch", dReq:"Intel and Apple Silicon Macs",
   qH:"Frequently asked questions",
   faq:[
     ["How is this different from DossierFacile?","DossierFacile is the government service: it verifies your file and shares it by link, without hiding anything. Monsieur Dossier verifies nothing: it protects the files you send yourself, by hiding what isn’t needed and naming the recipient. They work together."],
     ["Is Monsieur Dossier an official service?","No. It is an independent app, with no link to the French government or to DossierFacile. It does not certify your documents."],
+    ["When will the app be available?","It’s being finalised, for Mac first. Leave your email with the “Notify me” button to hear about it on launch day. The app will be paid; the price will be announced then."],
     ["Are my documents sent anywhere?","No. Processing happens entirely on your Mac. The app has no server, creates no account and collects no analytics. It works without an internet connection."],
     ["Can a landlord refuse a redacted copy?","No law settles it. Hide only what serves neither to assess your income nor to verify the document, and keep your originals: a landlord may ask to see them."],
     ["Why not just blur?","Because blur and pixelation can be reversed. Only opaque masks are offered: a black bar, or a “frosted” look generated from random noise, never from what’s hidden."],
     ["How do I know the file is safe?","After every export, the PDF is reopened and checked: no text, font, metadata or attachment left, and each masked area no longer resembles the original. If a check fails, the file isn’t saved."],
     ["What should the watermark say?","The recipient, purpose and date, for example: “Copy – Rental application 12 rue des Lilas – For Agence Saône only – 11/2026”. A stolen copy becomes hard to reuse elsewhere."],
     ["Should I hide the QR code on my tax notice?","No. The landlord uses it to check the document is genuine. QR codes and 2D-Doc are detected and kept free of watermark; you’re warned if a mask covers one, and the export checks they are still detected."],
-    ["Why does macOS show a warning on first launch?","This version isn’t notarised by Apple yet. Right-click › Open the first time; macOS remembers it afterwards."]
   ],
-  foot1:"Monsieur Dossier — your French rental file, ready and protected.", foot2:"Independent app, not affiliated with the French government. No data collected."
+  foot1:"Monsieur Dossier — your French rental file, ready and protected.", foot2:"Independent app, not affiliated with the French government. The app collects no data."
 }};
 
 let lang = "fr";
@@ -653,10 +699,30 @@ function setOn(on){
 document.getElementById("bBefore").addEventListener("click", () => setOn(false));
 document.getElementById("bAfter").addEventListener("click", () => setOn(true));
 
-/* download */
-const dlBtn = document.getElementById("dlBtn");
-if (DOWNLOAD_URL){ dlBtn.href = DOWNLOAD_URL; }
-else dlBtn.addEventListener("click", e => { e.preventDefault(); document.getElementById("dlNote").hidden = false; });
+/* launch sign-up */
+const su = document.getElementById("signup"), suForm = document.getElementById("suForm"), suErr = document.getElementById("suErr");
+function suState(done){ document.getElementById("suAsk").hidden = done; document.getElementById("suDone").hidden = !done; }
+document.querySelectorAll("[data-open-signup]").forEach(b => b.addEventListener("click", () => {
+  suState(false); suErr.hidden = true; su.showModal(); document.getElementById("suEmail").focus();
+}));
+["suClose","suOkClose"].forEach(id => document.getElementById(id).addEventListener("click", () => su.close()));
+su.addEventListener("click", e => { if (e.target === su) su.close(); });   /* click on the backdrop */
+suForm.addEventListener("submit", async e => {
+  e.preventDefault();
+  const L = T[lang], input = document.getElementById("suEmail"), send = document.getElementById("suSend");
+  const fail = msg => { suErr.textContent = msg; suErr.hidden = false; };
+  if (!input.checkValidity()) return fail(L.suBad);
+  if (suForm.elements._gotcha.value) return suState(true);               /* bots fill the hidden field */
+  send.disabled = true; suErr.hidden = true;
+  try {
+    if (!SIGNUP_ENDPOINT) throw new Error("no endpoint");
+    const body = new FormData(suForm); body.append("lang", lang);
+    const res = await fetch(SIGNUP_ENDPOINT, { method:"POST", headers:{ Accept:"application/json" }, body });
+    if (!res.ok) throw new Error(res.status);
+    suForm.reset(); suState(true);
+  } catch (err) { fail(L.suFail); }
+  send.disabled = false;
+});
 
 /* nav border on scroll */
 const nav = document.getElementById("nav");
