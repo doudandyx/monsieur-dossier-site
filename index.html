@@ -1,0 +1,669 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Monsieur Dossier prépare et protège votre dossier de location en France : pièces autorisées, données superflues masquées, copie au nom du destinataire. En français et en anglais, sur votre Mac, hors ligne.">
+<meta name="theme-color" content="#eef1f6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1420" media="(prefers-color-scheme: dark)">
+<title>Monsieur Dossier</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one column of "dossier" sheets on a cool paper desk; the hero is a live document you can protect. */
+:root{
+  --paper:#eef1f6;      /* desk */
+  --sheet:#ffffff;      /* document */
+  --ink:#14213d;        /* text */
+  --ink-2:#55607a;      /* secondary text */
+  --rule:#d6dbe6;
+  --accent:#2d5bd7;     /* watermark blue (app icon) */
+  --accent-ink:#ffffff;
+  --mask:#1b1e24;       /* redaction */
+  --ok:#1d8150;
+  --no:#c2412f;
+  --wm:rgba(45,91,215,.16);
+  --shadow:0 1px 1px rgba(20,33,61,.06),0 12px 40px rgba(20,33,61,.10);
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0f1420; --sheet:#182033; --ink:#e7ebf4; --ink-2:#9aa5bd; --rule:#2a3550;
+    --accent:#7b9bff; --accent-ink:#0b1022; --mask:#05070b; --ok:#4cc38a; --no:#ff7a66;
+    --wm:rgba(123,155,255,.16); --shadow:0 1px 1px #0006,0 12px 40px #0007; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0f1420; --sheet:#182033; --ink:#e7ebf4; --ink-2:#9aa5bd; --rule:#2a3550;
+  --accent:#7b9bff; --accent-ink:#0b1022; --mask:#05070b; --ok:#4cc38a; --no:#ff7a66;
+  --wm:rgba(123,155,255,.16); --shadow:0 1px 1px #0006,0 12px 40px #0007; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font:16px/1.6 var(--f-body);margin:0;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;letter-spacing:-.02em}
+p{margin:0}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font:600 12px/1 var(--f-body);text-transform:uppercase;letter-spacing:.12em;color:var(--accent)}
+.btn{display:inline-flex;align-items:center;gap:10px;font:600 15px/1 var(--f-body);padding:14px 20px;border-radius:12px;border:1px solid var(--rule);background:var(--sheet);color:var(--ink);text-decoration:none;cursor:pointer}
+.btn:hover{border-color:var(--ink-2)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{filter:brightness(1.07)}
+.btn:focus-visible,button:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 45%,transparent);outline-offset:2px}
+.btn small{font-weight:500;opacity:.8}
+
+/* ---------- nav ---------- */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid transparent}
+nav.scrolled{border-bottom-color:var(--rule)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+nav .wrap{display:flex;align-items:center;gap:20px;padding-block:14px}
+.brand{display:flex;align-items:center;gap:10px;font:800 19px/1 var(--f-display);color:var(--ink);text-decoration:none;letter-spacing:-.02em}
+.brand svg{flex:none}
+nav .links{display:flex;gap:22px;margin-left:auto;font-size:14.5px}
+nav .links a{color:var(--ink-2);text-decoration:none}
+nav .links a:hover{color:var(--ink)}
+.lang{display:flex;border:1px solid var(--rule);border-radius:9px;padding:2px;background:var(--sheet)}
+.lang button{border:0;background:transparent;font:600 12.5px/1 var(--f-body);color:var(--ink-2);padding:6px 9px;border-radius:7px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+
+/* ---------- hero ---------- */
+.hero{padding-block:56px 72px}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(40px,6vw,68px);line-height:1.02;font-weight:800;margin:14px 0 18px}
+.hero h1 em{font-style:normal;background:linear-gradient(transparent 62%,color-mix(in srgb,var(--accent) 28%,transparent) 62%)}
+.hero .lede{font-size:18.5px;color:var(--ink-2);max-width:34em}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.facts{display:flex;gap:18px;flex-wrap:wrap;margin-top:26px;font-size:13.5px;color:var(--ink-2)}
+.facts span{display:flex;align-items:center;gap:7px}
+.facts svg{color:var(--ok)}
+
+/* the live document */
+.demo{position:relative}
+.sheet{position:relative;background:var(--sheet);border-radius:6px;box-shadow:var(--shadow);padding:34px 34px 30px;overflow:hidden;aspect-ratio:1/1.3;max-width:100%;font-size:13px;transform:rotate(1.2deg)}
+.sheet .hd{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:2px solid var(--ink);padding-bottom:12px;margin-bottom:16px}
+.sheet .hd b{font:700 15px/1.2 var(--f-display);letter-spacing:.01em}
+.sheet .hd small{display:block;color:var(--ink-2);font-size:11px;margin-top:4px}
+.sheet .bank{font:700 11px/1 var(--f-body);letter-spacing:.14em;color:var(--ink-2)}
+.kv{display:grid;grid-template-columns:118px 1fr;gap:9px 12px;align-items:baseline}
+.kv dt{color:var(--ink-2);font-size:11.5px}
+.kv dd{margin:0;font-family:var(--f-mono);font-size:12.5px;position:relative;justify-self:start}
+.sec{margin-top:18px;padding-top:12px;border-top:1px dashed var(--rule)}
+.sec h4{margin:0 0 8px;font:600 10.5px/1 var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+.qr{width:62px;height:62px;position:absolute;right:30px;bottom:28px;background:
+  conic-gradient(from 90deg at 30% 30%,var(--ink) 25%,transparent 0) 0 0/12px 12px,
+  conic-gradient(from 0deg at 70% 60%,var(--ink) 25%,transparent 0) 3px 5px/9px 9px;opacity:.85;border:4px solid var(--sheet);outline:2px solid var(--ink)}
+.qr-l{position:absolute;right:30px;bottom:12px;font-size:9.5px;color:var(--ink-2);width:62px;text-align:center}
+/* masks */
+.m::after{content:"";position:absolute;inset:-3px -5px;background:var(--mask);border-radius:2px;transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.6,.05,.25,1)}
+.sheet.on .m::after{transform:scaleX(1)}
+.sheet.on .m:nth-of-type(2)::after{transition-delay:.08s}
+/* watermark */
+.wm{position:absolute;inset:-40%;display:flex;flex-direction:column;justify-content:center;gap:34px;transform:rotate(-28deg);pointer-events:none;opacity:0;transition:opacity .6s .35s}
+.sheet.on .wm{opacity:1}
+.wm div{white-space:nowrap;font:700 15px/1 var(--f-body);color:var(--wm);letter-spacing:.02em}
+.wm div:nth-child(even){margin-left:-140px}
+.toggle{position:absolute;left:50%;bottom:-22px;transform:translateX(-50%);display:flex;background:var(--ink);border-radius:999px;padding:4px;box-shadow:var(--shadow);z-index:2}
+.toggle button{border:0;background:transparent;color:color-mix(in srgb,var(--paper) 70%,transparent);font:600 13.5px/1 var(--f-body);padding:10px 16px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.toggle button[aria-pressed="true"]{background:var(--paper);color:var(--ink)}
+.stamp{position:absolute;top:18px;right:-10px;z-index:2;transform:rotate(8deg);font:800 13px/1 var(--f-display);letter-spacing:.08em;text-transform:uppercase;color:var(--ok);border:2px solid var(--ok);padding:7px 10px;border-radius:6px;background:var(--sheet);opacity:0;transition:opacity .3s .7s}
+.demo.on .stamp{opacity:1}
+
+/* ---------- sections ---------- */
+section.block{padding-block:84px}
+.head{max-width:640px;margin-bottom:40px}
+.head h2{font-size:clamp(30px,4vw,44px);line-height:1.08;font-weight:800;margin-top:12px}
+.head p{color:var(--ink-2);font-size:17px;margin-top:14px}
+.band{background:var(--sheet);border-block:1px solid var(--rule)}
+
+/* problem */
+.prob{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.prob article{border-top:2px solid var(--ink);padding-top:18px;min-width:0}
+.prob h3{font-size:20px;margin-bottom:8px}
+.prob p{color:var(--ink-2);font-size:15px}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:s}
+.step{background:var(--paper);border-radius:14px;padding:22px;min-width:0;position:relative}
+.step .n{font:800 44px/1 var(--f-display);color:var(--accent);letter-spacing:-.04em}
+.step h3{font-size:18px;margin:14px 0 6px}
+.step p{font-size:14.5px;color:var(--ink-2)}
+.step .ui{margin-top:16px;height:64px;border-radius:9px;background:var(--sheet);border:1px solid var(--rule);display:grid;place-items:center;font:500 11.5px/1.3 var(--f-mono);color:var(--ink-2);text-align:center;padding:8px}
+
+/* privacy */
+.priv{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.checks{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.checks li{display:grid;grid-template-columns:28px 1fr;gap:12px;padding:16px 0;border-bottom:1px solid var(--rule)}
+.checks li:last-child{border-bottom:0}
+.checks b{display:block;font-weight:600}
+.checks span{color:var(--ink-2);font-size:14.5px}
+.checks svg{color:var(--ok);margin-top:3px}
+.terminal{background:#0d1220;color:#c9d3ea;border-radius:14px;padding:22px;font:13px/1.7 var(--f-mono);box-shadow:var(--shadow);overflow-x:auto}
+.terminal .c{color:#6f7d9c}
+.terminal .g{color:#6ee7a8}
+.terminal .k{color:#9fb6ff}
+
+/* legal */
+.legal{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.list{background:var(--sheet);border:1px solid var(--rule);border-radius:16px;padding:26px;min-width:0}
+.list h3{font-size:19px;display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.list ul{margin:0;padding:0;list-style:none;display:grid;gap:9px}
+.list li{display:grid;grid-template-columns:18px 1fr;gap:10px;font-size:15px}
+.list.ok li::before{content:"✓";color:var(--ok);font-weight:700}
+.list.no li::before{content:"✕";color:var(--no);font-weight:700}
+.pill{font:600 11px/1 var(--f-body);letter-spacing:.06em;text-transform:uppercase;padding:5px 8px;border-radius:999px}
+.list.ok .pill{background:color-mix(in srgb,var(--ok) 14%,transparent);color:var(--ok)}
+.list.no .pill{background:color-mix(in srgb,var(--no) 14%,transparent);color:var(--no)}
+.src{font-size:13px;color:var(--ink-2);margin-top:18px}
+
+/* download */
+.dl{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center;background:var(--ink);color:var(--paper);border-radius:22px;padding:44px}
+.dl h2{font-size:clamp(28px,3.6vw,40px);font-weight:800}
+.dl p{color:color-mix(in srgb,var(--paper) 72%,transparent);margin-top:10px}
+.dl .btn.primary{background:var(--paper);border-color:var(--paper);color:var(--ink);margin-top:22px}
+.dl .meta{display:flex;gap:18px;flex-wrap:wrap;margin-top:16px;font-size:13px;color:color-mix(in srgb,var(--paper) 62%,transparent)}
+.dl-note{margin-top:14px;font-size:13.5px;color:color-mix(in srgb,var(--paper) 80%,transparent)}
+.dl-icon{width:132px;height:132px;border-radius:30px;background:linear-gradient(#2d5bd7,#1e3ca0);display:grid;place-items:center;box-shadow:0 18px 40px #0005}
+.first{margin-top:22px;border-top:1px solid color-mix(in srgb,var(--paper) 18%,transparent);padding-top:18px;font-size:14px;color:color-mix(in srgb,var(--paper) 78%,transparent)}
+.first ol{margin:8px 0 0;padding-left:20px;display:grid;gap:4px}
+
+/* faq */
+.faq{display:grid;gap:10px;max-width:820px}
+details{background:var(--sheet);border:1px solid var(--rule);border-radius:14px;padding:4px 20px}
+summary{cursor:pointer;font-weight:600;padding:16px 0;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font:500 22px/1 var(--f-display);color:var(--accent);transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{color:var(--ink-2);padding:0 0 18px;font-size:15px;max-width:65ch}
+
+/* with DossierFacile */
+.cmp{border:1px solid var(--rule);border-radius:16px;overflow:hidden;background:var(--paper)}
+.cmp .r{display:grid;grid-template-columns:180px 1fr 1fr;border-top:1px solid var(--rule)}
+.cmp .r:first-child{border-top:0}
+.cmp .r>*{padding:14px 18px;min-width:0;font-size:15px}
+.cmp .r>:first-child{color:var(--ink-2);font-size:13.5px;font-weight:600}
+.cmp .r>:last-child{background:color-mix(in srgb,var(--accent) 9%,transparent);font-weight:500}
+.cmp .hd>*{font:700 17px/1.2 var(--f-display)!important;color:var(--ink)!important}
+.cmp .lab{display:none;font:600 11px/1 var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin-bottom:5px}
+.together{margin-top:36px}
+.prob.four{grid-template-columns:repeat(4,1fr)}
+.brand .short{display:none}
+
+footer{padding-block:40px 56px;color:var(--ink-2);font-size:13.5px}
+footer .wrap{display:flex;gap:16px;justify-content:space-between;flex-wrap:wrap;border-top:1px solid var(--rule);padding-top:24px}
+
+@media (max-width:900px){
+  .hero .wrap,.priv,.legal{grid-template-columns:1fr}
+  .hero .wrap{gap:56px}
+  .steps{grid-template-columns:1fr 1fr}
+  .prob,.prob.four{grid-template-columns:1fr}
+  .prob.four{grid-template-columns:1fr 1fr}
+  nav .links{display:none}
+  .lang{margin-left:auto}
+  .dl{grid-template-columns:1fr;padding:32px 24px}
+  .dl-icon{width:88px;height:88px;border-radius:22px}
+}
+@media (max-width:680px){
+  .cmp .r{grid-template-columns:1fr}
+  .cmp .r.hd{display:none}
+  .cmp .r>:first-child{padding-bottom:0;font-size:15px;color:var(--ink)}
+  .cmp .lab{display:block}
+}
+@media (max-width:520px){
+  .prob.four{grid-template-columns:1fr}
+  .brand .full{display:none}
+  .brand .short{display:inline}
+  .steps{grid-template-columns:1fr}
+  .sheet{padding:24px 20px;transform:none}
+  .kv{grid-template-columns:96px 1fr}
+  section.block{padding-block:60px}
+  .hero{padding-block:28px 64px}
+  .hero .cta .btn{flex:1 1 100%;justify-content:center}
+  .stamp{top:-14px;right:8px;font-size:11.5px}
+  .lang button{padding:9px 11px}
+  .list{padding:22px 18px}
+  .list h3{flex-wrap:wrap;gap:8px}
+  .dl{padding:28px 20px;border-radius:18px}
+  .terminal{font-size:12px;padding:18px}
+  .wm div:nth-child(even){margin-left:-80px}
+}
+@media (max-width:360px){
+  nav .wrap{gap:10px}
+  .brand{font-size:17px;gap:8px}
+  nav .btn.primary{padding:9px 11px!important;font-size:13px!important}
+  .lang button{padding:8px 8px}
+  .kv{grid-template-columns:84px 1fr}
+}
+@media (prefers-reduced-motion:reduce){ *{transition:none!important} }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Monsieur Dossier">
+      <svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true"><rect x="2" y="2" width="60" height="60" rx="14" fill="#2d5bd7"/><rect x="18" y="12" width="28" height="40" rx="3" fill="#fff"/><rect x="22" y="19" width="20" height="3" rx="1.5" fill="#cdd4e4"/><rect x="22" y="26" width="20" height="5" rx="1" fill="#1b1e24"/><rect x="22" y="35" width="14" height="3" rx="1.5" fill="#cdd4e4"/><path d="M32 45 L24.5 40.5 V49.5 Z M32 45 L39.5 40.5 V49.5 Z" fill="#1b1e24"/><circle cx="32" cy="45" r="2.2" fill="#1b1e24"/></svg>
+      <span class="full">Monsieur Dossier</span><span class="short">M. Dossier</span>
+    </a>
+    <div class="links">
+      <a href="#how" data-i="navHow"></a>
+      <a href="#state" data-i="navDf"></a>
+      <a href="#privacy" data-i="navPriv"></a>
+      <a href="#legal" data-i="navLegal"></a>
+      <a href="#faq" data-i="navFaq"></a>
+    </div>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-l="fr">FR</button><button type="button" data-l="en">EN</button>
+    </div>
+    <a class="btn primary" href="#download" style="padding:10px 14px;font-size:14px" data-i="navDl"></a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow" data-i="eyebrow"></span>
+      <h1 data-i="h1"></h1>
+      <p class="lede" data-i="lede"></p>
+      <div class="cta">
+        <a class="btn primary" href="#download">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.7-1-2.7-4.1zM13.9 5c.7-.9 1.2-2 1-3.2-1 0-2.3.7-3 1.6-.7.8-1.3 2-1.1 3.1 1.2.1 2.3-.6 3.1-1.5z"/></svg>
+          <span data-i="ctaDl"></span>
+        </a>
+        <a class="btn" href="#how" data-i="ctaHow"></a>
+      </div>
+      <div class="facts">
+        <span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8.5l3 3 7-7"/></svg><b data-i="f1"></b></span>
+        <span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8.5l3 3 7-7"/></svg><b data-i="f2"></b></span>
+        <span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8.5l3 3 7-7"/></svg><b data-i="f3"></b></span>
+      </div>
+    </div>
+
+    <div class="demo" id="demo">
+      <div class="stamp" data-i="stamp"></div>
+      <div class="sheet" id="sheet" aria-label="Exemple de document">
+        <div class="hd">
+          <div><b data-i="docT"></b><small data-i="docSub"></small></div>
+          <span class="bank">ATELIER RHÔNE SAS</span>
+        </div>
+        <dl class="kv">
+          <dt data-i="kName"></dt><dd>Camille MARTIN</dd>
+          <dt data-i="kAddr"></dt><dd>8 rue Paul Bert, 69003 Lyon</dd>
+          <dt data-i="kSecu"></dt><dd class="m">2 91 04 69 123 456 78</dd>
+        </dl>
+        <div class="sec">
+          <h4 data-i="kPay"></h4>
+          <dl class="kv">
+            <dt data-i="kPeriod"></dt><dd data-i="kPeriodV"></dd>
+            <dt data-i="kGross"></dt><dd>3 150,00 €</dd>
+            <dt data-i="kNet"></dt><dd>2 450,00 €</dd>
+          </dl>
+        </div>
+        <div class="sec">
+          <h4 data-i="kBank"></h4>
+          <dl class="kv">
+            <dt>IBAN</dt><dd class="m">FR76 3000 6000 0112 3456 7890 189</dd>
+            <dt>BIC</dt><dd class="m">AGRIFRPP882</dd>
+          </dl>
+        </div>
+        <div class="qr" aria-hidden="true"></div><div class="qr-l">QR code</div>
+        <div class="wm" aria-hidden="true" id="wm"></div>
+      </div>
+      <div class="toggle" role="group" aria-label="Avant / après">
+        <button type="button" id="bBefore" data-i="before"></button>
+        <button type="button" id="bAfter" data-i="after"></button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="block band">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow" data-i="pEy"></span>
+      <h2 data-i="pH"></h2>
+      <p data-i="pP"></p>
+    </div>
+    <div class="prob">
+      <article><h3 data-i="p1h"></h3><p data-i="p1p"></p></article>
+      <article><h3 data-i="p2h"></h3><p data-i="p2p"></p></article>
+      <article><h3 data-i="p3h"></h3><p data-i="p3p"></p></article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="how">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow" data-i="hEy"></span>
+      <h2 data-i="hH"></h2>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h3 data-i="s1h"></h3><p data-i="s1p"></p><div class="ui">avis_imposition.pdf<br>fiche_paie_oct.pdf<br>cni.heic</div></div>
+      <div class="step"><div class="n">2</div><h3 data-i="s2h"></h3><p data-i="s2p"></p><div class="ui">IBAN&nbsp;<span style="background:var(--mask);color:transparent;border-radius:2px">FR76 3000 6000 0112</span></div></div>
+      <div class="step"><div class="n">3</div><h3 data-i="s3h"></h3><p data-i="s3p"></p><div class="ui" data-i="s3ui"></div></div>
+      <div class="step"><div class="n">4</div><h3 data-i="s4h"></h3><p data-i="s4p"></p><div class="ui">cni_filigrane.pdf · 412 Ko<br>fiche_paie_oct_filigrane.pdf</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="block band" id="state">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow" data-i="dfEy"></span>
+      <h2 data-i="dfH"></h2>
+      <p data-i="dfP"></p>
+    </div>
+    <div class="cmp" id="cmp"></div>
+    <div class="prob together">
+      <article><h3 data-i="t1h"></h3><p data-i="t1p"></p></article>
+      <article><h3 data-i="t2h"></h3><p data-i="t2p"></p></article>
+      <article><h3 data-i="t3h"></h3><p data-i="t3p"></p></article>
+    </div>
+    <p class="src" data-i="dfSrc"></p>
+  </div>
+</section>
+
+<section class="block" id="newcomer">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow" data-i="nEy"></span>
+      <h2 data-i="nH"></h2>
+      <p data-i="nP"></p>
+    </div>
+    <div class="prob four">
+      <article><h3 data-i="n1h"></h3><p data-i="n1p"></p></article>
+      <article><h3 data-i="n2h"></h3><p data-i="n2p"></p></article>
+      <article><h3 data-i="n3h"></h3><p data-i="n3p"></p></article>
+      <article><h3 data-i="n4h"></h3><p data-i="n4p"></p></article>
+    </div>
+  </div>
+</section>
+
+<section class="block band" id="privacy">
+  <div class="wrap priv">
+    <div>
+      <div class="head" style="margin-bottom:24px">
+        <span class="eyebrow" data-i="vEy"></span>
+        <h2 data-i="vH"></h2>
+        <p data-i="vP"></p>
+      </div>
+      <ul class="checks">
+        <li><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8.5l3 3 7-7"/></svg><div><b data-i="c1b"></b><span data-i="c1s"></span></div></li>
+        <li><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8.5l3 3 7-7"/></svg><div><b data-i="c2b"></b><span data-i="c2s"></span></div></li>
+        <li><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8.5l3 3 7-7"/></svg><div><b data-i="c3b"></b><span data-i="c3s"></span></div></li>
+        <li><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8.5l3 3 7-7"/></svg><div><b data-i="c4b"></b><span data-i="c4s"></span></div></li>
+      </ul>
+    </div>
+    <div class="terminal" role="img" aria-label="Network connections of the app">
+<span class="c" data-i="termC"></span><br>
+<span class="k">$</span> lsof -i -a -c Monsieur<br>
+COMMAND   TYPE  NAME<br>
+Monsieur  IPv4  <span class="g">127.0.0.1:49716 (LISTEN)</span><br><br>
+<span class="c" data-i="termC2"></span><br>
+<span class="k">$</span> pdftotext dossier_filigrane.pdf -<br>
+<span class="g" data-i="termOk"></span>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="legal">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow" data-i="lEy"></span>
+      <h2 data-i="lH"></h2>
+      <p data-i="lP"></p>
+    </div>
+    <div class="legal">
+      <div class="list ok"><h3><span class="pill" data-i="okPill"></span><span data-i="okH"></span></h3><ul data-list="okL"></ul></div>
+      <div class="list no"><h3><span class="pill" data-i="noPill"></span><span data-i="noH"></span></h3><ul data-list="noL"></ul></div>
+    </div>
+    <p class="src" data-i="lSrc"></p>
+  </div>
+</section>
+
+<section class="block" id="download" style="padding-top:20px">
+  <div class="wrap">
+    <div class="dl">
+      <div class="dl-icon" aria-hidden="true">
+        <svg width="78%" height="78%" viewBox="0 0 64 64"><rect x="18" y="12" width="28" height="40" rx="3" fill="#fff"/><rect x="22" y="19" width="20" height="3" rx="1.5" fill="#cdd4e4"/><rect x="22" y="26" width="20" height="5" rx="1" fill="#1b1e24"/><rect x="22" y="35" width="14" height="3" rx="1.5" fill="#cdd4e4"/><path d="M32 45 L24.5 40.5 V49.5 Z M32 45 L39.5 40.5 V49.5 Z" fill="#1b1e24"/><circle cx="32" cy="45" r="2.2" fill="#1b1e24"/></svg>
+      </div>
+      <div>
+        <h2 data-i="dH"></h2>
+        <p data-i="dP"></p>
+        <a class="btn primary" id="dlBtn" href="#download">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>
+          <span data-i="dBtn"></span>
+        </a>
+        <p class="dl-note" id="dlNote" hidden data-i="dSoon"></p>
+        <div class="meta"><span>v1.0</span><span>MonsieurDossier.dmg · 70 MB</span><span data-i="dReq"></span></div>
+        <div class="first"><b data-i="fH"></b><ol data-list="fL"></ol></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="faq" style="padding-top:20px">
+  <div class="wrap">
+    <div class="head"><span class="eyebrow">FAQ</span><h2 data-i="qH"></h2></div>
+    <div class="faq" id="faqList"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span data-i="foot1"></span>
+    <span data-i="foot2"></span>
+  </div>
+</footer>
+
+<script>
+/* Link to MonsieurDossier.dmg in this repository's latest release. Empty = "coming soon" message.
+   Once a release is published: "https://github.com/doudandyx/monsieur-dossier-site/releases/latest/download/MonsieurDossier.dmg" */
+const DOWNLOAD_URL = "";
+
+const T = {
+fr:{
+  navHow:"Comment ça marche", navDf:"Avec DossierFacile", navPriv:"Confidentialité", navLegal:"Pièces autorisées", navFaq:"FAQ", navDl:"Télécharger",
+  eyebrow:"Dossier de location en France",
+  h1:"Votre dossier de location, <em>prêt et protégé.</em>",
+  lede:"Monsieur Dossier vous dit ce qu’un bailleur a le droit de demander, masque ce qui ne le regarde pas (IBAN, numéro de sécu) et marque chaque copie à son nom. En français ou en anglais, sur votre Mac, sans compte ni envoi.",
+  ctaDl:"Télécharger pour Mac", ctaHow:"Voir les 4 étapes",
+  f1:"Sans compte", f2:"100 % hors ligne", f3:"Français et anglais",
+  stamp:"Prêt à envoyer",
+  docT:"Bulletin de paie", docSub:"Document d’exemple", kName:"Salarié", kAddr:"Adresse", kSecu:"N° de sécurité sociale", kPay:"Rémunération", kPeriod:"Période", kPeriodV:"Octobre 2026", kGross:"Salaire brut", kNet:"Net à payer", kBank:"Paiement par virement",
+  before:"Original", after:"Protégé",
+  wm:"Copie – Dossier location 12 rue des Lilas – Usage exclusif Agence Saône – 11/2026",
+  pEy:"Le problème", pH:"Un dossier de location est un kit d’usurpation d’identité tout prêt.",
+  pP:"Pièce d’identité, avis d’imposition, bulletins de salaire, adresse : tout y est. Les fausses annonces existent pour le récupérer.",
+  p1h:"Les fausses annonces", p1p:"Un « propriétaire » demande le dossier complet avant la visite, puis disparaît. Vos documents servent à ouvrir des crédits ou des comptes.",
+  p2h:"Les envois en clair", p2p:"Un PDF envoyé par e-mail circule, se transfère, reste dans des boîtes de réception pendant des années.",
+  p3h:"Le faux masquage", p3p:"Un rectangle noir posé dans un éditeur PDF laisse souvent le texte dessous, copiable. Le flou se retouche.",
+  hEy:"Comment ça marche", hH:"Quatre étapes, une minute par document.",
+  s1h:"Ajoutez vos documents", s1p:"Glissez vos PDF, scans ou photos d’iPhone dans la fenêtre. Une pièce qu’un bailleur n’a pas le droit de demander est signalée.",
+  s2h:"Masquez le superflu", s2p:"IBAN, RIB, n° de sécu et ligne MRZ sont repérés aux formats courants, y compris sur un scan ou une photo. Vous vérifiez et ajoutez le reste à la main.",
+  s3h:"Nommez le destinataire", s3p:"Indiquez l’agence et l’adresse du logement : le filigrane est composé pour vous et évite les QR codes de vérification.",
+  s3ui:"« Usage exclusif Agence Saône – 11/2026 »",
+  s4h:"Téléchargez", s4p:"Chaque PDF est contrôlé avant d’être enregistré : vous voyez « Prêt à envoyer ». Vous pouvez réunir plusieurs pièces en un seul fichier.",
+  dfEy:"Avec DossierFacile", dfH:"Le complément de DossierFacile, pas son concurrent.",
+  dfP:"DossierFacile, le service gratuit de l’État, vérifie votre dossier et le partage par lien. Monsieur Dossier protège les fichiers que vous envoyez vous-même, quand le lien n’est pas accepté ou qu’on vous demande des pièces jointes.",
+  cmpHd:["","DossierFacile","Monsieur Dossier"],
+  cmp:[
+    ["Son rôle","Vérifier votre dossier et le partager","Préparer et protéger vos fichiers"],
+    ["Vos documents","Déposés sur les serveurs de l’État, avec un compte","Restent sur votre Mac, sans compte"],
+    ["Vérification","Oui : label « vérifié » par l’État","Non : aucune certification"],
+    ["Partage","Lien par destinataire, révocable","Des fichiers à joindre vous-même"],
+    ["Données masquées","Aucune : pièces complètes exigées","IBAN, RIB, n° de sécu, MRZ, et vos zones"],
+    ["Filigrane","Mention fixe, sans nom ni date","Destinataire, adresse et date"],
+    ["Langue","Français","Français et anglais"]
+  ],
+  t1h:"1. Faites vérifier", t1p:"Créez votre DossierFacile et partagez son lien quand le bailleur l’accepte.",
+  t2h:"2. Protégez le reste", t2p:"On vous demande des fichiers par e-mail ou sur un portail ? Préparez-les avec Monsieur Dossier.",
+  t3h:"3. Laissez le vérifiable", t3p:"Ne masquez jamais le numéro fiscal, la référence de l’avis d’imposition, les QR codes ni votre photo.",
+  dfSrc:"Monsieur Dossier est une application indépendante. Elle n’est ni un service de l’État ni affiliée à DossierFacile, et ne vérifie pas l’authenticité de vos pièces.",
+  nEy:"Vous arrivez en France ?", nH:"Le dossier de location, expliqué simplement.",
+  nP:"En France, un bailleur choisit son locataire sur dossier. Voici l’essentiel avant de l’envoyer.",
+  n1h:"Quatre familles de pièces", n1p:"Identité, domicile actuel, activité (contrat, statut étudiant) et ressources (bulletins de salaire, avis d’imposition). La liste est fixée par la loi.",
+  n2h:"Passeport ou titre de séjour", n2p:"Ils valent pièce d’identité. Monsieur Dossier repère la ligne de codes en bas du passeport (MRZ) pour la masquer ; votre photo et votre nom restent visibles.",
+  n3h:"Le garant", n3p:"Beaucoup de bailleurs en demandent un. La garantie Visale d’Action Logement, gratuite, peut en tenir lieu sous conditions : vérifiez votre éligibilité sur visale.fr.",
+  n4h:"Tout en anglais", n4p:"L’application et le filigrane existent en anglais. Vos pièces ne sont pas traduites : un bailleur peut demander une traduction.",
+  vEy:"Confidentialité", vH:"Rien ne quitte votre Mac. Vous pouvez le vérifier.",
+  vP:"Monsieur Dossier n’a ni compte, ni serveur, ni statistiques. Coupez le Wi-Fi : tout fonctionne pareil.",
+  c1b:"Traitement 100 % local", c1s:"L’application ne parle qu’à elle-même, sur 127.0.0.1. Aucune connexion vers Internet.",
+  c2b:"Le texte masqué est détruit", c2s:"Chaque page est aplatie en image : ce qui est sous un masque n’existe plus dans le fichier.",
+  c3b:"Métadonnées effacées", c3s:"Auteur, logiciel, dates de création : rien de l’original n’est recopié.",
+  c4b:"Vos originaux intacts", c4s:"De nouveaux fichiers sont créés ; les vôtres ne sont jamais modifiés.",
+  termC:"# connexions réseau de l’application", termC2:"# texte restant dans le PDF exporté", termOk:"(aucun texte — page aplatie)",
+  lEy:"Ce que dit la loi", lH:"Un bailleur ne peut pas tout vous demander.",
+  lP:"Le décret n° 2015-1437 fixe une liste limitée de justificatifs pour une résidence principale. Le reste est interdit, et vous pouvez le refuser. Quand Monsieur Dossier reconnaît une pièce hors liste, il vous prévient.",
+  okPill:"Autorisé", okH:"Exemples de pièces demandables",
+  noPill:"Interdit", noH:"Exemples de pièces à refuser",
+  okL:["Une pièce d’identité (CNI, passeport, titre de séjour)","Un justificatif de domicile (3 dernières quittances, attestation d’hébergement…)","Contrat de travail ou attestation employeur","Les 3 derniers bulletins de salaire","Le dernier avis d’imposition"],
+  noL:["Relevés de compte bancaire","Carte Vitale","Extrait de casier judiciaire","Dossier médical","Autorisation de prélèvement signée","Un versement d’argent avant la signature du bail"],
+  lSrc:"Liste indicative, non exhaustive. Référence : décret n° 2015-1437 du 5 novembre 2015 (modifié en 2019), annexes I et II. Vérifiez le texte en vigueur sur legifrance.gouv.fr.",
+  dH:"Monsieur Dossier pour Mac", dP:"Une seule application, à glisser dans Applications. Au premier lancement, macOS demande une confirmation.",
+  dBtn:"Télécharger pour Mac", dSoon:"Le lien de téléchargement public arrive bientôt.", dReq:"Mac Intel et Apple Silicon",
+  fH:"Premier lancement", fL:["Ouvrez MonsieurDossier.dmg et glissez Monsieur Dossier dans Applications.","Faites un clic droit sur Monsieur Dossier › Ouvrir, puis confirmez « Ouvrir ».","Si macOS bloque encore : Réglages Système › Confidentialité et sécurité › « Ouvrir quand même »."],
+  qH:"Questions fréquentes",
+  faq:[
+    ["Quelle différence avec DossierFacile ?","DossierFacile est le service de l’État : il vérifie votre dossier et le partage par lien, sans rien masquer. Monsieur Dossier ne vérifie rien : il protège les fichiers que vous envoyez vous-même, en masquant le superflu et en nommant le destinataire. Les deux se complètent."],
+    ["Monsieur Dossier est-il un service officiel ?","Non. C’est une application indépendante, sans lien avec l’État ni avec DossierFacile. Elle ne certifie pas vos pièces."],
+    ["Mes documents sont-ils envoyés quelque part ?","Non. Le traitement se fait entièrement sur votre Mac. L’application n’a pas de serveur, ne crée pas de compte et ne collecte aucune statistique. Elle fonctionne sans connexion Internet."],
+    ["Un bailleur peut-il refuser une copie masquée ?","Aucun texte ne tranche. Masquez seulement ce qui ne sert ni à juger votre solvabilité ni à vérifier la pièce, et gardez vos originaux : un bailleur peut demander à les voir."],
+    ["Pourquoi pas un simple flou ?","Parce qu’un flou ou une pixelisation peuvent être inversés. Seuls des masques opaques sont proposés : une bande noire, ou un effet « dépoli » généré à partir de bruit aléatoire, jamais à partir de ce qui est caché."],
+    ["Comment savoir que le fichier est sûr ?","Après chaque export, le PDF est rouvert et contrôlé : plus de texte, de police, de métadonnées ni de pièce jointe, et chaque zone masquée ne ressemble plus à l’original. Si un contrôle échoue, le fichier n’est pas enregistré."],
+    ["Que faut-il écrire dans le filigrane ?","Le destinataire, l’objet et la date, par exemple : « Copie – Dossier location 12 rue des Lilas – Usage exclusif Agence Saône – 11/2026 ». Une copie volée devient difficile à réutiliser ailleurs."],
+    ["Faut-il masquer le QR code de l’avis d’imposition ?","Non. Le bailleur s’en sert pour vérifier l’authenticité du document. Les QR codes et 2D-Doc sont détectés et laissés sans filigrane ; vous êtes prévenu si un masque en couvre un, et l’export contrôle qu’ils sont toujours détectés."],
+    ["Pourquoi macOS affiche-t-il un avertissement au premier lancement ?","Cette version n’est pas encore notariée par Apple. Faites un clic droit › Ouvrir la première fois ; macOS s’en souviendra ensuite."]
+  ],
+  foot1:"Monsieur Dossier — votre dossier de location, prêt et protégé.", foot2:"Application indépendante, non affiliée à l’État. Aucune donnée collectée."
+},
+en:{
+  navHow:"How it works", navDf:"With DossierFacile", navPriv:"Privacy", navLegal:"What’s allowed", navFaq:"FAQ", navDl:"Download",
+  eyebrow:"Renting a home in France",
+  h1:"Your French rental file, <em>ready and protected.</em>",
+  lede:"Monsieur Dossier tells you what a landlord is allowed to ask for, hides what’s none of their business (IBAN, social security number) and marks every copy with their name. In English or French, on your Mac, no account, nothing uploaded.",
+  ctaDl:"Download for Mac", ctaHow:"See the 4 steps",
+  f1:"No account", f2:"100% offline", f3:"English and French",
+  stamp:"Ready to send",
+  docT:"Payslip", docSub:"Sample document", kName:"Employee", kAddr:"Address", kSecu:"Social security no.", kPay:"Pay", kPeriod:"Period", kPeriodV:"October 2026", kGross:"Gross pay", kNet:"Net pay", kBank:"Paid by bank transfer",
+  before:"Original", after:"Protected",
+  wm:"Copy – Rental application 12 rue des Lilas – For Agence Saône only – 11/2026",
+  pEy:"The problem", pH:"A rental file is a ready-made identity-theft kit.",
+  pP:"ID, tax notice, payslips, address: it’s all there. Fake listings exist to collect it.",
+  p1h:"Fake listings", p1p:"A “landlord” asks for the full file before any viewing, then vanishes. Your documents are used to open credit lines or accounts.",
+  p2h:"Unprotected attachments", p2p:"A PDF sent by email gets forwarded, copied, and sits in inboxes for years.",
+  p3h:"Fake redaction", p3p:"A black box drawn in a PDF editor often leaves the text underneath, ready to copy. Blur can be reversed.",
+  hEy:"How it works", hH:"Four steps, about a minute per document.",
+  s1h:"Add your documents", s1p:"Drop PDFs, scans or iPhone photos into the window. A document a landlord isn’t allowed to ask for gets flagged.",
+  s2h:"Hide what isn’t needed", s2p:"IBAN, bank codes, social security numbers and passport MRZ lines are found in their common formats, on scans and photos too. You review and add the rest by hand.",
+  s3h:"Name the recipient", s3p:"Enter the agency and the property address: the watermark is written for you and stays off verification QR codes.",
+  s3ui:"“For Agence Saône only – 11/2026”",
+  s4h:"Download", s4p:"Every PDF is checked before it’s saved: you see “Ready to send”. You can combine several documents into one file.",
+  dfEy:"With DossierFacile", dfH:"It works alongside DossierFacile, not against it.",
+  dfP:"DossierFacile, the French government’s free service, verifies your file and shares it by link. Monsieur Dossier protects the files you send yourself, when the link isn’t accepted or you’re asked for attachments.",
+  cmpHd:["","DossierFacile","Monsieur Dossier"],
+  cmp:[
+    ["Its job","Verify your file and share it","Prepare and protect your files"],
+    ["Your documents","Uploaded to government servers, with an account","Stay on your Mac, no account"],
+    ["Verification","Yes: a government “verified” label","No: nothing is certified"],
+    ["Sharing","One revocable link per recipient","Files you attach yourself"],
+    ["Hidden data","None: complete documents required","IBAN, bank codes, social security no., MRZ, plus your own areas"],
+    ["Watermark","Fixed wording, no name or date","Recipient, address and date"],
+    ["Language","French","English and French"]
+  ],
+  t1h:"1. Get verified", t1p:"Create your DossierFacile and share its link whenever the landlord accepts it.",
+  t2h:"2. Protect the rest", t2p:"Asked for files by email or on a portal? Prepare them with Monsieur Dossier.",
+  t3h:"3. Keep what’s checkable", t3p:"Never hide your tax number, the tax notice reference, QR codes or your photo.",
+  dfSrc:"Monsieur Dossier is an independent app. It is not a government service, is not affiliated with DossierFacile, and does not check that your documents are genuine.",
+  nEy:"New to France?", nH:"The rental file, in plain terms.",
+  nP:"In France, landlords pick tenants from a file of documents, the “dossier de location”. Here is what to know before you send it.",
+  n1h:"Four kinds of documents", n1p:"Identity, current address, occupation (contract, student status) and income (payslips, tax notice). The list is set by law.",
+  n2h:"Passport or residence permit", n2p:"Both count as ID. Monsieur Dossier finds the line of codes at the bottom of a passport (MRZ) so you can hide it; your photo and name stay visible.",
+  n3h:"The guarantor", n3p:"Many landlords ask for one. Visale, a free guarantee from Action Logement, can stand in for it under conditions: check whether you qualify on visale.fr.",
+  n4h:"All in English", n4p:"The app and the watermark are available in English. Your documents are not translated: a landlord may ask for a translation.",
+  vEy:"Privacy", vH:"Nothing leaves your Mac. You can check.",
+  vP:"Monsieur Dossier has no account, no server and no analytics. Turn off Wi-Fi: everything works the same.",
+  c1b:"100% local processing", c1s:"The app only talks to itself, on 127.0.0.1. No connection to the internet.",
+  c2b:"Hidden text is destroyed", c2s:"Each page is flattened into an image: what’s under a mask no longer exists in the file.",
+  c3b:"Metadata removed", c3s:"Author, software, creation dates: nothing from the original is copied over.",
+  c4b:"Your originals untouched", c4s:"New files are created; yours are never changed.",
+  termC:"# the app’s network connections", termC2:"# text left in the exported PDF", termOk:"(no text — page flattened)",
+  lEy:"What the law says", lH:"A landlord can’t ask for everything.",
+  lP:"In France, décret n° 2015-1437 sets a limited list of documents for a main residence. Anything else is forbidden, and you can refuse it. When Monsieur Dossier recognises a document that isn’t on the list, it warns you.",
+  okPill:"Allowed", okH:"Examples of documents they can ask for",
+  noPill:"Forbidden", noH:"Examples of documents to refuse",
+  okL:["One ID document (ID card, passport, residence permit)","Proof of address (last 3 rent receipts, host certificate…)","Employment contract or employer certificate","Last 3 payslips","Latest tax notice"],
+  noL:["Bank statements","Carte Vitale (health card)","Criminal record","Medical records","Signed direct-debit authorisation","Any payment before the lease is signed"],
+  lSrc:"Indicative, non-exhaustive list. Reference: French décret n° 2015-1437 of 5 November 2015 (amended 2019), annexes I and II. Check the current text on legifrance.gouv.fr.",
+  dH:"Monsieur Dossier for Mac", dP:"A single app to drag into Applications. On first launch, macOS asks you to confirm.",
+  dBtn:"Download for Mac", dSoon:"The public download link is coming soon.", dReq:"Intel and Apple Silicon Macs",
+  fH:"First launch", fL:["Open MonsieurDossier.dmg and drag Monsieur Dossier into Applications.","Right-click Monsieur Dossier › Open, then confirm “Open”.","If macOS still blocks it: System Settings › Privacy & Security › “Open Anyway”."],
+  qH:"Frequently asked questions",
+  faq:[
+    ["How is this different from DossierFacile?","DossierFacile is the government service: it verifies your file and shares it by link, without hiding anything. Monsieur Dossier verifies nothing: it protects the files you send yourself, by hiding what isn’t needed and naming the recipient. They work together."],
+    ["Is Monsieur Dossier an official service?","No. It is an independent app, with no link to the French government or to DossierFacile. It does not certify your documents."],
+    ["Are my documents sent anywhere?","No. Processing happens entirely on your Mac. The app has no server, creates no account and collects no analytics. It works without an internet connection."],
+    ["Can a landlord refuse a redacted copy?","No law settles it. Hide only what serves neither to assess your income nor to verify the document, and keep your originals: a landlord may ask to see them."],
+    ["Why not just blur?","Because blur and pixelation can be reversed. Only opaque masks are offered: a black bar, or a “frosted” look generated from random noise, never from what’s hidden."],
+    ["How do I know the file is safe?","After every export, the PDF is reopened and checked: no text, font, metadata or attachment left, and each masked area no longer resembles the original. If a check fails, the file isn’t saved."],
+    ["What should the watermark say?","The recipient, purpose and date, for example: “Copy – Rental application 12 rue des Lilas – For Agence Saône only – 11/2026”. A stolen copy becomes hard to reuse elsewhere."],
+    ["Should I hide the QR code on my tax notice?","No. The landlord uses it to check the document is genuine. QR codes and 2D-Doc are detected and kept free of watermark; you’re warned if a mask covers one, and the export checks they are still detected."],
+    ["Why does macOS show a warning on first launch?","This version isn’t notarised by Apple yet. Right-click › Open the first time; macOS remembers it afterwards."]
+  ],
+  foot1:"Monsieur Dossier — your French rental file, ready and protected.", foot2:"Independent app, not affiliated with the French government. No data collected."
+}};
+
+let lang = "fr";
+try { const s = localStorage.getItem("monsieurdossier-site-lang"); if (s === "fr" || s === "en") lang = s; else if (!(navigator.language || "").startsWith("fr")) lang = "en"; } catch (e) {}
+
+function render(){
+  const L = T[lang];
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-i]").forEach(el => { el.innerHTML = L[el.dataset.i]; });
+  document.querySelectorAll("[data-list]").forEach(el => {
+    el.innerHTML = ""; L[el.dataset.list].forEach(s => { const li = document.createElement("li"); li.textContent = s; el.appendChild(li); });
+  });
+  const wm = document.getElementById("wm"); wm.innerHTML = "";
+  for (let i = 0; i < 14; i++){ const d = document.createElement("div"); d.textContent = (L.wm + "   ·   ").repeat(3); wm.appendChild(d); }
+  const cmp = document.getElementById("cmp"); cmp.innerHTML = "";
+  [L.cmpHd, ...L.cmp].forEach((row, i) => { const r = document.createElement("div"); r.className = i ? "r" : "r hd";
+    row.forEach((txt, j) => { const c = document.createElement("div");
+      if (i && j){ const l = document.createElement("span"); l.className = "lab"; l.textContent = L.cmpHd[j]; c.appendChild(l); }
+      c.appendChild(document.createTextNode(txt)); r.appendChild(c); });
+    cmp.appendChild(r); });
+  const fq = document.getElementById("faqList"); fq.innerHTML = "";
+  L.faq.forEach(([q,a],i) => { const d = document.createElement("details"); if (i === 0) d.open = true;
+    const s = document.createElement("summary"); s.textContent = q; const p = document.createElement("p"); p.textContent = a; d.append(s,p); fq.appendChild(d); });
+  document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.l === lang)));
+}
+document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => {
+  lang = b.dataset.l; try { localStorage.setItem("monsieurdossier-site-lang", lang); } catch (e) {} render();
+}));
+
+/* before / after */
+const sheet = document.getElementById("sheet"), demo = document.getElementById("demo");
+function setOn(on){
+  sheet.classList.toggle("on", on); demo.classList.toggle("on", on);
+  document.getElementById("bBefore").setAttribute("aria-pressed", String(!on));
+  document.getElementById("bAfter").setAttribute("aria-pressed", String(on));
+}
+document.getElementById("bBefore").addEventListener("click", () => setOn(false));
+document.getElementById("bAfter").addEventListener("click", () => setOn(true));
+
+/* download */
+const dlBtn = document.getElementById("dlBtn");
+if (DOWNLOAD_URL){ dlBtn.href = DOWNLOAD_URL; }
+else dlBtn.addEventListener("click", e => { e.preventDefault(); document.getElementById("dlNote").hidden = false; });
+
+/* nav border on scroll */
+const nav = document.getElementById("nav");
+addEventListener("scroll", () => nav.classList.toggle("scrolled", scrollY > 8), { passive:true });
+
+render();
+setOn(true);  /* the page opens on the protected document; "Original" shows what it hides */
+</script>
+</body>
+</html>
