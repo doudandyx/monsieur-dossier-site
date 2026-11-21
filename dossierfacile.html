@@ -203,6 +203,7 @@ dialog#soon::backdrop{background:rgba(10,16,32,.55);backdrop-filter:blur(3px)}
 .soon .x{position:absolute;top:12px;right:14px;border:0;background:transparent;color:var(--ink-2);font:400 26px/1 var(--f-body);cursor:pointer;padding:6px 10px;border-radius:8px}
 
 footer{padding-block:40px 56px;color:var(--ink-2);font-size:13.5px}
+footer a{color:inherit}
 footer .wrap{display:flex;gap:16px;justify-content:space-between;flex-wrap:wrap;border-top:1px solid var(--rule);padding-top:24px}
 
 @media (max-width:900px){
@@ -292,6 +293,7 @@ footer .wrap{display:flex;gap:16px;justify-content:space-between;flex-wrap:wrap;
   <div class="wrap">
     <span data-i="foot1"></span>
     <span data-i="foot2"></span>
+    <a href="contact.html" data-i="footC"></a>
   </div>
 </footer>
 
@@ -321,7 +323,7 @@ fr:{
   t3p:"Ne masquez jamais le numéro fiscal, la référence de l’avis d’imposition, les QR codes ni votre photo.",
   dfSrc:"Monsieur Dossier est une application indépendante. Elle n’est ni un service de l’État ni affiliée à DossierFacile, et ne vérifie pas l’authenticité de vos pièces.",
   foot1:"Monsieur Dossier — votre dossier de location, prêt et protégé.",
-  foot2:"Application indépendante, non affiliée à l’État. Aucune donnée collectée."
+  foot2:"Application indépendante, non affiliée à l’État. Aucune donnée collectée.", footC:"Un avis, un bug ? Écrivez-nous"
 },
 en:{
   back:"← Back to home",
@@ -347,7 +349,7 @@ en:{
   t3p:"Never hide your tax number, the tax notice reference, QR codes or your photo.",
   dfSrc:"Monsieur Dossier is an independent app. It is not a government service, is not affiliated with DossierFacile, and does not check that your documents are genuine.",
   foot1:"Monsieur Dossier — your French rental file, ready and protected.",
-  foot2:"Independent app, not affiliated with the French government. No data collected."
+  foot2:"Independent app, not affiliated with the French government. No data collected.", footC:"Feedback or a bug? Contact us"
 }};
 
 let lang = "fr";

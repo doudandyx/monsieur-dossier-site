@@ -203,6 +203,7 @@ dialog#soon::backdrop{background:rgba(10,16,32,.55);backdrop-filter:blur(3px)}
 .soon .x{position:absolute;top:12px;right:14px;border:0;background:transparent;color:var(--ink-2);font:400 26px/1 var(--f-body);cursor:pointer;padding:6px 10px;border-radius:8px}
 
 footer{padding-block:40px 56px;color:var(--ink-2);font-size:13.5px}
+footer a{color:inherit}
 footer .wrap{display:flex;gap:16px;justify-content:space-between;flex-wrap:wrap;border-top:1px solid var(--rule);padding-top:24px}
 
 @media (max-width:900px){
@@ -453,6 +454,7 @@ Monsieur  IPv4  <span class="g">127.0.0.1:49716 (LISTEN)</span><br><br>
   <div class="wrap">
     <span data-i="foot1"></span>
     <span data-i="foot2"></span>
+    <a href="contact.html" data-i="footC"></a>
   </div>
 </footer>
 
@@ -516,7 +518,7 @@ fr:{
     ["Que faut-il écrire dans le filigrane ?","Le destinataire, l’objet et la date, par exemple : « Copie – Dossier location 12 rue des Lilas – Usage exclusif Agence Saône – 11/2026 ». Une copie volée devient difficile à réutiliser ailleurs."],
     ["Faut-il masquer le QR code de l’avis d’imposition ?","Non. Le bailleur s’en sert pour vérifier l’authenticité du document. Les QR codes et 2D-Doc sont détectés et laissés sans filigrane ; vous êtes prévenu si un masque en couvre un, et l’export contrôle qu’ils sont toujours détectés."],
   ],
-  foot1:"Monsieur Dossier — votre dossier de location, prêt et protégé.", foot2:"Application indépendante, non affiliée à l’État. Aucune donnée collectée."
+  foot1:"Monsieur Dossier — votre dossier de location, prêt et protégé.", foot2:"Application indépendante, non affiliée à l’État. Aucune donnée collectée.", footC:"Un avis, un bug ? Écrivez-nous"
 },
 en:{
   navHow:"How it works", navPriv:"Privacy", navLegal:"What’s allowed", navFaq:"FAQ", navDl:"Download",
@@ -575,7 +577,7 @@ en:{
     ["What should the watermark say?","The recipient, purpose and date, for example: “Copy – Rental application 12 rue des Lilas – For Agence Saône only – 11/2026”. A stolen copy becomes hard to reuse elsewhere."],
     ["Should I hide the QR code on my tax notice?","No. The landlord uses it to check the document is genuine. QR codes and 2D-Doc are detected and kept free of watermark; you’re warned if a mask covers one, and the export checks they are still detected."],
   ],
-  foot1:"Monsieur Dossier — your French rental file, ready and protected.", foot2:"Independent app, not affiliated with the French government. No data collected."
+  foot1:"Monsieur Dossier — your French rental file, ready and protected.", foot2:"Independent app, not affiliated with the French government. No data collected.", footC:"Feedback or a bug? Contact us"
 }};
 
 let lang = "fr";
