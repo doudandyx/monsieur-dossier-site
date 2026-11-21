@@ -260,7 +260,6 @@ footer .wrap{display:flex;gap:16px;justify-content:space-between;flex-wrap:wrap;
     </a>
     <div class="links">
       <a href="#how" data-i="navHow"></a>
-      <a href="#state" data-i="navDf"></a>
       <a href="#privacy" data-i="navPriv"></a>
       <a href="#legal" data-i="navLegal"></a>
       <a href="#faq" data-i="navFaq"></a>
@@ -360,24 +359,7 @@ footer .wrap{display:flex;gap:16px;justify-content:space-between;flex-wrap:wrap;
   </div>
 </section>
 
-<section class="block band" id="state">
-  <div class="wrap">
-    <div class="head">
-      <span class="eyebrow" data-i="dfEy"></span>
-      <h2 data-i="dfH"></h2>
-      <p data-i="dfP"></p>
-    </div>
-    <div class="cmp" id="cmp"></div>
-    <div class="prob together">
-      <article><h3 data-i="t1h"></h3><p data-i="t1p"></p></article>
-      <article><h3 data-i="t2h"></h3><p data-i="t2p"></p></article>
-      <article><h3 data-i="t3h"></h3><p data-i="t3p"></p></article>
-    </div>
-    <p class="src" data-i="dfSrc"></p>
-  </div>
-</section>
-
-<section class="block" id="newcomer">
+<section class="block" id="newcomer" style="padding-top:20px">
   <div class="wrap">
     <div class="head">
       <span class="eyebrow" data-i="nEy"></span>
@@ -478,7 +460,7 @@ Monsieur  IPv4  <span class="g">127.0.0.1:49716 (LISTEN)</span><br><br>
 
 const T = {
 fr:{
-  navHow:"Comment ça marche", navDf:"Avec DossierFacile", navPriv:"Confidentialité", navLegal:"Pièces autorisées", navFaq:"FAQ", navDl:"Télécharger",
+  navHow:"Comment ça marche", navPriv:"Confidentialité", navLegal:"Pièces autorisées", navFaq:"FAQ", navDl:"Télécharger",
   eyebrow:"Dossier de location en France",
   h1:"Votre dossier de location, <em>prêt et protégé.</em>",
   lede:"Monsieur Dossier vous dit ce qu’un bailleur a le droit de demander, masque ce qui ne le regarde pas (IBAN, numéro de sécu) et marque chaque copie à son nom. En français ou en anglais, sur votre Mac, sans compte ni envoi.",
@@ -499,22 +481,6 @@ fr:{
   s3h:"Nommez le destinataire", s3p:"Indiquez l’agence et l’adresse du logement : le filigrane est composé pour vous et évite les QR codes de vérification.",
   s3ui:"« Usage exclusif Agence Saône – 11/2026 »",
   s4h:"Téléchargez", s4p:"Chaque PDF est contrôlé avant d’être enregistré : vous voyez « Prêt à envoyer ». Vous pouvez réunir plusieurs pièces en un seul fichier.",
-  dfEy:"Avec DossierFacile", dfH:"Le complément de DossierFacile, pas son concurrent.",
-  dfP:"DossierFacile, le service gratuit de l’État, vérifie votre dossier et le partage par lien. Monsieur Dossier protège les fichiers que vous envoyez vous-même, quand le lien n’est pas accepté ou qu’on vous demande des pièces jointes.",
-  cmpHd:["","DossierFacile","Monsieur Dossier"],
-  cmp:[
-    ["Son rôle","Vérifier votre dossier et le partager","Préparer et protéger vos fichiers"],
-    ["Vos documents","Déposés sur les serveurs de l’État, avec un compte","Restent sur votre Mac, sans compte"],
-    ["Vérification","Oui : label « vérifié » par l’État","Non : aucune certification"],
-    ["Partage","Lien par destinataire, révocable","Des fichiers à joindre vous-même"],
-    ["Données masquées","Aucune : pièces complètes exigées","IBAN, RIB, n° de sécu, MRZ, et vos zones"],
-    ["Filigrane","Mention fixe, sans nom ni date","Destinataire, adresse et date"],
-    ["Langue","Français","Français et anglais"]
-  ],
-  t1h:"1. Faites vérifier", t1p:"Créez votre DossierFacile et partagez son lien quand le bailleur l’accepte.",
-  t2h:"2. Protégez le reste", t2p:"On vous demande des fichiers par e-mail ou sur un portail ? Préparez-les avec Monsieur Dossier.",
-  t3h:"3. Laissez le vérifiable", t3p:"Ne masquez jamais le numéro fiscal, la référence de l’avis d’imposition, les QR codes ni votre photo.",
-  dfSrc:"Monsieur Dossier est une application indépendante. Elle n’est ni un service de l’État ni affiliée à DossierFacile, et ne vérifie pas l’authenticité de vos pièces.",
   nEy:"Vous arrivez en France ?", nH:"Le dossier de location, expliqué simplement.",
   nP:"En France, un bailleur choisit son locataire sur dossier. Voici l’essentiel avant de l’envoyer.",
   n1h:"Quatre familles de pièces", n1p:"Identité, domicile actuel, activité (contrat, statut étudiant) et ressources (bulletins de salaire, avis d’imposition). La liste est fixée par la loi.",
@@ -540,7 +506,7 @@ fr:{
   dBtn:"Télécharger pour Mac", dReq:"Mac Intel et Apple Silicon",
   qH:"Questions fréquentes",
   faq:[
-    ["Quelle différence avec DossierFacile ?","DossierFacile est le service de l’État : il vérifie votre dossier et le partage par lien, sans rien masquer. Monsieur Dossier ne vérifie rien : il protège les fichiers que vous envoyez vous-même, en masquant le superflu et en nommant le destinataire. Les deux se complètent."],
+    ["Quelle différence avec DossierFacile ?","DossierFacile est le service de l’État : il vérifie votre dossier et le partage par lien, sans rien masquer. Monsieur Dossier ne vérifie rien : il protège les fichiers que vous envoyez vous-même, en masquant le superflu et en nommant le destinataire. Les deux se complètent.",{t:"Voir la comparaison détaillée",h:"dossierfacile.html"}],
     ["Monsieur Dossier est-il un service officiel ?","Non. C’est une application indépendante, sans lien avec l’État ni avec DossierFacile. Elle ne certifie pas vos pièces."],
     ["Quand l’application sera-t-elle disponible ?","Très bientôt. Elle est en cours de finalisation, d’abord pour Mac."],
     ["Mes documents sont-ils envoyés quelque part ?","Non. Le traitement se fait entièrement sur votre Mac. L’application n’a pas de serveur, ne crée pas de compte et ne collecte aucune statistique. Elle fonctionne sans connexion Internet."],
@@ -553,7 +519,7 @@ fr:{
   foot1:"Monsieur Dossier — votre dossier de location, prêt et protégé.", foot2:"Application indépendante, non affiliée à l’État. Aucune donnée collectée."
 },
 en:{
-  navHow:"How it works", navDf:"With DossierFacile", navPriv:"Privacy", navLegal:"What’s allowed", navFaq:"FAQ", navDl:"Download",
+  navHow:"How it works", navPriv:"Privacy", navLegal:"What’s allowed", navFaq:"FAQ", navDl:"Download",
   eyebrow:"Renting a home in France",
   h1:"Your French rental file, <em>ready and protected.</em>",
   lede:"Monsieur Dossier tells you what a landlord is allowed to ask for, hides what’s none of their business (IBAN, social security number) and marks every copy with their name. In English or French, on your Mac, no account, nothing uploaded.",
@@ -574,22 +540,6 @@ en:{
   s3h:"Name the recipient", s3p:"Enter the agency and the property address: the watermark is written for you and stays off verification QR codes.",
   s3ui:"“For Agence Saône only – 11/2026”",
   s4h:"Download", s4p:"Every PDF is checked before it’s saved: you see “Ready to send”. You can combine several documents into one file.",
-  dfEy:"With DossierFacile", dfH:"It works alongside DossierFacile, not against it.",
-  dfP:"DossierFacile, the French government’s free service, verifies your file and shares it by link. Monsieur Dossier protects the files you send yourself, when the link isn’t accepted or you’re asked for attachments.",
-  cmpHd:["","DossierFacile","Monsieur Dossier"],
-  cmp:[
-    ["Its job","Verify your file and share it","Prepare and protect your files"],
-    ["Your documents","Uploaded to government servers, with an account","Stay on your Mac, no account"],
-    ["Verification","Yes: a government “verified” label","No: nothing is certified"],
-    ["Sharing","One revocable link per recipient","Files you attach yourself"],
-    ["Hidden data","None: complete documents required","IBAN, bank codes, social security no., MRZ, plus your own areas"],
-    ["Watermark","Fixed wording, no name or date","Recipient, address and date"],
-    ["Language","French","English and French"]
-  ],
-  t1h:"1. Get verified", t1p:"Create your DossierFacile and share its link whenever the landlord accepts it.",
-  t2h:"2. Protect the rest", t2p:"Asked for files by email or on a portal? Prepare them with Monsieur Dossier.",
-  t3h:"3. Keep what’s checkable", t3p:"Never hide your tax number, the tax notice reference, QR codes or your photo.",
-  dfSrc:"Monsieur Dossier is an independent app. It is not a government service, is not affiliated with DossierFacile, and does not check that your documents are genuine.",
   nEy:"New to France?", nH:"The rental file, in plain terms.",
   nP:"In France, landlords pick tenants from a file of documents, the “dossier de location”. Here is what to know before you send it.",
   n1h:"Four kinds of documents", n1p:"Identity, current address, occupation (contract, student status) and income (payslips, tax notice). The list is set by law.",
@@ -615,7 +565,7 @@ en:{
   dBtn:"Download for Mac", dReq:"Intel and Apple Silicon Macs",
   qH:"Frequently asked questions",
   faq:[
-    ["How is this different from DossierFacile?","DossierFacile is the government service: it verifies your file and shares it by link, without hiding anything. Monsieur Dossier verifies nothing: it protects the files you send yourself, by hiding what isn’t needed and naming the recipient. They work together."],
+    ["How is this different from DossierFacile?","DossierFacile is the government service: it verifies your file and shares it by link, without hiding anything. Monsieur Dossier verifies nothing: it protects the files you send yourself, by hiding what isn’t needed and naming the recipient. They work together.",{t:"See the detailed comparison",h:"dossierfacile.html"}],
     ["Is Monsieur Dossier an official service?","No. It is an independent app, with no link to the French government or to DossierFacile. It does not certify your documents."],
     ["When will the app be available?","Very soon. It’s being finalised, for Mac first."],
     ["Are my documents sent anywhere?","No. Processing happens entirely on your Mac. The app has no server, creates no account and collects no analytics. It works without an internet connection."],
@@ -640,15 +590,11 @@ function render(){
   });
   const wm = document.getElementById("wm"); wm.innerHTML = "";
   for (let i = 0; i < 14; i++){ const d = document.createElement("div"); d.textContent = (L.wm + "   ·   ").repeat(3); wm.appendChild(d); }
-  const cmp = document.getElementById("cmp"); cmp.innerHTML = "";
-  [L.cmpHd, ...L.cmp].forEach((row, i) => { const r = document.createElement("div"); r.className = i ? "r" : "r hd";
-    row.forEach((txt, j) => { const c = document.createElement("div");
-      if (i && j){ const l = document.createElement("span"); l.className = "lab"; l.textContent = L.cmpHd[j]; c.appendChild(l); }
-      c.appendChild(document.createTextNode(txt)); r.appendChild(c); });
-    cmp.appendChild(r); });
   const fq = document.getElementById("faqList"); fq.innerHTML = "";
-  L.faq.forEach(([q,a],i) => { const d = document.createElement("details"); if (i === 0) d.open = true;
-    const s = document.createElement("summary"); s.textContent = q; const p = document.createElement("p"); p.textContent = a; d.append(s,p); fq.appendChild(d); });
+  L.faq.forEach(([q,a,more],i) => { const d = document.createElement("details"); if (i === 0) d.open = true;
+    const s = document.createElement("summary"); s.textContent = q; const p = document.createElement("p"); p.textContent = a;
+    if (more){ const l = document.createElement("a"); l.href = more.h; l.textContent = more.t; p.append(" ", l); }
+    d.append(s,p); fq.appendChild(d); });
   document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.l === lang)));
 }
 document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => {
