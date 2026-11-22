@@ -98,16 +98,14 @@
     <div class="head">
       <span class="eyebrow" data-i="tEy"></span>
       <h2 data-i="tH"></h2>
-      <p data-i="tP"></p>
     </div>
-    <div class="cmp">
-      <div class="r hd"><span></span><span data-i="tcA"></span><span data-i="tcB"></span></div>
-      <div class="r"><span data-i="tc1l"></span><span><span class="lab" data-i="tcA"></span><span data-i="tc1a"></span></span><span><span class="lab" data-i="tcB"></span><span data-i="tc1b"></span></span></div>
-      <div class="r"><span data-i="tc2l"></span><span><span class="lab" data-i="tcA"></span><span data-i="tc2a"></span></span><span><span class="lab" data-i="tcB"></span><span data-i="tc2b"></span></span></div>
-      <div class="r"><span data-i="tc3l"></span><span><span class="lab" data-i="tcA"></span><span data-i="tc3a"></span></span><span><span class="lab" data-i="tcB"></span><span data-i="tc3b"></span></span></div>
-      <div class="r"><span data-i="tc4l"></span><span><span class="lab" data-i="tcA"></span><span data-i="tc4a"></span></span><span><span class="lab" data-i="tcB"></span><span data-i="tc4b"></span></span></div>
-      <div class="r"><span data-i="tc5l"></span><span><span class="lab" data-i="tcA"></span><span data-i="tc5a"></span></span><span><span class="lab" data-i="tcB"></span><span data-i="tc5b"></span></span></div>
-      <div class="r"><span data-i="tc6l"></span><span><span class="lab" data-i="tcA"></span><span data-i="tc6a"></span></span><span><span class="lab" data-i="tcB"></span><span data-i="tc6b"></span></span></div>
+    <div class="prob">
+      <article><h3 data-i="tc1l"></h3><p data-i="tc1b"></p></article>
+      <article><h3 data-i="tc2l"></h3><p data-i="tc2b"></p></article>
+      <article><h3 data-i="tc3l"></h3><p data-i="tc3b"></p></article>
+      <article><h3 data-i="tc4l"></h3><p data-i="tc4b"></p></article>
+      <article><h3 data-i="tc5l"></h3><p data-i="tc5b"></p></article>
+      <article><h3 data-i="tc6l"></h3><p data-i="tc6b"></p></article>
     </div>
   </div>
 </section>
@@ -251,15 +249,13 @@ fr:{
   docT:"Bulletin de paie", docSub:"Document d’exemple", kName:"Salarié", kAddr:"Adresse", kSecu:"N° de sécurité sociale", kPay:"Rémunération", kPeriod:"Période", kPeriodV:"Octobre 2026", kGross:"Salaire brut", kNet:"Net à payer", kBank:"Paiement par virement",
   before:"Original", after:"Copie",
   wm:"Copie – Dossier location 12 rue des Lilas – Usage exclusif Agence Saône – 11/2026",
-  tEy:"Le temps gagné", tH:"Tout ce que vous feriez à la main, fait d’un coup.",
-  tP:"Un éditeur PDF et un outil de filigrane gratuits suffisent pour protéger un dossier. Il faut seulement tout refaire, fichier par fichier, à chaque envoi.",
-  tcA:"À la main, avec des outils gratuits", tcB:"Avec Monsieur Dossier",
-  tc1l:"Savoir ce qui manque", tc1a:"Comparer à la main la liste de l’agence et vos fichiers.", tc1b:"Collez la liste de l’agence : chaque ligne est marquée fournie ou manquante.",
-  tc2l:"Trouver quoi masquer", tc2a:"Relire chaque page pour repérer l’IBAN, le numéro de sécu, la ligne de codes du passeport.", tc2b:"Repérés d’office aux formats courants, même sur un scan ou une photo. Vous vérifiez.",
-  tc3l:"Masquer pour de bon", tc3a:"Dessiner un rectangle dans un éditeur PDF, puis aplatir la page pour que le texte dessous disparaisse.", tc3b:"Un masque opaque. Le texte dessous est détruit à l’enregistrement.",
-  tc4l:"Marquer chaque copie", tc4a:"Refaire le filigrane de tous les fichiers à chaque nouveau destinataire.", tc4b:"Changez le destinataire : toutes les copies sont refaites d’un coup. Vos masques restent tant que l’application est ouverte.",
-  tc5l:"Vérifier le résultat", tc5a:"Rouvrir chaque PDF et essayer de copier le texte caché.", tc5b:"Chaque fichier est contrôlé avant d’être enregistré.",
-  tc6l:"Ranger et nommer", tc6a:"Renommer les fichiers, regrouper les trois bulletins, classer par rubrique.", tc6b:"Un dossier par envoi. Vous regroupez les pièces comme le portail les demande.",
+  tEy:"Le temps gagné", tH:"Tout votre dossier, préparé d’un coup.",
+  tc1l:"Ce qui manque, d’un coup d’œil", tc1b:"Collez la liste de l’agence : chaque ligne est marquée fournie ou manquante.",
+  tc2l:"Les masques trouvés pour vous", tc2b:"IBAN, n° de sécu, ligne de codes du passeport : repérés aux formats courants, même sur un scan ou une photo. Vous vérifiez.",
+  tc3l:"Masqué pour de bon", tc3b:"Un masque opaque. Le texte dessous est détruit à l’enregistrement.",
+  tc4l:"Toutes les copies d’un coup", tc4b:"Changez le destinataire : toutes les copies sont refaites. Vos masques restent tant que l’application est ouverte.",
+  tc5l:"Contrôlé avant l’enregistrement", tc5b:"Chaque fichier est rouvert et contrôlé. Si un contrôle échoue, il n’est pas enregistré.",
+  tc6l:"Rangé et nommé", tc6b:"Un dossier par envoi. Vous regroupez les pièces comme le portail les demande.",
   pEy:"Le problème", pH:"Un dossier de location est un kit d’usurpation d’identité tout prêt.",
   pP:"Pièce d’identité, avis d’imposition, bulletins de salaire, adresse : tout y est. Les fausses annonces existent pour le récupérer.",
   p1h:"Les fausses annonces", p1p:"Un « propriétaire » demande le dossier complet avant la visite, puis disparaît. Vos documents servent à ouvrir des crédits ou des comptes.",
@@ -267,7 +263,7 @@ fr:{
   p3h:"Le faux masquage", p3p:"Un rectangle noir posé dans un éditeur PDF laisse souvent le texte dessous, copiable. Le flou se retouche.",
   hEy:"Comment ça marche", hH:"Quatre étapes, une minute par document.",
   s1h:"Déposez tout d’un coup", s1p:"PDF, scans, photos d’iPhone, ou un dossier entier avec ses sous-dossiers. Chaque pièce est rangée dans sa rubrique ; celle qu’un bailleur n’a pas le droit de demander est signalée.",
-  s2h:"Les masques sont déjà posés", s2p:"IBAN, RIB, n° de sécu et ligne MRZ sont repérés aux formats courants, y compris sur un scan ou une photo. Vous vérifiez et ajoutez le reste à la main.",
+  s2h:"Les masques sont déjà posés", s2p:"IBAN, RIB, n° de sécu et ligne MRZ sont repérés aux formats courants, y compris sur un scan ou une photo. Vous vérifiez et ajoutez les vôtres.",
   s3h:"Un filigrane pour toutes les pièces", s3p:"Indiquez l’agence et l’adresse du logement : le texte est composé pour vous, posé sur chaque pièce, et évite les QR codes de vérification.",
   s3ui:"« Usage exclusif Agence Saône – 11/2026 »",
   s4h:"Tout s’enregistre en une fois", s4p:"Chaque PDF est contrôlé avant d’être enregistré, dans un dossier par envoi. Vous pouvez réunir plusieurs pièces en un seul fichier.",
@@ -297,7 +293,6 @@ fr:{
   qH:"Questions fréquentes",
   faq:[
     ["Quelle différence avec DossierFacile ?","DossierFacile est le service de l’État : il vérifie votre dossier et le partage par lien, sans rien masquer. Monsieur Dossier ne vérifie rien : il protège les fichiers que vous envoyez vous-même, en masquant le superflu et en nommant le destinataire. Les deux se complètent.",{t:"Voir la comparaison détaillée",h:"dossierfacile.html"}],
-    ["Je peux faire la même chose avec des outils gratuits, non ?","Oui. Un éditeur PDF et un outil de filigrane suffisent, à condition d’aplatir chaque page et de vérifier chaque fichier. Monsieur Dossier fait ces étapes d’un coup pour toutes vos pièces, et les refait quand le destinataire change."],
     ["Monsieur Dossier est-il un service officiel ?","Non. C’est une application indépendante, sans lien avec l’État ni avec DossierFacile. Elle ne certifie pas vos pièces."],
     ["L’application est-elle disponible ?","Oui, pour Mac : téléchargez-la depuis cette page."],
     ["Mes documents sont-ils envoyés quelque part ?","Non. Le traitement se fait entièrement sur votre Mac. L’application n’a pas de serveur, ne crée pas de compte et ne collecte aucune statistique. Elle fonctionne sans connexion Internet."],
@@ -320,15 +315,13 @@ en:{
   docT:"Payslip", docSub:"Sample document", kName:"Employee", kAddr:"Address", kSecu:"Social security no.", kPay:"Pay", kPeriod:"Period", kPeriodV:"October 2026", kGross:"Gross pay", kNet:"Net pay", kBank:"Paid by bank transfer",
   before:"Original", after:"Copy",
   wm:"Copy – Rental application 12 rue des Lilas – For Agence Saône only – 11/2026",
-  tEy:"Time saved", tH:"Everything you would do by hand, done in one go.",
-  tP:"A free PDF editor and a free watermark tool are enough to protect a rental file. You just have to redo it all, file by file, for every send.",
-  tcA:"By hand, with free tools", tcB:"With Monsieur Dossier",
-  tc1l:"Knowing what’s missing", tc1a:"Compare the agency’s list with your files by hand.", tc1b:"Paste the agency’s list: each line is marked provided or missing.",
-  tc2l:"Finding what to hide", tc2a:"Reread every page to spot the IBAN, the social security number, the passport’s line of codes.", tc2b:"Found for you in their common formats, on scans and photos too. You review.",
-  tc3l:"Hiding it for good", tc3a:"Draw a box in a PDF editor, then flatten the page so the text underneath is gone.", tc3b:"An opaque mask. The text underneath is destroyed when the file is saved.",
-  tc4l:"Marking each copy", tc4a:"Redo the watermark on every file for each new recipient.", tc4b:"Change the recipient: every copy is redone in one go. Your masks stay as long as the app is open.",
-  tc5l:"Checking the result", tc5a:"Reopen every PDF and try to copy the hidden text.", tc5b:"Every file is checked before it is saved.",
-  tc6l:"Filing and naming", tc6a:"Rename the files, combine the three payslips, sort by category.", tc6b:"One folder per send. You combine documents the way the portal asks for them.",
+  tEy:"Time saved", tH:"Your whole file, prepared in one go.",
+  tc1l:"What’s missing, at a glance", tc1b:"Paste the agency’s list: each line is marked provided or missing.",
+  tc2l:"Masks found for you", tc2b:"IBAN, social security number, the passport’s line of codes: found in their common formats, on scans and photos too. You review.",
+  tc3l:"Hidden for good", tc3b:"An opaque mask. The text underneath is destroyed when the file is saved.",
+  tc4l:"Every copy in one go", tc4b:"Change the recipient: every copy is redone. Your masks stay as long as the app is open.",
+  tc5l:"Checked before saving", tc5b:"Every file is reopened and checked. If a check fails, it isn’t saved.",
+  tc6l:"Filed and named", tc6b:"One folder per send. You combine documents the way the portal asks for them.",
   pEy:"The problem", pH:"A rental file is a ready-made identity-theft kit.",
   pP:"ID, tax notice, payslips, address: it’s all there. Fake listings exist to collect it.",
   p1h:"Fake listings", p1p:"A “landlord” asks for the full file before any viewing, then vanishes. Your documents are used to open credit lines or accounts.",
@@ -336,7 +329,7 @@ en:{
   p3h:"Fake redaction", p3p:"A black box drawn in a PDF editor often leaves the text underneath, ready to copy. Blur can be reversed.",
   hEy:"How it works", hH:"Four steps, about a minute per document.",
   s1h:"Drop everything in at once", s1p:"PDFs, scans, iPhone photos, or a whole folder with its subfolders. Each document is filed under its category; one a landlord isn’t allowed to ask for gets flagged.",
-  s2h:"The masks are already placed", s2p:"IBAN, bank codes, social security numbers and passport MRZ lines are found in their common formats, on scans and photos too. You review and add the rest by hand.",
+  s2h:"The masks are already placed", s2p:"IBAN, bank codes, social security numbers and passport MRZ lines are found in their common formats, on scans and photos too. You review and add your own.",
   s3h:"One watermark for every document", s3p:"Enter the agency and the property address: the wording is written for you, applied to every document, and stays off verification QR codes.",
   s3ui:"“For Agence Saône only – 11/2026”",
   s4h:"Everything saves in one go", s4p:"Every PDF is checked before it’s saved, in one folder per send. You can combine several documents into one file.",
@@ -366,7 +359,6 @@ en:{
   qH:"Frequently asked questions",
   faq:[
     ["How is this different from DossierFacile?","DossierFacile is the government service: it verifies your file and shares it by link, without hiding anything. Monsieur Dossier verifies nothing: it protects the files you send yourself, by hiding what isn’t needed and naming the recipient. They work together.",{t:"See the detailed comparison",h:"dossierfacile.html"}],
-    ["Can’t I do the same with free tools?","Yes. A PDF editor and a watermark tool are enough, as long as you flatten every page and check every file. Monsieur Dossier does those steps in one go for all your documents, and redoes them when the recipient changes."],
     ["Is Monsieur Dossier an official service?","No. It is an independent app, with no link to the French government or to DossierFacile. It does not certify your documents."],
     ["Is the app available?","Yes, for Mac: download it from this page."],
     ["Are my documents sent anywhere?","No. Processing happens entirely on your Mac. The app has no server, creates no account and collects no analytics. It works without an internet connection."],
