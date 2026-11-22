@@ -203,9 +203,24 @@ Monsieur&nbsp;&nbsp;IPv4&nbsp;&nbsp;<span class="g">127.0.0.1:49716 (LISTEN)</sp
 <section class="block" id="download">
   <div class="wrap">
     <div class="band blue dl">
+      <span class="pill" data-i="dBeta"></span>
       <h2 data-i="dH"></h2>
       <p data-i="dP"></p>
       <button type="button" class="btn" data-open-soon><span data-i="dBtn"></span></button>
+      <a class="dl-more" href="#first-launch" data-i="dFirst"></a>
+    </div>
+    <div class="first" id="first-launch">
+      <div class="head">
+        <h3 data-i="flH"></h3>
+        <p data-i="flP"></p>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="n">01</div><h3 data-i="fl1h"></h3><p data-i="fl1p"></p></div>
+        <div class="step"><div class="n">02</div><h3 data-i="fl2h"></h3><p data-i="fl2p"></p></div>
+        <div class="step"><div class="n">03</div><h3 data-i="fl3h"></h3><p data-i="fl3p"></p></div>
+        <div class="step"><div class="n">04</div><h3 data-i="fl4h"></h3><p data-i="fl4p"></p></div>
+      </div>
+      <p class="src" data-i="flNote"></p>
     </div>
   </div>
 </section>
@@ -287,14 +302,22 @@ fr:{
   okL:["Une pièce d’identité (CNI, passeport, titre de séjour)","Un justificatif de domicile (3 dernières quittances, attestation d’hébergement…)","Contrat de travail ou attestation employeur","Les 3 derniers bulletins de salaire","Le dernier avis d’imposition"],
   noL:["Relevés de compte bancaire","Carte Vitale","Extrait de casier judiciaire","Dossier médical","Autorisation de prélèvement signée","Un versement d’argent avant la signature du bail"],
   lSrc:"Liste indicative, non exhaustive. Référence : décret n° 2015-1437 du 5 novembre 2015 (modifié en 2019), annexes I et II. Vérifiez le texte en vigueur sur legifrance.gouv.fr.",
-  dH:"Monsieur Dossier pour Mac", dP:"Pour les Mac Intel et Apple Silicon. Vos documents restent sur votre Mac.",
+  dBeta:"Version bêta gratuite", dFirst:"Premier lancement : macOS demande une confirmation. Voir les étapes",
+  dH:"Monsieur Dossier pour Mac", dP:"Gratuite pendant la bêta. Pour les Mac Intel et Apple Silicon. Vos documents restent sur votre Mac.",
+  flH:"Au premier lancement", flP:"Cette version bêta n’est pas encore validée par Apple. Au premier lancement, macOS affiche un avertissement : il signifie qu’Apple n’a pas contrôlé l’application, pas qu’un problème a été trouvé. Quatre étapes, une seule fois.",
+  fl1h:"Installez", fl1p:"Ouvrez le fichier téléchargé et glissez Monsieur Dossier dans le dossier Applications.",
+  fl2h:"Ouvrez l’application", fl2p:"macOS affiche l’avertissement. Fermez-le avec « Terminé » : ne mettez pas l’application à la corbeille.",
+  fl3h:"Autorisez", fl3p:"Dans Réglages Système, ouvrez « Confidentialité et sécurité », descendez jusqu’à « Sécurité » et cliquez sur « Ouvrir quand même ». Le bouton reste affiché environ une heure.",
+  fl4h:"Confirmez", fl4p:"Validez avec « Ouvrir quand même », puis saisissez le mot de passe de votre Mac. Les fois suivantes, l’application s’ouvre normalement.",
+  flNote:"Étapes valables pour macOS 15 et suivants. Sur une version plus ancienne : clic droit sur l’application, puis « Ouvrir ». Une version validée par Apple est en préparation ; elle s’ouvrira sans ces étapes.",
   soEy:"Bientôt disponible", soH:"Ça arrive très vite.", soP:"Monsieur Dossier n’est pas encore téléchargeable. L’application est en cours de finalisation : revenez bientôt.", soBtn:"D’accord",
   dBtn:"Télécharger pour Mac", dReq:"Mac Intel et Apple Silicon",
   qH:"Questions fréquentes",
   faq:[
     ["Quelle différence avec DossierFacile ?","DossierFacile est le service de l’État : il vérifie votre dossier et le partage par lien, sans rien masquer. Monsieur Dossier ne vérifie rien : il protège les fichiers que vous envoyez vous-même, en masquant le superflu et en nommant le destinataire. Les deux se complètent.",{t:"Voir la comparaison détaillée",h:"dossierfacile.html"}],
     ["Monsieur Dossier est-il un service officiel ?","Non. C’est une application indépendante, sans lien avec l’État ni avec DossierFacile. Elle ne certifie pas vos pièces."],
-    ["L’application est-elle disponible ?","Oui, pour Mac : téléchargez-la depuis cette page."],
+    ["L’application est-elle disponible ?","Oui, pour Mac, en version bêta gratuite : téléchargez-la depuis cette page."],
+    ["Pourquoi macOS affiche-t-il un avertissement au premier lancement ?","Parce que cette version bêta n’est pas encore validée par Apple. L’avertissement signifie qu’Apple n’a pas contrôlé l’application, pas qu’un problème a été trouvé. Une confirmation dans les Réglages Système suffit, une seule fois.",{t:"Voir les étapes",h:"#first-launch"}],
     ["Mes documents sont-ils envoyés quelque part ?","Non. Le traitement se fait entièrement sur votre Mac. L’application n’a pas de serveur, ne crée pas de compte et ne collecte aucune statistique. Elle fonctionne sans connexion Internet."],
     ["Un bailleur peut-il refuser une copie masquée ?","Aucun texte ne tranche. Masquez seulement ce qui ne sert ni à juger votre solvabilité ni à vérifier la pièce, et gardez vos originaux : un bailleur peut demander à les voir."],
     ["Pourquoi pas un simple flou ?","Parce qu’un flou ou une pixelisation peuvent être inversés. Seuls des masques opaques sont proposés : une bande noire, ou un effet « dépoli » généré à partir de bruit aléatoire, jamais à partir de ce qui est caché."],
@@ -353,14 +376,22 @@ en:{
   okL:["One ID document (ID card, passport, residence permit)","Proof of address (last 3 rent receipts, host certificate…)","Employment contract or employer certificate","Last 3 payslips","Latest tax notice"],
   noL:["Bank statements","Carte Vitale (health card)","Criminal record","Medical records","Signed direct-debit authorisation","Any payment before the lease is signed"],
   lSrc:"Indicative, non-exhaustive list. Reference: French décret n° 2015-1437 of 5 November 2015 (amended 2019), annexes I and II. Check the current text on legifrance.gouv.fr.",
-  dH:"Monsieur Dossier for Mac", dP:"For Intel and Apple Silicon Macs. Your documents stay on your Mac.",
+  dBeta:"Free beta", dFirst:"First launch: macOS asks you to confirm. See the steps",
+  dH:"Monsieur Dossier for Mac", dP:"Free during the beta. For Intel and Apple Silicon Macs. Your documents stay on your Mac.",
+  flH:"On first launch", flP:"This beta is not yet validated by Apple. On first launch, macOS shows a warning: it means Apple has not checked the app, not that a problem was found. Four steps, once only.",
+  fl1h:"Install", fl1p:"Open the downloaded file and drag Monsieur Dossier into the Applications folder.",
+  fl2h:"Open the app", fl2p:"macOS shows the warning. Close it with “Done”: do not move the app to the Trash.",
+  fl3h:"Allow it", fl3p:"In System Settings, open “Privacy & Security”, scroll down to “Security” and click “Open Anyway”. The button stays there for about an hour.",
+  fl4h:"Confirm", fl4p:"Confirm with “Open Anyway”, then enter your Mac’s password. After that, the app opens normally.",
+  flNote:"Steps for macOS 15 and later. On an older version: right-click the app, then “Open”. A version validated by Apple is being prepared; it will open without these steps.",
   soEy:"Coming soon", soH:"It’s coming very soon.", soP:"Monsieur Dossier isn’t available to download yet. The app is being finalised: check back soon.", soBtn:"Got it",
   dBtn:"Download for Mac", dReq:"Intel and Apple Silicon Macs",
   qH:"Frequently asked questions",
   faq:[
     ["How is this different from DossierFacile?","DossierFacile is the government service: it verifies your file and shares it by link, without hiding anything. Monsieur Dossier verifies nothing: it protects the files you send yourself, by hiding what isn’t needed and naming the recipient. They work together.",{t:"See the detailed comparison",h:"dossierfacile.html"}],
     ["Is Monsieur Dossier an official service?","No. It is an independent app, with no link to the French government or to DossierFacile. It does not certify your documents."],
-    ["Is the app available?","Yes, for Mac: download it from this page."],
+    ["Is the app available?","Yes, for Mac, as a free beta: download it from this page."],
+    ["Why does macOS show a warning on first launch?","Because this beta is not yet validated by Apple. The warning means Apple has not checked the app, not that a problem was found. One confirmation in System Settings is enough, once only.",{t:"See the steps",h:"#first-launch"}],
     ["Are my documents sent anywhere?","No. Processing happens entirely on your Mac. The app has no server, creates no account and collects no analytics. It works without an internet connection."],
     ["Can a landlord refuse a redacted copy?","No law settles it. Hide only what serves neither to assess your income nor to verify the document, and keep your originals: a landlord may ask to see them."],
     ["Why not just blur?","Because blur and pixelation can be reversed. Only opaque masks are offered: a black bar, or a “frosted” look generated from random noise, never from what’s hidden."],

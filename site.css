@@ -175,6 +175,11 @@ section.block{padding-top:clamp(64px,9vw,112px)}
 .band.blue{background:var(--stage);color:#fff}
 .band.blue .btn{background:#fff;border-color:#fff;color:#14213d}
 .band.blue .btn:hover{filter:none;opacity:.9}
+.dl .pill{border:1px solid rgba(255,255,255,.6);color:#fff}
+.dl-more{color:#fff;font-size:15px}
+.first{margin-top:48px;scroll-margin-top:96px}
+.first .head{margin-bottom:24px}
+.first .head h3{font-size:clamp(24px,3vw,32px);line-height:1.1}
 
 /* questions fréquentes */
 #faq .wrap{max-width:900px}
