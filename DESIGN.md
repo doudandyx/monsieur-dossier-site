@@ -145,9 +145,9 @@ Chaque page porte ses textes dans un dictionnaire `T = { fr, en }`, dans son pro
 
 ## Accessibilité
 
-- Zones cliquables de 44 px au moins. Écart connu, à corriger : les sélecteurs de langue et de thème font 30 px de haut.
+- Zones cliquables de 44 px au moins, en largeur et en hauteur : boutons, sélecteurs de langue et de thème, liens de la barre du haut, du sommaire et du pied de page. Quand le dessin doit rester fin, la zone de clic dépasse le dessin (remplissage compensé par une marge négative, ou fond tracé en retrait). Seule exception : un lien placé dans une phrase. Mesuré le 22 novembre 2026 sur les quatre pages en ligne, à 320, 375 et 1200 px de large.
 - Focus visible : contour bleu de 3 px sur les boutons, liens et questions.
-- Contraste du texte : au moins 4,5 pour 1, dans les deux thèmes. C'est la règle à tenir ; elle n'a pas été mesurée sur toutes les pages.
+- Contraste du texte : au moins 4,5 pour 1, dans les deux thèmes. Mesuré le 22 novembre 2026 sur toutes les pages, thème clair et thème sombre : tout le texte passe. Le couple le plus faible est le rouge d'erreur sur son fond teinté en thème sombre (4,8 pour 1). Le filigrane dessiné sur les documents d'exemple est un décor, il n'est pas concerné. Un nouveau couple de couleurs est mesuré avant d'être utilisé.
 - Aucun défilement horizontal, du téléphone à l'écran large.
 - Les images dessinées ont un texte de remplacement ; ce qui est décoratif est caché aux lecteurs d'écran.
 
