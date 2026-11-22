@@ -153,6 +153,8 @@ section.block{padding-top:clamp(64px,9vw,112px)}
 .proof{background:rgba(255,255,255,.08)}
 .proof b{display:block;font-weight:600;margin-bottom:6px}
 .proof span{color:var(--on-deep-2);font-size:15px}
+.proof.how{margin-top:16px}
+.proof.how span{display:block;max-width:75ch}
 .terminal{margin-top:16px;border:1px solid var(--deep-rule);border-radius:22px;padding:22px 24px;background:rgba(0,0,0,.22);color:#c9d3ea;font:13px/1.7 var(--f-mono);overflow-x:auto;white-space:nowrap}
 .terminal .c{color:#93a0bd}
 .terminal .g{color:#6ee7a8}
