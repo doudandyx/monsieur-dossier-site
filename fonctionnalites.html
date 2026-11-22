@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Ce que fait Monsieur Dossier, étape par étape : ranger les pièces, trouver ce qui manque, masquer, apposer le filigrane, contrôler et enregistrer.">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1420" media="(prefers-color-scheme: dark)">
+<title>Fonctionnalités — Monsieur Dossier</title>
+<link rel="stylesheet" href="site.css">
+<script src="theme.js"></script>
+<!-- Styles propres à cette page. -->
+<style>
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+.toc a{font-size:14px;color:var(--ink);text-decoration:none;background:var(--paper);border-radius:999px;padding:8px 14px}
+.toc a:hover{background:var(--tint)}
+.feat{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(24px,5vw,64px);align-items:center;padding-block:clamp(40px,6vw,72px);border-top:1px solid var(--rule-2);scroll-margin-top:80px}
+.feat:nth-of-type(even) .txt{order:2}
+.feat .n{font:600 13px/1 var(--f-mono);color:var(--accent);margin-bottom:12px}
+.feat h2{font-size:clamp(26px,3vw,38px);line-height:1.08;margin-bottom:14px}
+.feat .txt>p{color:var(--ink-2);font-size:17px;max-width:52ch}
+.feat ul{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:12px}
+.feat li{position:relative;padding-left:22px;font-size:15px;max-width:54ch}
+.feat li::before{content:"";position:absolute;left:0;top:.55em;width:10px;height:5px;border-radius:2px;background:var(--mask)}
+.feat li b{font-weight:600}
+.feat .note{margin-top:20px;font-size:14px;color:var(--ink-2);background:var(--paper);border-radius:14px;padding:12px 16px;max-width:54ch}
+.shot{background:var(--stage);border-radius:22px;padding:clamp(20px,4vw,44px);display:grid;place-items:center;min-height:340px}
+.mk{--ink:#14213d;--ink-2:#56607a;--rule-2:#e3e7ef;--mask:#111318;--paper:#eef1f6;--tint:#e4ebfb;--accent:#2d5bd7;--ok:#14613a;--ok-soft:#dff3e8;--no:#9c1f18;--no-soft:#fbe4e2;background:#fff;color:var(--ink);border-radius:16px;padding:18px 20px;width:100%;max-width:440px;font-size:13px;line-height:1.4;text-align:left}
+.mk h5{font:500 11px/1 var(--f-mono);letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2);margin:0 0 6px}
+.mk .row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 0;border-top:1px solid var(--rule-2);min-width:0}
+.mk h5+.row,.mk .row:first-child{border-top:0}
+.mk .row>span:first-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mk .k{color:var(--ink-2);flex:0 0 clamp(88px,28%,100px)}
+.mk .v{flex:1;min-width:0}
+.mk .tag{flex:none;font:600 11px/1 var(--f-body);padding:5px 9px;border-radius:999px;white-space:nowrap;background:var(--tint);color:var(--accent)}
+.mk .tag.ok{background:var(--ok-soft);color:var(--ok)}
+.mk .tag.no{background:var(--no-soft);color:var(--no)}
+.mk .file::before{content:"";display:inline-block;width:10px;height:13px;border:1.5px solid var(--ink-2);border-radius:2px;margin-right:8px;vertical-align:-2px}
+.mk .dir::before{content:"";display:inline-block;width:14px;height:10px;background:var(--accent);border-radius:2px;margin-right:8px;vertical-align:-1px}
+.mk .in{padding-left:22px}
+.mk .v{display:flex;align-items:center}
+.mk .bar{display:block;height:12px;border-radius:3px;background:var(--mask);vertical-align:-1px}
+.mk .pgs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.mk .pg{aspect-ratio:3/4;background:var(--paper);border-radius:6px;padding:9px 8px;display:grid;gap:5px;align-content:start;position:relative}
+.mk .pg i{height:4px;border-radius:2px;background:#cdd4e4}
+.mk .pg i:nth-child(3n){width:60%}
+.mk .pg.off{background:none;border:1px dashed #b9c2d6}
+.mk .pg.off i{opacity:.35}
+.mk .pgc{display:grid;gap:6px;justify-items:center;font:500 11px/1 var(--f-mono);color:var(--ink-2)}
+.mk .pgc .tag{font-size:10px;padding:4px 7px}
+.mk .field{background:var(--paper);border-radius:8px;padding:8px 10px;margin-bottom:8px}
+.mk .field small{display:block;font-size:11px;color:var(--ink-2)}
+.mk .prev{position:relative;overflow:hidden;height:118px;border-radius:8px;border:1px solid var(--rule-2);padding:12px;display:grid;gap:7px;align-content:start;margin-top:12px}
+.mk .prev i{height:5px;border-radius:2px;background:var(--rule-2)}
+.mk .prev i:nth-child(3n){width:55%}
+.mk .prev .w{position:absolute;inset:-60%;display:flex;flex-direction:column;justify-content:center;gap:20px;transform:rotate(-22deg);font:500 10px/1 var(--f-mono);color:rgba(45,91,215,.42);white-space:nowrap}
+.mk .prev .w span:nth-child(even){margin-left:-90px}
+.mk .sum{margin-top:10px;padding-top:10px;border-top:1px solid var(--rule-2);color:var(--ink-2);font-size:12px}
+.mk.term{background:#14213d;color:#c9d3ea;font:12px/1.8 var(--f-mono);overflow-x:auto;white-space:nowrap}
+.mk.term .c{color:#93a0bd}
+.mk.term .g{color:#6ee7a8}
+.mk.term .q{color:#9fb6ff}
+.illus{font-size:14px;color:var(--ink-2);margin:0 0 20px}
+.endband{margin-top:clamp(40px,6vw,72px)}
+@media (max-width:820px){
+  .feat{grid-template-columns:minmax(0,1fr)}
+  .feat:nth-of-type(even) .txt{order:0}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap">
+    <a class="brand" href="./" aria-label="Monsieur Dossier">
+      <svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true"><rect x="2" y="2" width="60" height="60" rx="14" fill="#2d5bd7"/><rect x="18" y="12" width="28" height="40" rx="3" fill="#fff"/><rect x="22" y="19" width="20" height="3" rx="1.5" fill="#cdd4e4"/><rect x="22" y="26" width="20" height="5" rx="1" fill="#1b1e24"/><rect x="22" y="35" width="14" height="3" rx="1.5" fill="#cdd4e4"/><path d="M32 45 L24.5 40.5 V49.5 Z M32 45 L39.5 40.5 V49.5 Z" fill="#1b1e24"/><circle cx="32" cy="45" r="2.2" fill="#1b1e24"/></svg>
+      <span class="full">Monsieur Dossier</span><span class="short">M. Dossier</span>
+    </a>
+    <div class="lang" role="group" aria-label="Language" style="margin-left:auto">
+      <button type="button" data-l="fr">FR</button><button type="button" data-l="en">EN</button>
+    </div>
+    <a class="btn dark small" href="./#download" data-i="navDl"></a>
+  </div>
+</nav>
+
+<main class="page">
+  <div class="wrap">
+    <a class="back" href="./" data-i="back"></a>
+    <div class="head">
+      <span class="eyebrow" data-i="ey"></span>
+      <h1 data-i="h"></h1>
+      <p data-i="p"></p>
+    </div>
+    <p class="illus" data-i="illus"></p>
+    <div class="toc" id="toc"></div>
+    <div id="feats"></div>
+
+    <div class="band blue dl endband">
+      <h2 data-i="dlH"></h2>
+      <p data-i="dlP"></p>
+      <a class="btn" href="./#download" data-i="dlBtn"></a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span data-i="foot1"></span>
+    <span data-i="foot2"></span>
+    <a href="contact.html" data-i="footC"></a>
+  </div>
+</footer>
+
+<script>
+/* Chaque section : id, titre court (sommaire), titre, texte, points [gras, suite], « à savoir », capture à prendre. */
+const T = {
+fr:{
+  back:"← Retour à l’accueil", navDl:"Télécharger",
+  title:"Fonctionnalités — Monsieur Dossier",
+  ey:"Fonctionnalités",
+  h:"Tout ce que fait Monsieur Dossier, étape par étape.",
+  p:"De vos fichiers en vrac au dossier prêt à joindre : ce que l’application fait à chaque étape, et ce qu’elle vous laisse décider.",
+  noteLab:"À savoir : ",
+  illus:"Les images de cette page sont des illustrations, avec des documents fictifs.",
+  mk:{ cat:["Identité","Domicile","Activité","Ressources"], files:["Passeport.pdf","Facture d’électricité.pdf","Contrat de travail.pdf","Bulletins de salaire (3)","Avis d’imposition.pdf","Relevé bancaire.pdf"], notDue:"Non exigible",
+    listT:"Liste de l’agence", list:["Pièce d’identité","Contrat de travail","3 derniers bulletins de salaire","Dernier avis d’imposition","Justificatif de domicile"], ok:"Fournie", miss:"Manquante",
+    doc:"Bulletin de paie", name:"Salarié", secu:"N° de sécu", hid:"Masqué", net:"Net à payer",
+    off:"Retirée",
+    to:"Destinataire", toV:"Agence Saône", addr:"Logement", addrV:"12 rue des Lilas, Lyon", wm:"Copie – Dossier location 12 rue des Lilas – Usage exclusif Agence Saône – 11/2026",
+    checked:"Contrôlé", sum:"5 fichiers contrôlés et enregistrés",
+    dir:"Agence Saône – 12 rue des Lilas – 11-2026", out:["Pièce d’identité.pdf","Justificatif de domicile.pdf","Contrat de travail.pdf","Bulletins de salaire.pdf","Avis d’imposition.pdf"],
+    term:"# connexions réseau de l’application", term2:"# aucune autre connexion" },
+
+  feats:[
+    { id:"ajouter", short:"Ajouter", h:"Déposez tout, c’est rangé.",
+      p:"Glissez vos fichiers ou un dossier entier dans la fenêtre. Chaque pièce est lue, reconnue et classée.",
+      pts:[
+        ["PDF, scans et photos.","Un PDF de la banque, un scan, une photo prise à l’iPhone : tout passe. Un dossier est ajouté avec ses sous-dossiers."],
+        ["Rangé par rubrique.","Identité, domicile, activité, ressources : les quatre rubriques prévues par la loi."],
+        ["Plusieurs personnes.","Colocataires et garants ont chacun leur dossier, dans la même fenêtre."],
+        ["Les pièces interdites sont signalées.","Un relevé bancaire ou une carte Vitale ? L’application vous dit qu’un bailleur n’a pas le droit de le demander, avec la référence du texte."]
+      ],
+      note:"le classement est une proposition. Vous pouvez déplacer une pièce d’une rubrique à l’autre.",
+      shot:"Le dossier après l’ajout de six pièces, rangées dans les quatre rubriques." },
+    { id:"manque", short:"Ce qui manque", h:"Sachez ce qui manque avant d’envoyer.",
+      p:"Collez la liste de pièces demandée par l’agence. Monsieur Dossier la compare à ce que vous avez déjà.",
+      pts:[
+        ["Ligne par ligne.","Chaque pièce demandée est marquée fournie ou manquante."],
+        ["Texte ou image.","Collez le texte de l’e-mail, ou déposez une capture d’écran de la liste."],
+        ["Les demandes hors liste ressortent.","Si l’agence demande une pièce qu’elle n’a pas le droit d’exiger, vous le voyez."]
+      ],
+      note:"la liste est lue sur votre Mac, comme le reste.",
+      shot:"La liste d’une agence collée, avec les lignes « fournie » et « manquante »." },
+    { id:"masquer", short:"Masquer", h:"Les masques sont déjà posés.",
+      p:"À l’ouverture d’une pièce, les numéros qui n’ont rien à faire dans un dossier de location sont déjà couverts. Vous vérifiez, vous ajoutez, vous validez.",
+      pts:[
+        ["Repérés pour vous.","IBAN, RIB, numéro de sécurité sociale, numéro de carte, ligne de codes du passeport : trouvés aux formats courants, sur un PDF comme sur un scan ou une photo."],
+        ["Chaque zone est nommée.","« IBAN », « N° de sécurité sociale » : vous savez ce qui est masqué, et pourquoi."],
+        ["Vos propres zones.","Tracez un rectangle sur ce que vous voulez cacher."],
+        ["Masquer partout.","Après une zone tracée, la même valeur est cherchée dans toutes vos pièces et proposée au masquage en un clic."],
+        ["La signature, si vous voulez.","Une signature manuscrite est proposée au masquage, jamais masquée d’office."],
+        ["Les codes de vérification restent lisibles.","QR codes et 2D-Doc ne sont pas couverts ; vous êtes prévenu si un masque en touche un."]
+      ],
+      note:"la détection couvre les formats courants, pas tous les cas. Relisez chaque pièce avant de la valider.",
+      shot:"Un bulletin de salaire ouvert, avec deux zones masquées et leur nom dans le panneau de droite." },
+    { id:"pages", short:"Pages", h:"N’envoyez que les pages utiles.",
+      p:"Un avis d’imposition ou un contrat contient souvent des pages qui ne servent pas au bailleur. Retirez-les du fichier envoyé.",
+      pts:[
+        ["Une page se retire en un clic.","Et se remet de la même façon."],
+        ["Des pages proposées.","Les pages blanches et les pages d’informations générales (conditions, mentions, « comment payer ») vous sont suggérées."],
+        ["Jamais les pages qui comptent.","La première page et les pages qui portent un code de vérification ne sont pas proposées."]
+      ],
+      note:"votre fichier d’origine n’est jamais modifié.",
+      shot:"Les pages d’un document, dont deux marquées « retirée »." },
+    { id:"filigrane", short:"Filigrane", h:"Un filigrane au nom du destinataire, sur toutes les pièces.",
+      p:"Indiquez l’agence et l’adresse du logement. La mention est rédigée et appliquée à tout le dossier.",
+      pts:[
+        ["La bonne mention, sans l’écrire.","Destinataire, objet et date, par exemple : « Copie – Dossier location 12 rue des Lilas – Usage exclusif Agence Saône – 11/2026 »."],
+        ["Un aperçu avant d’enregistrer.","Vous voyez le filigrane sur une page pendant que vous tapez."],
+        ["Un autre destinataire ? Tout est refait.","Changez le nom : toutes les copies sont préparées à nouveau, vos masques restent en place."],
+        ["Hors des codes de vérification.","Le filigrane évite les QR codes et 2D-Doc, pour que le bailleur puisse toujours contrôler le document."],
+        ["En français ou en anglais.","La mention suit la langue choisie."]
+      ],
+      note:"vos masques sont gardés tant que l’application reste ouverte.",
+      shot:"L’écran d’export : le destinataire saisi et l’aperçu du filigrane." },
+    { id:"controle", short:"Contrôle", h:"Chaque fichier est contrôlé avant d’être enregistré.",
+      p:"Un masque qui laisse le texte dessous ne protège rien. Monsieur Dossier le vérifie pour vous, fichier par fichier.",
+      pts:[
+        ["Le texte caché n’existe plus.","Chaque page est aplatie en image : ce qui est sous un masque n’est plus dans le fichier."],
+        ["Le fichier est rouvert et vérifié.","Plus de texte, de police, de métadonnées ni de pièce jointe ; chaque zone masquée ne ressemble plus à l’original. Si un contrôle échoue, le fichier n’est pas enregistré."],
+        ["Une seconde lecture.","Chaque page est relue une fois masquée. Un numéro sensible encore lisible vous est signalé, avec un lien pour corriger."],
+        ["Rien de l’original ne suit.","Auteur, logiciel, dates de création : aucune métadonnée n’est recopiée."]
+      ],
+      note:"la seconde lecture vous avertit, elle ne bloque pas l’enregistrement. La décision reste la vôtre.",
+      shot:"L’écran de résultat : la liste des fichiers contrôlés." },
+    { id:"enregistrer", short:"Enregistrer", h:"Tout s’enregistre en une fois, prêt à joindre.",
+      p:"Un clic, un dossier : les copies sont nommées et regroupées comme on vous les demande.",
+      pts:[
+        ["Un dossier par envoi.","Nommé d’après l’agence, l’adresse et la date."],
+        ["Des fichiers bien nommés.","Chaque fichier porte le nom de la pièce."],
+        ["Regroupez comme le portail le demande.","Vos trois derniers bulletins de salaire en un seul fichier, le reste séparé : glissez les pièces ensemble."],
+        ["Un ZIP, si vous préférez.","Pour une seule pièce jointe."],
+        ["À plusieurs.","Un sous-dossier par personne, colocataires et garants compris."]
+      ],
+      note:"un envoi se prépare pour un destinataire à la fois.",
+      shot:"Le dossier d’envoi, avec un fichier par pièce." },
+    { id:"mac", short:"Sur votre Mac", h:"Tout se passe sur votre Mac.",
+      p:"Aucune de ces étapes n’envoie vos documents quelque part.",
+      pts:[
+        ["Sans compte ni serveur.","Rien à créer, rien à connecter."],
+        ["Sans connexion.","Coupez le Wi-Fi : tout fonctionne pareil, lecture des scans comprise."],
+        ["Aucune mesure d’usage.","L’application ne collecte rien."]
+      ],
+      note:"",
+      shot:"L’application en fonctionnement, Wi-Fi coupé." }
+  ],
+  dlH:"Préparez votre dossier.", dlP:"Pour Mac. Sans compte, sans envoi.", dlBtn:"Télécharger pour Mac",
+  foot1:"Monsieur Dossier — votre dossier de location, prêt et protégé.",
+  foot2:"Application indépendante, non affiliée à l’État. Aucune donnée collectée.", footC:"Un avis, un bug ? Écrivez-nous"
+},
+en:{
+  back:"← Back to home", navDl:"Download",
+  title:"Features — Monsieur Dossier",
+  ey:"Features",
+  h:"Everything Monsieur Dossier does, step by step.",
+  p:"From a pile of files to a rental file ready to attach: what the app does at each step, and what it leaves for you to decide.",
+  noteLab:"Good to know: ",
+  illus:"The pictures on this page are illustrations, with made-up documents.",
+  mk:{ cat:["Identity","Address","Occupation","Income"], files:["Passport.pdf","Electricity bill.pdf","Work contract.pdf","Payslips (3)","Tax notice.pdf","Bank statement.pdf"], notDue:"Not allowed",
+    listT:"Agency’s list", list:["ID","Work contract","Last 3 payslips","Latest tax notice","Proof of address"], ok:"Provided", miss:"Missing",
+    doc:"Payslip", name:"Employee", secu:"Soc. sec. no.", hid:"Hidden", net:"Net pay",
+    off:"Removed",
+    to:"Recipient", toV:"Agence Saône", addr:"Property", addrV:"12 rue des Lilas, Lyon", wm:"Copy – Rental application 12 rue des Lilas – For Agence Saône only – 11/2026",
+    checked:"Checked", sum:"5 files checked and saved",
+    dir:"Agence Saône – 12 rue des Lilas – 11-2026", out:["ID.pdf","Proof of address.pdf","Work contract.pdf","Payslips.pdf","Tax notice.pdf"],
+    term:"# the app’s network connections", term2:"# no other connection" },
+
+  feats:[
+    { id:"ajouter", short:"Add", h:"Drop everything in. It gets filed.",
+      p:"Drag your files or a whole folder into the window. Each document is read, recognised and sorted.",
+      pts:[
+        ["PDFs, scans and photos.","A PDF from your bank, a scan, an iPhone photo: they all work. A folder comes in with its subfolders."],
+        ["Filed by category.","Identity, address, occupation, income: the four categories set by French law."],
+        ["Several people.","Flatmates and guarantors each get their own file, in the same window."],
+        ["Forbidden documents are flagged.","A bank statement or a health card? The app tells you a landlord isn’t allowed to ask for it, with the legal reference."]
+      ],
+      note:"the filing is a suggestion. You can move a document to another category.",
+      shot:"The file after adding six documents, sorted into the four categories." },
+    { id:"manque", short:"What’s missing", h:"Know what’s missing before you send.",
+      p:"Paste the list of documents the agency asked for. Monsieur Dossier compares it with what you already have.",
+      pts:[
+        ["Line by line.","Each requested document is marked provided or missing."],
+        ["Text or image.","Paste the text of the email, or drop in a screenshot of the list."],
+        ["Requests outside the legal list stand out.","If the agency asks for a document it isn’t allowed to require, you see it."]
+      ],
+      note:"the list is read on your Mac, like everything else.",
+      shot:"An agency’s list pasted in, with “provided” and “missing” lines." },
+    { id:"masquer", short:"Hide", h:"The masks are already placed.",
+      p:"When you open a document, the numbers that have no place in a rental file are already covered. You review, add your own, and confirm.",
+      pts:[
+        ["Found for you.","IBAN, bank codes, social security number, card number, the passport’s line of codes: found in their common formats, on a PDF as well as a scan or a photo."],
+        ["Each area is named.","“IBAN”, “Social security no.”: you know what is hidden, and why."],
+        ["Your own areas.","Draw a box over anything you want to hide."],
+        ["Hide everywhere.","After you draw an area, the same value is searched in all your documents and offered for hiding in one click."],
+        ["Your signature, if you want.","A handwritten signature is offered for hiding, never hidden by default."],
+        ["Verification codes stay readable.","QR codes and 2D-Doc are left uncovered; you’re warned if a mask touches one."]
+      ],
+      note:"detection covers common formats, not every case. Review each document before you confirm it.",
+      shot:"A payslip open, with two hidden areas and their names in the right-hand panel." },
+    { id:"pages", short:"Pages", h:"Send only the pages that matter.",
+      p:"A tax notice or a contract often has pages the landlord doesn’t need. Leave them out of the file you send.",
+      pts:[
+        ["One click removes a page.","One click puts it back."],
+        ["Pages suggested for you.","Blank pages and general-information pages (terms, legal notices, “how to pay”) are suggested."],
+        ["Never the pages that count.","The first page and pages carrying a verification code are not suggested."]
+      ],
+      note:"your original file is never changed.",
+      shot:"The pages of a document, two of them marked “removed”." },
+    { id:"filigrane", short:"Watermark", h:"A watermark naming the recipient, on every document.",
+      p:"Enter the agency and the property address. The wording is written for you and applied to the whole file.",
+      pts:[
+        ["The right wording, without writing it.","Recipient, purpose and date, for example: “Copy – Rental application 12 rue des Lilas – For Agence Saône only – 11/2026”."],
+        ["A preview before you save.","You see the watermark on a page as you type."],
+        ["Another recipient? Everything is redone.","Change the name: every copy is prepared again, and your masks stay in place."],
+        ["Off the verification codes.","The watermark stays clear of QR codes and 2D-Doc, so the landlord can still check the document."],
+        ["In French or English.","The wording follows the language you choose."]
+      ],
+      note:"your masks are kept as long as the app stays open.",
+      shot:"The export screen: the recipient entered and the watermark preview." },
+    { id:"controle", short:"Check", h:"Every file is checked before it is saved.",
+      p:"A mask that leaves the text underneath protects nothing. Monsieur Dossier checks that for you, file by file.",
+      pts:[
+        ["The hidden text no longer exists.","Each page is flattened into an image: what is under a mask is no longer in the file."],
+        ["The file is reopened and checked.","No text, font, metadata or attachment left; each hidden area no longer resembles the original. If a check fails, the file isn’t saved."],
+        ["A second reading.","Each page is read again once masked. A sensitive number that is still readable is flagged, with a link to fix it."],
+        ["Nothing from the original comes along.","Author, software, creation dates: no metadata is copied over."]
+      ],
+      note:"the second reading warns you; it does not block saving. The decision stays yours.",
+      shot:"The result screen: the list of checked files." },
+    { id:"enregistrer", short:"Save", h:"Everything saves in one go, ready to attach.",
+      p:"One click, one folder: the copies are named and combined the way you’re asked for them.",
+      pts:[
+        ["One folder per send.","Named after the agency, the address and the date."],
+        ["Clear file names.","Each file is named after the document."],
+        ["Combine the way the portal asks.","Your last three payslips as one file, the rest separate: drag the documents together."],
+        ["A ZIP, if you prefer.","For a single attachment."],
+        ["With several people.","One subfolder per person, flatmates and guarantors included."]
+      ],
+      note:"a send is prepared for one recipient at a time.",
+      shot:"The send folder, with one file per document." },
+    { id:"mac", short:"On your Mac", h:"It all happens on your Mac.",
+      p:"None of these steps sends your documents anywhere.",
+      pts:[
+        ["No account, no server.","Nothing to create, nothing to connect."],
+        ["No connection needed.","Turn off Wi-Fi: everything works the same, reading scans included."],
+        ["No usage tracking.","The app collects nothing."]
+      ],
+      note:"",
+      shot:"The app running with Wi-Fi off." }
+  ],
+  dlH:"Prepare your rental file.", dlP:"For Mac. No account, nothing uploaded.", dlBtn:"Download for Mac",
+  foot1:"Monsieur Dossier — your French rental file, ready and protected.",
+  foot2:"Independent app, not affiliated with the French government. No data collected.", footC:"Feedback or a bug? Contact us"
+}};
+
+let lang = "fr";
+try { const s = localStorage.getItem("monsieurdossier-site-lang"); if (s === "fr" || s === "en") lang = s; else if (!(navigator.language || "").startsWith("fr")) lang = "en"; } catch (e) {}
+
+function el(tag, cls, text){ const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+
+/* Illustrations : des fragments d'écran simplifiés, dessinés en HTML, avec des documents fictifs. Aucun texte ne vient de l'extérieur. */
+const row = (a, b) => `<div class="row"><span>${a}</span>${b || ""}</div>`;
+const tag = (t, c) => `<span class="tag ${c || ""}">${t}</span>`;
+const bar = w => `<span class="bar" style="width:100%;max-width:${w}px"></span>`;
+const lines = n => "<i></i>".repeat(n);
+const MOCK = {
+  ajouter: M => `<div class="mk">${[0,1,2,3,3].map((c, i) => row(`<span class="file">${M.files[i]}</span>`, tag(M.cat[c]))).join("")}${row(`<span class="file">${M.files[5]}</span>`, tag(M.notDue, "no"))}</div>`,
+  manque: M => `<div class="mk"><h5>${M.listT}</h5>${M.list.map((t, i) => row(t, i === 4 ? tag(M.miss, "no") : tag(M.ok, "ok"))).join("")}</div>`,
+  masquer: M => `<div class="mk"><h5>${M.doc}</h5>
+    <div class="row"><span class="k">${M.name}</span><span class="v">Camille MARTIN</span></div>
+    <div class="row"><span class="k">${M.secu}</span><span class="v">${bar(120)}</span>${tag(M.hid)}</div>
+    <div class="row"><span class="k">${M.net}</span><span class="v">2 450,00 €</span></div>
+    <div class="row"><span class="k">IBAN</span><span class="v">${bar(150)}</span>${tag(M.hid)}</div>
+    <div class="row"><span class="k">BIC</span><span class="v">${bar(70)}</span>${tag(M.hid)}</div></div>`,
+  pages: M => `<div class="mk"><div class="pgs">${[1,2,3,4].map(n => `<div class="pgc"><div class="pg${n > 2 ? " off" : ""}" style="width:100%">${lines(7)}</div>${n > 2 ? tag(M.off, "no") : n}</div>`).join("")}</div></div>`,
+  filigrane: M => `<div class="mk"><div class="field"><small>${M.to}</small>${M.toV}</div><div class="field"><small>${M.addr}</small>${M.addrV}</div>
+    <div class="prev">${lines(9)}<div class="w">${`<span>${M.wm}</span>`.repeat(9)}</div></div></div>`,
+  controle: M => `<div class="mk">${M.out.map(t => row(`<span class="file">${t}</span>`, tag("✓ " + M.checked, "ok"))).join("")}<div class="sum">${M.sum}</div></div>`,
+  enregistrer: M => `<div class="mk">${row(`<span class="dir"><b>${M.dir}</b></span>`)}${M.out.map(t => row(`<span class="file in">${t}</span>`)).join("")}</div>`,
+  mac: M => `<div class="mk term"><span class="c">${M.term}</span><br><span class="q">$</span> lsof -i -a -c Monsieur<br>COMMAND&nbsp;&nbsp;&nbsp;TYPE&nbsp;&nbsp;NAME<br>Monsieur&nbsp;&nbsp;IPv4&nbsp;&nbsp;<span class="g">127.0.0.1:49716 (LISTEN)</span><br><span class="c">${M.term2}</span></div>`
+};
+
+function render(){
+  const L = T[lang];
+  document.documentElement.lang = lang; document.title = L.title;
+  document.querySelectorAll("[data-i]").forEach(e => { e.textContent = L[e.dataset.i]; });
+  const toc = document.getElementById("toc"), feats = document.getElementById("feats");
+  toc.innerHTML = ""; feats.innerHTML = "";
+  L.feats.forEach((f, i) => {
+    const a = el("a", "", f.short); a.href = "#" + f.id; toc.appendChild(a);
+    const s = el("section", "feat"); s.id = f.id;
+    const txt = el("div", "txt");
+    txt.appendChild(el("div", "n", String(i + 1).padStart(2, "0")));
+    txt.appendChild(el("h2", "", f.h));
+    txt.appendChild(el("p", "", f.p));
+    const ul = el("ul");
+    f.pts.forEach(([b, rest]) => { const li = el("li"); li.appendChild(el("b", "", b)); li.appendChild(document.createTextNode(" " + rest)); ul.appendChild(li); });
+    txt.appendChild(ul);
+    if (f.note) txt.appendChild(el("p", "note", L.noteLab + f.note));
+    const shot = el("div", "shot"); shot.setAttribute("role", "img"); shot.setAttribute("aria-label", f.shot);
+    shot.innerHTML = MOCK[f.id](L.mk); shot.firstElementChild.setAttribute("aria-hidden", "true");
+    s.appendChild(txt); s.appendChild(shot); feats.appendChild(s);
+  });
+  document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.l === lang)));
+}
+document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => {
+  lang = b.dataset.l; try { localStorage.setItem("monsieurdossier-site-lang", lang); } catch (e) {} render();
+}));
+const nav = document.getElementById("nav");
+addEventListener("scroll", () => nav.classList.toggle("scrolled", scrollY > 8), { passive:true });
+render();
+</script>
+</body>
+</html>
