@@ -255,7 +255,7 @@ details p{color:var(--ink-2);padding:0 0 20px;max-width:65ch}
 .mk .prev .w{position:absolute;inset:-60%;display:flex;flex-direction:column;justify-content:center;gap:20px;transform:rotate(-22deg);font:500 10px/1 var(--f-mono);color:rgba(45,91,215,.42);white-space:nowrap}
 .mk .prev .w span:nth-child(even){margin-left:-90px}
 .mk .sum{margin-top:10px;padding-top:10px;border-top:1px solid var(--rule-2);color:var(--ink-2);font-size:12px}
-.mk.term{background:#14213d;color:#c9d3ea;font:12px/1.8 var(--f-mono);overflow-x:auto;white-space:nowrap}
+.mk.term{background:#14213d;color:#c9d3ea;font:12px/1.8 var(--f-mono);padding-inline:16px;overflow:hidden;overflow-wrap:anywhere}
 .mk.term .c{color:#93a0bd}
 .mk.term .g{color:#6ee7a8}
 .mk.term .q{color:#9fb6ff}
