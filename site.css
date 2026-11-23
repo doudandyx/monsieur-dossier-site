@@ -72,11 +72,17 @@ nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-
 nav.scrolled{border-bottom-color:var(--rule-2)}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--page)}
 nav .wrap{display:flex;align-items:center;gap:24px;padding-block:14px}
-.brand{display:flex;align-items:center;min-height:44px;min-width:44px;gap:10px;font:600 18px/1 var(--f-display);color:var(--ink);text-decoration:none;letter-spacing:-.01em;white-space:nowrap}
+.brand{display:flex;align-items:center;flex:none;min-height:44px;min-width:44px;gap:10px;font:600 18px/1 var(--f-display);color:var(--ink);text-decoration:none;letter-spacing:-.01em;white-space:nowrap}
 .brand svg{flex:none}
 .brand .short{display:none}
-nav .links{display:flex;gap:8px;margin-left:auto;font-size:15px}
+/* La barre tient dans la colonne de la page (1 120 px) : marque, liens, langue, thème, bouton. La marque ne cède
+   jamais sa place. Les liens prennent ce qui reste : s'ils ne tiennent plus sur la ligne (police de secours, page
+   traduite par le navigateur), les derniers passent dessous, hors de vue. Rien ne chevauche jamais rien. */
+nav .links{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:0 4px;margin-left:auto;min-width:0;height:calc(1.5em + 24px);overflow:hidden;font-size:15px}
 nav .links a{color:var(--ink);text-decoration:none;white-space:nowrap;padding:12px 8px;min-width:44px;text-align:center}
+nav .links a:focus-visible{outline-offset:-3px}
+/* En français, cinq liens ne tiennent pas dans la colonne : « Pièces autorisées » n'est pas dans la barre. */
+:lang(fr) nav .links a[href="#legal"]{display:none}
 nav .links a:hover{color:var(--accent)}
 /* bascules de langue et de thème : la zone de clic fait 44 px, le dessin reste fin (contour et fond tracés en retrait) */
 .lang,.theme{display:flex;position:relative;padding:0 3px}
@@ -329,7 +335,7 @@ form.card{display:grid;gap:20px}
 .legalp .date{font:500 13px var(--f-mono);color:var(--ink-2);margin-top:40px}
 
 /* ---------- petits écrans ---------- */
-@media (max-width:1040px){
+@media (max-width:1240px){
   nav .links{display:none}
   .lang{margin-left:auto}
 }
@@ -345,6 +351,7 @@ form.card{display:grid;gap:20px}
   nav .theme{display:none}
   .theme.in-footer{display:flex}
   .foot-nav .upd{margin-left:0}
+  .seal{right:-28px}
 }
 @media (max-width:680px){
   .cmp .r{grid-template-columns:1fr}
@@ -369,12 +376,13 @@ form.card{display:grid;gap:20px}
   .terminal{font-size:12px;padding:18px}
   .wm div:nth-child(even){margin-left:-80px}
 }
-@media (max-width:400px){
-  nav .wrap{padding-inline:14px;gap:8px}
-  .brand{gap:8px;font-size:17px}
-  .btn.small{padding:0 12px;font-size:14px}
+/* téléphones : la barre se resserre pour que marque, langue et bouton tiennent, en français aussi (mesuré de 320 à 430 px) */
+@media (max-width:430px){
+  nav .wrap{padding-inline:12px;gap:6px}
+  .brand{gap:6px;font-size:17px}
+  .btn.small{padding:0 10px;font-size:14px}
 }
-@media (max-width:340px){
+@media (max-width:359px){
   .brand .short{display:none}
 }
 @media (max-width:380px){

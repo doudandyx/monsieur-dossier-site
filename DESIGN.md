@@ -102,7 +102,7 @@ Les titres sont équilibrés (`text-wrap: balance`) et serrés (`letter-spacing:
 
 **Bouton (`.btn`).** Contour par défaut ; `.primary` en bleu plein pour télécharger ; `.dark` en encre pleine dans la barre du haut ; `.small`. Sur la bande bleue, le bouton est blanc.
 
-**Barre du haut (`nav`).** Collante, fond de page à 90 % avec flou. Marque, liens, langue, thème, bouton de téléchargement. Sous 1 040 px, les liens disparaissent ; sous 560 px, la marque devient « M. Dossier ».
+**Barre du haut (`nav`).** Collante, fond de page à 90 % avec flou. Marque, liens, langue, thème, bouton de téléchargement. Elle tient dans la colonne de la page, 1 120 px au plus, et **rien n'y chevauche jamais rien** : la marque ne cède pas sa place, et un lien qui ne tient plus sur la ligne sort de la vue. Sous 1 240 px, les liens disparaissent ; sous 560 px, la marque devient « M. Dossier » ; sous 430 px, la barre se resserre ; sous 360 px, il ne reste que le symbole. En français, « Pièces autorisées » n'est pas dans la barre : cinq liens n'y tiennent pas à côté de la langue, du thème et du bouton (l'anglais, plus court, garde les cinq). Avant d'ajouter un élément à la barre ou d'allonger un libellé, on mesure : en français, la barre demande aujourd'hui 1 111 px.
 
 **Surtitre et en-tête de section (`.eyebrow`, `.head`).** Un mot en petit, le titre, parfois un chapeau. L'en-tête tient en 820 px.
 
@@ -190,8 +190,8 @@ Le build contrôle ce qui peut l'être : mêmes clés dans les deux langues, pas
 - **Une seule feuille de style**, `site.css`. Pas de bloc `<style>` ni d'attribut `style` dans les pages, sauf un réglage ponctuel de mise en page.
 - **Aucune ressource externe** : ni police, ni script, ni image depuis un autre domaine.
 - Tous les chemins partent de la racine (`/site.css`, `/en/`), pour valoir aussi sous `/en/` et sur la page 404.
-- Les points de rupture sont ceux de `site.css` : 1 040, 980, 820, 700, 680, 560 et 380 px. On n'en ajoute pas sans raison.
+- Les points de rupture sont ceux de `site.css` : 1 240, 980, 820, 700, 680, 560, 430, 380 et 359 px. On n'en ajoute pas sans raison.
 - Quand `site.css`, `site.js` ou `theme.js` change, on augmente `assets` dans `src/site.mjs` : les pages les appellent avec `?v=N`, pour ne pas tomber sur un fichier en cache.
 - **À chaque version publiée de l'application** : changer `release` dans `src/site.mjs`, puis relancer le build. Le numéro s'affiche sous le bouton de téléchargement.
-- Un changement se vérifie dans le navigateur avant publication : clair et sombre, ordinateur et téléphone, français et anglais.
+- Un changement se vérifie dans le navigateur avant publication : clair et sombre, ordinateur et téléphone, français et anglais. L'ordinateur se vérifie à 1 280 px de large au moins : sous 1 240 px les liens de la barre sont cachés, et un défaut de la barre ne se voit pas (c'est ainsi qu'un chevauchement est resté en ligne du 22 au 23 novembre 2026). Pour la barre, on contrôle toutes les largeurs de 320 à 1 400 px.
 - Rien n'est mis en ligne sans accord explicite.

@@ -21,7 +21,7 @@ export const SITE = {
   formEndpoint: "",
 
   /* Numéro à augmenter quand site.css ou site.js change, pour ne pas tomber sur un fichier en cache. */
-  assets: 6,
+  assets: 7,
 
   /* Clé IndexNow : elle prouve à Bing et aux autres moteurs du protocole que l'annonce d'une page vient du site.
      Elle est publique par nature. Le build l'écrit dans un fichier à la racine, et src/indexnow.mjs s'en sert. */
