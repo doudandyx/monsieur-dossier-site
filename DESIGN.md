@@ -143,6 +143,8 @@ Français et anglais sur chaque page. La langue suit le navigateur ; sans indica
 
 Chaque page porte ses textes dans un dictionnaire `T = { fr, en }`, dans son propre `<script>`. Un élément marqué `data-i="clé"` reçoit le texte de la clé. **Aucune phrase n'est écrite dans le HTML** (seuls y figurent le nom de la marque, « FR / EN » et les valeurs du document d'exemple) : un texte ajouté l'est dans les deux langues.
 
+**Pas de point-virgule dans les textes du site**, en français comme en anglais (règle posée par Tommy le 23 novembre 2026 : il donne au texte un air écrit par une IA). On coupe en deux phrases, ou on relie par une virgule et « et ». Avant de publier, chercher ` ;` et `; ` dans les chaînes des dictionnaires `T`. La règle vaut pour le texte lu par le visiteur, pas pour le code ni pour ce fichier.
+
 ## Accessibilité
 
 - Zones cliquables de 44 px au moins, en largeur et en hauteur : boutons, sélecteurs de langue et de thème, liens de la barre du haut, du sommaire et du pied de page. Quand le dessin doit rester fin, la zone de clic dépasse le dessin (remplissage compensé par une marge négative, ou fond tracé en retrait). Seule exception : un lien placé dans une phrase. Mesuré le 22 novembre 2026 sur les quatre pages en ligne, à 320, 375 et 1200 px de large.
