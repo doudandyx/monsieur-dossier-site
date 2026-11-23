@@ -1,0 +1,218 @@
+/* Textes de la page, en français et en anglais. Repris tels quels de fonctionnalites.html le 23 novembre 2026. */
+export const T = {
+fr:{
+  back:"← Retour à l’accueil", navDl:"Télécharger",
+  title:"Fonctionnalités : ranger, masquer, filigraner — Monsieur Dossier",
+  crumb:"Fonctionnalités",
+  desc:"Ce que fait Monsieur Dossier, étape par étape : ranger les pièces, trouver ce qui manque, masquer, apposer le filigrane, contrôler et enregistrer.",
+  tocAria:"Sommaire",
+  ey:"Fonctionnalités",
+  h:"Tout ce que fait Monsieur Dossier, étape par étape.",
+  p:"De vos fichiers en vrac au dossier prêt à joindre : ce que l’application fait à chaque étape, et ce qu’elle vous laisse décider.",
+  noteLab:"À savoir : ",
+  illus:"Les images de cette page sont des illustrations, avec des documents fictifs.",
+  mk:{ cat:["Identité","Domicile","Activité","Ressources"], files:["Passeport.pdf","Facture d’électricité.pdf","Contrat de travail.pdf","Bulletins de salaire (3)","Avis d’imposition.pdf","Relevé bancaire.pdf"], notDue:"Non exigible",
+    listT:"Liste de l’agence", list:["Pièce d’identité","Contrat de travail","3 derniers bulletins de salaire","Dernier avis d’imposition","Justificatif de domicile"], ok:"Fournie", miss:"Manquante",
+    doc:"Bulletin de paie", name:"Salarié", secu:"N° de sécu", hid:"Masqué", net:"Net à payer",
+    off:"Retirée",
+    to:"Destinataire", toV:"Agence Saône", addr:"Logement", addrV:"12 rue des Lilas, Lyon", wm:"Copie – Dossier location 12 rue des Lilas – Usage exclusif Agence Saône – 11/2026",
+    checked:"Contrôlé", sum:"5 fichiers contrôlés et enregistrés",
+    dir:"Agence Saône – 12 rue des Lilas – 11-2026", out:["Pièce d’identité.pdf","Justificatif de domicile.pdf","Contrat de travail.pdf","Bulletins de salaire.pdf","Avis d’imposition.pdf"],
+    term:"# connexions réseau de l’application", term2:"# aucune autre connexion" },
+
+  feats:[
+    { id:"ajouter", short:"Ajouter", h:"Déposez tout, c’est rangé.",
+      p:"Glissez vos fichiers ou un dossier entier dans la fenêtre. Chaque pièce est lue, reconnue et classée.",
+      pts:[
+        ["PDF, scans et photos.","Un PDF de la banque, un scan, une photo prise à l’iPhone : tout passe. Un dossier est ajouté avec ses sous-dossiers."],
+        ["Rangé par rubrique.","Identité, domicile, activité, ressources : les quatre rubriques prévues par la loi."],
+        ["Plusieurs personnes.","Colocataires et garants ont chacun leur dossier, dans la même fenêtre."],
+        ["Les pièces interdites sont signalées.","Un relevé bancaire ou une carte Vitale ? L’application vous dit qu’un bailleur n’a pas le droit de le demander, avec la référence du texte."]
+      ],
+      note:"le classement est une proposition. Vous pouvez déplacer une pièce d’une rubrique à l’autre.",
+      shot:"Le dossier après l’ajout de six pièces, rangées dans les quatre rubriques." },
+    { id:"manque", short:"Ce qui manque", h:"Sachez ce qui manque avant d’envoyer.",
+      p:"Collez la liste de pièces demandée par l’agence. Monsieur Dossier la compare à ce que vous avez déjà.",
+      pts:[
+        ["Ligne par ligne.","Chaque pièce demandée est marquée fournie ou manquante."],
+        ["Texte ou image.","Collez le texte de l’e-mail, ou déposez une capture d’écran de la liste."],
+        ["Les demandes hors liste ressortent.","Si l’agence demande une pièce qu’elle n’a pas le droit d’exiger, vous le voyez."]
+      ],
+      note:"la liste est lue sur votre Mac, comme le reste.",
+      shot:"La liste d’une agence collée, avec les lignes « fournie » et « manquante »." },
+    { id:"masquer", short:"Masquer", h:"Les masques sont déjà posés.",
+      p:"À l’ouverture d’une pièce, les numéros qui n’ont rien à faire dans un dossier de location sont déjà couverts. Vous vérifiez, vous ajoutez, vous validez.",
+      pts:[
+        ["Repérés pour vous.","IBAN, RIB, numéro de sécurité sociale, numéro de carte, ligne de codes du passeport : trouvés aux formats courants, sur un PDF comme sur un scan ou une photo."],
+        ["Chaque zone est nommée.","« IBAN », « N° de sécurité sociale » : vous savez ce qui est masqué, et pourquoi."],
+        ["Vos propres zones.","Tracez un rectangle sur ce que vous voulez cacher."],
+        ["Masquer partout.","Après une zone tracée, la même valeur est cherchée dans toutes vos pièces et proposée au masquage en un clic."],
+        ["La signature, si vous voulez.","Une signature manuscrite est proposée au masquage, jamais masquée d’office."],
+        ["Les codes de vérification restent lisibles.","QR codes et 2D-Doc ne sont pas couverts. Vous êtes prévenu si un masque en touche un."]
+      ],
+      note:"la détection couvre les formats courants, pas tous les cas. Relisez chaque pièce avant de la valider.",
+      shot:"Un bulletin de salaire ouvert, avec deux zones masquées et leur nom dans le panneau de droite." },
+    { id:"pages", short:"Pages", h:"N’envoyez que les pages utiles.",
+      p:"Un avis d’imposition ou un contrat contient souvent des pages qui ne servent pas au bailleur. Retirez-les du fichier envoyé.",
+      pts:[
+        ["Une page se retire en un clic.","Et se remet de la même façon."],
+        ["Des pages proposées.","Les pages blanches et les pages d’informations générales (conditions, mentions, « comment payer ») vous sont suggérées."],
+        ["Jamais les pages qui comptent.","La première page et les pages qui portent un code de vérification ne sont pas proposées."]
+      ],
+      note:"votre fichier d’origine n’est jamais modifié.",
+      shot:"Les pages d’un document, dont deux marquées « retirée »." },
+    { id:"filigrane", short:"Filigrane", h:"Un filigrane au nom du destinataire, sur toutes les pièces.",
+      p:"Indiquez l’agence et l’adresse du logement. La mention est rédigée et appliquée à tout le dossier.",
+      pts:[
+        ["La bonne mention, sans l’écrire.","Destinataire, objet et date, par exemple : « Copie – Dossier location 12 rue des Lilas – Usage exclusif Agence Saône – 11/2026 »."],
+        ["Un aperçu avant d’enregistrer.","Vous voyez le filigrane sur une page pendant que vous tapez."],
+        ["Un autre destinataire ? Tout est refait.","Changez le nom : toutes les copies sont préparées à nouveau, vos masques restent en place."],
+        ["Hors des codes de vérification.","Le filigrane évite les QR codes et 2D-Doc, pour que le bailleur puisse toujours contrôler le document."],
+        ["En français ou en anglais.","La mention suit la langue choisie."]
+      ],
+      note:"vos masques sont gardés tant que l’application reste ouverte.",
+      shot:"L’écran d’export : le destinataire saisi et l’aperçu du filigrane." },
+    { id:"controle", short:"Contrôle", h:"Chaque fichier est contrôlé avant d’être enregistré.",
+      p:"Un masque qui laisse le texte dessous ne protège rien. Monsieur Dossier le vérifie pour vous, fichier par fichier.",
+      pts:[
+        ["Le texte caché n’existe plus.","Chaque page est aplatie en image : ce qui est sous un masque n’est plus dans le fichier."],
+        ["Le fichier est rouvert et vérifié.","Plus de texte, de police, de métadonnées ni de pièce jointe, et chaque zone masquée ne ressemble plus à l’original. Si un contrôle échoue, le fichier n’est pas enregistré."],
+        ["Une seconde lecture.","Chaque page est relue une fois masquée. Un numéro sensible encore lisible vous est signalé, avec un lien pour corriger."],
+        ["Rien de l’original ne suit.","Auteur, logiciel, dates de création : aucune métadonnée n’est recopiée."]
+      ],
+      note:"la seconde lecture vous avertit, elle ne bloque pas l’enregistrement. La décision reste la vôtre.",
+      shot:"L’écran de résultat : la liste des fichiers contrôlés." },
+    { id:"enregistrer", short:"Enregistrer", h:"Tout s’enregistre en une fois, prêt à joindre.",
+      p:"Un clic, un dossier : les copies sont nommées et regroupées comme on vous les demande.",
+      pts:[
+        ["Un dossier par envoi.","Nommé d’après l’agence, l’adresse et la date."],
+        ["Des fichiers bien nommés.","Chaque fichier porte le nom de la pièce."],
+        ["Regroupez comme le portail le demande.","Vos trois derniers bulletins de salaire en un seul fichier, le reste séparé : glissez les pièces ensemble."],
+        ["Un ZIP, si vous préférez.","Pour une seule pièce jointe."],
+        ["À plusieurs.","Un sous-dossier par personne, colocataires et garants compris."]
+      ],
+      note:"un envoi se prépare pour un destinataire à la fois.",
+      shot:"Le dossier d’envoi, avec un fichier par pièce." },
+    { id:"mac", short:"Sur votre Mac", h:"Tout se passe sur votre Mac.",
+      p:"Aucune de ces étapes n’envoie vos documents quelque part.",
+      pts:[
+        ["Sans compte ni serveur.","Rien à créer, rien à connecter."],
+        ["Un programme, pas un service.","Du code Python installé sur votre Mac. Les numéros sont trouvés par des règles fixes. Les scans sont lus par la reconnaissance de texte de macOS, sur votre Mac. Aucune IA en ligne."],
+        ["Sans connexion.","Coupez le Wi-Fi : tout fonctionne pareil, lecture des scans comprise."],
+        ["Aucune mesure d’usage.","L’application ne collecte rien."]
+      ],
+      note:"",
+      shot:"L’application en fonctionnement, Wi-Fi coupé." }
+  ],
+  dlH:"Préparez votre dossier.", dlP:"Pour Mac. Sans compte, sans envoi.", dlBtn:"Télécharger pour Mac",
+  foot1:"Monsieur Dossier — votre dossier de location, prêt et protégé.",
+  foot2:"Application indépendante, non affiliée à l’État. Aucune donnée collectée.", footC:"Un avis, un bug ? Écrivez-nous"
+},
+en:{
+  back:"← Back to home", navDl:"Download",
+  title:"Features: sort, redact, watermark — Monsieur Dossier",
+  crumb:"Features",
+  desc:"What Monsieur Dossier does, step by step: sort your documents, find what is missing, hide, watermark, check and save.",
+  tocAria:"Contents",
+  ey:"Features",
+  h:"Everything Monsieur Dossier does, step by step.",
+  p:"From a pile of files to a rental file ready to attach: what the app does at each step, and what it leaves for you to decide.",
+  noteLab:"Good to know: ",
+  illus:"The pictures on this page are illustrations, with made-up documents.",
+  mk:{ cat:["Identity","Address","Occupation","Income"], files:["Passport.pdf","Electricity bill.pdf","Work contract.pdf","Payslips (3)","Tax notice.pdf","Bank statement.pdf"], notDue:"Not allowed",
+    listT:"Agency’s list", list:["ID","Work contract","Last 3 payslips","Latest tax notice","Proof of address"], ok:"Provided", miss:"Missing",
+    doc:"Payslip", name:"Employee", secu:"Soc. sec. no.", hid:"Hidden", net:"Net pay",
+    off:"Removed",
+    to:"Recipient", toV:"Agence Saône", addr:"Property", addrV:"12 rue des Lilas, Lyon", wm:"Copy – Rental application 12 rue des Lilas – For Agence Saône only – 11/2026",
+    checked:"Checked", sum:"5 files checked and saved",
+    dir:"Agence Saône – 12 rue des Lilas – 11-2026", out:["ID.pdf","Proof of address.pdf","Work contract.pdf","Payslips.pdf","Tax notice.pdf"],
+    term:"# the app’s network connections", term2:"# no other connection" },
+
+  feats:[
+    { id:"ajouter", short:"Add", h:"Drop everything in. It gets filed.",
+      p:"Drag your files or a whole folder into the window. Each document is read, recognised and sorted.",
+      pts:[
+        ["PDFs, scans and photos.","A PDF from your bank, a scan, an iPhone photo: they all work. A folder comes in with its subfolders."],
+        ["Filed by category.","Identity, address, occupation, income: the four categories set by French law."],
+        ["Several people.","Flatmates and guarantors each get their own file, in the same window."],
+        ["Forbidden documents are flagged.","A bank statement or a health card? The app tells you a landlord isn’t allowed to ask for it, with the legal reference."]
+      ],
+      note:"the filing is a suggestion. You can move a document to another category.",
+      shot:"The file after adding six documents, sorted into the four categories." },
+    { id:"manque", short:"What’s missing", h:"Know what’s missing before you send.",
+      p:"Paste the list of documents the agency asked for. Monsieur Dossier compares it with what you already have.",
+      pts:[
+        ["Line by line.","Each requested document is marked provided or missing."],
+        ["Text or image.","Paste the text of the email, or drop in a screenshot of the list."],
+        ["Requests outside the legal list stand out.","If the agency asks for a document it isn’t allowed to require, you see it."]
+      ],
+      note:"the list is read on your Mac, like everything else.",
+      shot:"An agency’s list pasted in, with “provided” and “missing” lines." },
+    { id:"masquer", short:"Hide", h:"The masks are already placed.",
+      p:"When you open a document, the numbers that have no place in a rental file are already covered. You review, add your own, and confirm.",
+      pts:[
+        ["Found for you.","IBAN, bank codes, social security number, card number, the passport’s line of codes: found in their common formats, on a PDF as well as a scan or a photo."],
+        ["Each area is named.","“IBAN”, “Social security no.”: you know what is hidden, and why."],
+        ["Your own areas.","Draw a box over anything you want to hide."],
+        ["Hide everywhere.","After you draw an area, the same value is searched in all your documents and offered for hiding in one click."],
+        ["Your signature, if you want.","A handwritten signature is offered for hiding, never hidden by default."],
+        ["Verification codes stay readable.","QR codes and 2D-Doc are left uncovered. You’re warned if a mask touches one."]
+      ],
+      note:"detection covers common formats, not every case. Review each document before you confirm it.",
+      shot:"A payslip open, with two hidden areas and their names in the right-hand panel." },
+    { id:"pages", short:"Pages", h:"Send only the pages that matter.",
+      p:"A tax notice or a contract often has pages the landlord doesn’t need. Leave them out of the file you send.",
+      pts:[
+        ["One click removes a page.","One click puts it back."],
+        ["Pages suggested for you.","Blank pages and general-information pages (terms, legal notices, “how to pay”) are suggested."],
+        ["Never the pages that count.","The first page and pages carrying a verification code are not suggested."]
+      ],
+      note:"your original file is never changed.",
+      shot:"The pages of a document, two of them marked “removed”." },
+    { id:"filigrane", short:"Watermark", h:"A watermark naming the recipient, on every document.",
+      p:"Enter the agency and the property address. The wording is written for you and applied to the whole file.",
+      pts:[
+        ["The right wording, without writing it.","Recipient, purpose and date, for example: “Copy – Rental application 12 rue des Lilas – For Agence Saône only – 11/2026”."],
+        ["A preview before you save.","You see the watermark on a page as you type."],
+        ["Another recipient? Everything is redone.","Change the name: every copy is prepared again, and your masks stay in place."],
+        ["Off the verification codes.","The watermark stays clear of QR codes and 2D-Doc, so the landlord can still check the document."],
+        ["In French or English.","The wording follows the language you choose."]
+      ],
+      note:"your masks are kept as long as the app stays open.",
+      shot:"The export screen: the recipient entered and the watermark preview." },
+    { id:"controle", short:"Check", h:"Every file is checked before it is saved.",
+      p:"A mask that leaves the text underneath protects nothing. Monsieur Dossier checks that for you, file by file.",
+      pts:[
+        ["The hidden text no longer exists.","Each page is flattened into an image: what is under a mask is no longer in the file."],
+        ["The file is reopened and checked.","No text, font, metadata or attachment left, and each hidden area no longer resembles the original. If a check fails, the file isn’t saved."],
+        ["A second reading.","Each page is read again once masked. A sensitive number that is still readable is flagged, with a link to fix it."],
+        ["Nothing from the original comes along.","Author, software, creation dates: no metadata is copied over."]
+      ],
+      note:"the second reading warns you, it does not block saving. The decision stays yours.",
+      shot:"The result screen: the list of checked files." },
+    { id:"enregistrer", short:"Save", h:"Everything saves in one go, ready to attach.",
+      p:"One click, one folder: the copies are named and combined the way you’re asked for them.",
+      pts:[
+        ["One folder per send.","Named after the agency, the address and the date."],
+        ["Clear file names.","Each file is named after the document."],
+        ["Combine the way the portal asks.","Your last three payslips as one file, the rest separate: drag the documents together."],
+        ["A ZIP, if you prefer.","For a single attachment."],
+        ["With several people.","One subfolder per person, flatmates and guarantors included."]
+      ],
+      note:"a send is prepared for one recipient at a time.",
+      shot:"The send folder, with one file per document." },
+    { id:"mac", short:"On your Mac", h:"It all happens on your Mac.",
+      p:"None of these steps sends your documents anywhere.",
+      pts:[
+        ["No account, no server.","Nothing to create, nothing to connect."],
+        ["A program, not a service.","Python code installed on your Mac. Numbers are found by fixed rules. Scans are read by the text recognition built into macOS, on your Mac. No online AI."],
+        ["No connection needed.","Turn off Wi-Fi: everything works the same, reading scans included."],
+        ["No usage tracking.","The app collects nothing."]
+      ],
+      note:"",
+      shot:"The app running with Wi-Fi off." }
+  ],
+  dlH:"Prepare your rental file.", dlP:"For Mac. No account, nothing uploaded.", dlBtn:"Download for Mac",
+  foot1:"Monsieur Dossier — your French rental file, ready and protected.",
+  foot2:"Independent app, not affiliated with the French government. No data collected.", footC:"Feedback or a bug? Contact us"
+}};

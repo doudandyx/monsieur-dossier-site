@@ -16,15 +16,18 @@ Ce fichier fait foi. Une page qui s'en écarte est corrigée, ou ce fichier est 
 
 ## Pages
 
-| Page | Fichier | Rôle |
-|---|---|---|
-| Accueil | `index.html` | Ce que fait l'app, en une page, jusqu'au téléchargement |
-| Fonctionnalités | `fonctionnalites.html` | Le détail, étape par étape, avec une illustration par section |
-| DossierFacile | `dossierfacile.html` | Ce que fait chacun des deux services, et comment les utiliser ensemble |
-| Contact | `contact.html` | Formulaire d'avis et de signalement |
-| Mentions légales | `mentions-legales.html` | Prête, **non publiée** tant que les informations du Kbis manquent |
+Chaque page existe en français et en anglais, à deux adresses.
 
-**Ordre de l'accueil.** Barre du haut, titre et bouton, document d'exemple, « Le temps gagné » (six cartes), « Comment ça marche » (quatre étapes), « Le problème », « Vous arrivez en France ? », « Confidentialité » (bande sombre), « Ce que dit la loi », téléchargement (bande bleue), questions fréquentes, pied de page.
+| Page | Français | Anglais | Rôle |
+|---|---|---|---|
+| Accueil | `/` | `/en/` | Ce que fait l'app, en une page, jusqu'au téléchargement |
+| Fonctionnalités | `/fonctionnalites.html` | `/en/features.html` | Le détail, étape par étape, avec une illustration par section |
+| DossierFacile | `/dossierfacile.html` | `/en/dossierfacile.html` | Ce que fait chacun des deux services, et comment les utiliser ensemble |
+| Contact | `/contact.html` | `/en/contact.html` | L'adresse e-mail. Le formulaire d'avis s'ajoute quand son adresse d'envoi est renseignée dans `src/site.mjs` |
+| Page introuvable | `/404.html` | la même | Écrite dans les deux langues, non indexée |
+| Mentions légales | `mentions-legales.html` | | Prête, **non publiée** tant que les informations du Kbis manquent. Encore écrite à l'ancienne manière (texte posé par JavaScript) : à porter dans `src/` avant publication |
+
+**Ordre de l'accueil.** Barre du haut, titre et bouton, document d'exemple, « Comment ça marche » (quatre étapes), « Le problème », « Vous arrivez en France ? », « Confidentialité » (bande sombre), « Ce que dit la loi », téléchargement (bande bleue) et premier lancement, questions fréquentes, pied de page.
 
 **Page Fonctionnalités.** Un sommaire en pastilles, puis huit sections dans l'ordre d'usage : ajouter, ce qui manque, masquer, pages, filigrane, contrôle, enregistrer, sur votre Mac. Chaque section a un numéro, un titre, une phrase, des points, une ligne « À savoir » qui dit la limite, et une illustration. Le texte et l'illustration alternent de côté d'une section à l'autre.
 
@@ -107,26 +110,30 @@ Les titres sont équilibrés (`text-wrap: balance`) et serrés (`letter-spacing:
 
 | Classe | Colonnes | Fond | Où |
 |---|---|---|---|
-| `.prob` | 3, puis 1 sous 820 px | `--paper` | Le temps gagné, le problème |
+| `.prob` | 3, puis 1 sous 820 px | `--paper` | Le problème, les trois étapes de la page DossierFacile |
 | `.prob.four`, `.legal` | 2, puis 1 sous 820 px | `--paper` ; vert et rouge doux pour la loi | Arrivée en France, pièces autorisées et interdites |
 | `.steps` | 4, puis 2 sous 980 px, puis 1 sous 560 px | `--tint`, numéro en bleu | Comment ça marche |
 | `.proofs` | comme `.steps` | blanc à 8 % | Confidentialité, sur la bande sombre |
 
 **Bandes (`.band`).** Grise par défaut ; `.deep` pour la confidentialité ; `.blue` pour le téléchargement. Une seule bande bleue et une seule bande sombre par page.
 
-**Document d'exemple (`.stage`, `.sheet`).** Une feuille blanche sur le fond bleu. Elle reste blanche dans les deux thèmes, pour que les masques noirs ressortent : ses couleurs sont fixées sur `.sheet`. Le bouton « Original / Copie » pose les masques, le filigrane et le tampon.
+**Document d'exemple (`.stage`, `.sheet`).** Une feuille blanche sur le fond bleu. Elle reste blanche dans les deux thèmes, pour que les masques noirs ressortent : ses couleurs sont fixées sur `.sheet`. Le bouton « Original / Copie » pose les masques, le filigrane et le tampon. Sans JavaScript, la copie s'affiche protégée et le bouton n'apparaît pas.
 
 **Tampon (`.seal`).** Disque blanc, texte bleu en cercle. Un seul par page, sur le document d'exemple.
 
 **Illustrations (`.shot`, `.mk`).** Sur la page Fonctionnalités : une carte blanche sur le fond bleu, qui dessine en HTML un fragment de l'application. Comme la feuille, elle reste claire dans les deux thèmes. Briques disponibles : ligne (`.row`), étiquette (`.tag`, `.ok`, `.no`), fichier et dossier (`.file`, `.dir`), barre de masque (`.bar`), pages (`.pg`), champ (`.field`), aperçu de filigrane (`.prev`), terminal (`.mk.term`). Chaque illustration porte un `aria-label` qui la décrit. La page dit que ce sont des illustrations, pas des captures.
 
-**Tableau (`.cmp`).** Page DossierFacile seulement. Trois colonnes ; sous 680 px, chaque ligne s'empile et reprend le nom de la colonne.
+**Tableau (`.cmp`).** Page DossierFacile seulement. Un vrai `<table>`, dessiné en grille. Trois colonnes ; sous 680 px, chaque ligne s'empile et reprend le nom de la colonne (attribut `data-l`).
 
-**Questions fréquentes (`details`).** Une ligne par question, un « + » qui tourne à l'ouverture.
+**Questions fréquentes (`details`).** Une ligne par question, un « + » qui tourne à l'ouverture. La question est un `h3` dans le `summary`. La première répond à « Qu'est-ce que Monsieur Dossier ? » et reste ouverte.
 
 **Sommaire en pastilles (`.toc`).** Page Fonctionnalités.
 
-**Pied de page.** Une ligne : la signature, la mention d'indépendance, le lien de contact.
+**Pied de page.** Une ligne : la signature, la mention d'indépendance, le lien de contact. Dessous, les liens vers les autres pages et la date de mise à jour de la page.
+
+**Pastille de langue (`.langbar`).** En bas de l'écran, fond d'encre, un lien et une croix. Ajoutée par `site.js` quand la langue du navigateur n'est pas celle de la page.
+
+**Texte hors de l'affichage (`.sr`).** Pour les lecteurs d'écran et les robots : légende d'une illustration, nom complet d'une langue, titre d'un tableau.
 
 ## Mouvement
 
@@ -139,11 +146,34 @@ Discret, et toujours au service du document.
 
 ## Langue
 
-Français et anglais sur chaque page. La langue suit le navigateur ; sans indication, le français. Le choix du visiteur est gardé dans le navigateur (`monsieurdossier-site-lang`).
+Français et anglais, **une adresse par langue** : le français à la racine, l'anglais sous `/en/`. Chaque page annonce l'autre version (`hreflang`). La version proposée à qui ne lit ni l'une ni l'autre est l'anglais (`x-default`).
 
-Chaque page porte ses textes dans un dictionnaire `T = { fr, en }`, dans son propre `<script>`. Un élément marqué `data-i="clé"` reçoit le texte de la clé. **Aucune phrase n'est écrite dans le HTML** (seuls y figurent le nom de la marque, « FR / EN » et les valeurs du document d'exemple) : un texte ajouté l'est dans les deux langues.
+**Une page ne change jamais de langue d'elle-même** (décision du 23 novembre 2026). Avant, la langue suivait le navigateur à la même adresse : un moteur de recherche ne voyait qu'une des deux langues, et un robot sans JavaScript ne voyait aucun texte. Aujourd'hui, si la langue du navigateur n'est pas celle de la page, une pastille en bas de l'écran propose l'autre version. Elle ne redirige pas. Le choix du visiteur est gardé dans le navigateur (`monsieurdossier-site-lang`) et la pastille ne revient plus.
 
-**Pas de point-virgule dans les textes du site**, en français comme en anglais (règle posée par Tommy le 23 novembre 2026 : il donne au texte un air écrit par une IA). On coupe en deux phrases, ou on relie par une virgule et « et ». Avant de publier, chercher ` ;` et `; ` dans les chaînes des dictionnaires `T`. La règle vaut pour le texte lu par le visiteur, pas pour le code ni pour ce fichier.
+Les textes sont dans `src/i18n/`, un fichier par page, dans un dictionnaire `T = { fr, en }`. Les textes communs à toutes les pages sont dans `src/shared.mjs`. **Un texte ajouté l'est dans les deux langues** : le build échoue si une clé manque d'un côté.
+
+Dans une chaîne, deux notations : `[texte](adresse)` pour un lien, `*texte*` pour une mise en valeur. L'adresse `page:nom` désigne une page du site dans la langue en cours, `link:nom` une source listée dans `src/site.mjs`.
+
+Typographie française : on écrit une espace simple dans les dictionnaires, et le build pose l'espace insécable avant `?`, `!`, `:`, `%`, `»` et après `«`.
+
+**Pas de point-virgule dans les textes du site**, en français comme en anglais (règle posée par Tommy le 23 novembre 2026 : il donne au texte un air écrit par une IA). On coupe en deux phrases, ou on relie par une virgule et « et ». Le build échoue s'il en trouve un dans le texte d'une page, d'une version Markdown ou de `llms.txt`. La règle vaut pour le texte lu par le visiteur, pas pour le code ni pour ce fichier.
+
+## Lisible sans JavaScript, par les moteurs et les assistants IA
+
+Posé le 23 novembre 2026. Un robot qui ne lance pas JavaScript, comme ceux de la plupart des assistants IA, doit lire le site en entier. Ces règles valent pour toute page ajoutée.
+
+1. **Tout le texte est dans le HTML.** JavaScript n'ajoute que des comportements : thème, animation du document d'exemple, pastille de langue, copie de l'adresse. Sans JavaScript, la page se lit en entier et le document d'exemple s'affiche déjà protégé.
+2. **Un seul `h1` par page**, puis des titres dans l'ordre. Chaque question de la FAQ est un `h3`.
+3. **Un lien est un vrai lien** (`<a href>`), téléchargement compris. Pas de bouton qui navigue par script.
+4. **Un tableau est un `<table>`, une suite d'étapes un `<ol>`.** La feuille de style les dessine comme elle veut, le sens reste dans le HTML.
+5. **Un document ou un écran dessiné est un exemple, et la page le dit.** Chaque illustration est précédée d'une légende (`figcaption`, classe `.sr`) et porte `data-nosnippet`. Un texte répété pour le décor, comme le filigrane, passe par un attribut et la feuille de style, pas par le texte de la page.
+6. **L'en-tête de chaque page** porte un titre descriptif (70 caractères au plus), une description, l'adresse canonique, les `hreflang`, les balises Open Graph avec l'image de partage, et des données structurées schema.org : éditeur, site, page, plus l'application et la FAQ sur l'accueil.
+7. **Chaque page a une version Markdown**, à la même adresse suivie de `.md`, annoncée dans l'en-tête. `llms.txt` résume le site pour les assistants (format de llmstxt.org, version 2 : chaque page y renvoie par `rel="describedby"`) et `llms-full.txt` contient tout le texte. Les faits de `llms.txt` sont écrits à la main dans `src/llms.mjs` : on les relit quand une page change. À savoir : en novembre 2026, aucun grand assistant ne dit lire `llms.txt`, et Google dit l'ignorer. Il coûte peu, on n'en attend pas de miracle.
+8. **`robots.txt` laisse tout lire**, aux moteurs comme aux assistants, et le dit (`Content-Signal`, recherche, réponses et entraînement autorisés). `sitemap.xml` liste chaque page avec sa date. Après une mise en ligne qui change un texte, `node src/indexnow.mjs` annonce les pages à Bing et aux autres moteurs du protocole IndexNow : c'est une requête vers l'extérieur, lancée à la main, jamais sans accord.
+9. **Chaque page est datée.** La date (`updated`, dans son fichier de `src/pages/`) s'affiche en pied de page et part dans le plan du site : on la change quand le texte change.
+10. **On cite la source.** Un texte de loi ou un service officiel nommé dans la page porte un lien vers lui. C'est un lien, pas une ressource chargée : le principe 7 reste entier.
+
+Le build contrôle ce qui peut l'être : mêmes clés dans les deux langues, pas de point-virgule, un seul `h1`, liens internes et ancres valides, données structurées lisibles, longueur des titres et des descriptions.
 
 ## Accessibilité
 
@@ -155,10 +185,13 @@ Chaque page porte ses textes dans un dictionnaire `T = { fr, en }`, dans son pro
 
 ## Règles de code
 
-- HTML et CSS écrits à la main, **sans étape de build**. Le site est publié tel quel par GitHub Pages depuis `main`.
+- **Les pages sont écrites par `build.mjs` à partir de `src/`** : `node build.mjs`. Aucune dépendance, Node suffit. Ce que le build écrit (`*.html`, `*.html.md`, `sitemap.xml`, `robots.txt`, `llms.txt`, `llms-full.txt`) est commité, car GitHub Pages publie `main` tel quel. **On ne modifie jamais à la main une page écrite par le build** : on change `src/`, puis on relance. `node build.mjs --check` échoue si une page n'est pas à jour.
+- CSS et scripts sont écrits à la main : `site.css`, `site.js` (les comportements) et `theme.js` (le thème, chargé avant l'affichage).
 - **Une seule feuille de style**, `site.css`. Pas de bloc `<style>` ni d'attribut `style` dans les pages, sauf un réglage ponctuel de mise en page.
 - **Aucune ressource externe** : ni police, ni script, ni image depuis un autre domaine.
+- Tous les chemins partent de la racine (`/site.css`, `/en/`), pour valoir aussi sous `/en/` et sur la page 404.
 - Les points de rupture sont ceux de `site.css` : 1 040, 980, 820, 700, 680, 560 et 380 px. On n'en ajoute pas sans raison.
-- Une page dont les styles changent appelle `site.css?v=N` avec un numéro augmenté, pour ne pas tomber sur une feuille en cache.
+- Quand `site.css`, `site.js` ou `theme.js` change, on augmente `assets` dans `src/site.mjs` : les pages les appellent avec `?v=N`, pour ne pas tomber sur un fichier en cache.
+- **À chaque version publiée de l'application** : changer `release` dans `src/site.mjs`, puis relancer le build. Le numéro s'affiche sous le bouton de téléchargement.
 - Un changement se vérifie dans le navigateur avant publication : clair et sombre, ordinateur et téléphone, français et anglais.
 - Rien n'est mis en ligne sans accord explicite.

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title>Image de partage — Monsieur Dossier</title>
+<!-- Gabarit de l'image affichée quand un lien vers le site est partagé (og-fr.png, og-en.png), 1200 × 630.
+     Ce n'est pas une page du site. Pour refaire les images, voir README.md, « Images ». -->
+<link rel="stylesheet" href="/site.css">
+<style>
+  html,body{margin:0;width:1200px;height:630px;overflow:hidden;background:#2d5bd7}
+  .og{display:grid;grid-template-columns:1fr 460px;gap:44px;align-items:center;height:630px;padding:0 64px;color:#fff}
+  .og .brand{color:#fff;font-size:30px;gap:14px;margin-bottom:44px}
+  .og h1{font-size:72px;line-height:1;letter-spacing:-.03em;color:#fff}
+  .og p{margin-top:32px;font-size:26px;color:rgba(255,255,255,.88)}
+  .og .seal{right:-36px;bottom:-30px;opacity:1}
+</style>
+</head>
+<body>
+<div class="og">
+  <div>
+    <div class="brand">
+      <svg width="52" height="52" viewBox="0 0 64 64" aria-hidden="true"><rect x="2" y="2" width="60" height="60" rx="14" fill="#fff"/><rect x="18" y="12" width="28" height="40" rx="3" fill="#2d5bd7"/><rect x="22" y="19" width="20" height="3" rx="1.5" fill="#9db4f0"/><rect x="22" y="26" width="20" height="5" rx="1" fill="#fff"/><rect x="22" y="35" width="14" height="3" rx="1.5" fill="#9db4f0"/><path d="M32 45 L24.5 40.5 V49.5 Z M32 45 L39.5 40.5 V49.5 Z" fill="#fff"/><circle cx="32" cy="45" r="2.2" fill="#fff"/></svg>
+      <span>Monsieur Dossier</span>
+    </div>
+    <h1 id="h"></h1>
+    <p id="p"></p>
+  </div>
+  <div class="demo on">
+    <div class="sheet on">
+      <div class="hd"><div><b id="docT"></b> <small id="docSub"></small></div><span class="bank">ATELIER RHÔNE SAS</span></div>
+      <dl class="kv">
+        <dt id="kName"></dt><dd>Camille MARTIN</dd>
+        <dt id="kAddr"></dt><dd>8 rue Paul Bert, 69003 Lyon</dd>
+        <dt id="kSecu"></dt><dd class="m">2 91 04 69 123 456 78</dd>
+      </dl>
+      <div class="sec"><div class="st" id="kPay"></div>
+        <dl class="kv"><dt id="kGross"></dt><dd>3 150,00 €</dd><dt id="kNet"></dt><dd>2 450,00 €</dd></dl></div>
+      <div class="sec"><div class="st" id="kBank"></div>
+        <dl class="kv"><dt>IBAN</dt><dd class="m">FR76 3000 6000 0112 3456 7890 189</dd><dt>BIC</dt><dd class="m">AGRIFRPP882</dd></dl></div>
+      <div class="wm" id="wm"></div>
+    </div>
+    <svg class="seal" viewBox="0 0 136 136">
+      <defs><path id="sealRing" d="M68 68 m-50 0 a50 50 0 1 1 100 0 a50 50 0 1 1 -100 0"/></defs>
+      <circle cx="68" cy="68" r="64" fill="none" stroke="currentColor" stroke-width="2.5"/>
+      <circle cx="68" cy="68" r="40" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <text><textPath href="#sealRing" id="seal"></textPath></text>
+      <path d="M46 56 L64 68 L46 80Z M90 56 L72 68 L90 80Z" fill="currentColor"/>
+      <rect x="63" y="63" width="10" height="10" rx="2.5" fill="currentColor"/>
+    </svg>
+  </div>
+</div>
+<script type="module">
+  import { T } from "/src/i18n/home.mjs";
+  import { T as F } from "/src/i18n/features.mjs";
+  const lang = new URLSearchParams(location.search).get("lang") === "en" ? "en" : "fr", L = T[lang];
+  document.documentElement.lang = lang;
+  document.getElementById("h").textContent = L.h1.replace(/\*/g, "");
+  document.getElementById("p").textContent = F[lang].dlP;
+  for (const k of ["docT", "docSub", "kName", "kAddr", "kSecu", "kPay", "kGross", "kNet", "kBank", "seal"]) document.getElementById(k).textContent = L[k];
+  document.getElementById("wm").innerHTML = `<div data-t="${L.wm}"></div>`.repeat(14);
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+# Monsieur Dossier
+
+> Monsieur Dossier is a Mac app that prepares and protects the documents of a French rental file (the "dossier de location"). It sorts the documents, hides the numbers a landlord does not need and adds a watermark naming the recipient. Everything runs on the user's Mac, with no account, no server and no upload.
+
+Facts an assistant can rely on. Source: this site, as of 23 November 2026.
+
+- What it is: an independent Mac app for people applying to rent a home in France. The site is in French (https://monsieurdossier.com/) and in English (https://monsieurdossier.com/en/).
+- Platform: macOS only, on Intel and Apple Silicon Macs. There is no Windows, iPhone or Android version.
+- Price: free during the beta.
+- Version: 1.2.0, published on 23 November 2026.
+- Download (disk image): https://github.com/doudandyx/monsieur-dossier-site/releases/latest/download/MonsieurDossier.dmg
+- First launch: this beta is not yet validated by Apple, so macOS asks for one confirmation in System Settings. Steps: https://monsieurdossier.com/en/#first-launch
+- Privacy: documents are processed on the Mac. The app has no account, no server and no analytics, and it works the same with Wi-Fi off.
+- What it hides: IBAN, bank codes (RIB), social security number, card number and the passport's line of codes (MRZ), found in their common formats, plus any area the user draws. Detection does not cover every case, so the user reviews each document.
+- What stays readable: QR codes and 2D-Doc are kept clear of masks and watermark, and the app warns if a mask touches one. The site advises never hiding the tax number, the tax notice reference, QR codes or the ID photo, because a landlord uses them to check a document.
+- Watermark: names the recipient, the property address and the date, in French or in English.
+- Checks: every exported PDF is flattened to images, reopened and checked. If a check fails, the file is not saved.
+- What it is not: it is not a government service, it is not affiliated with DossierFacile, and it does not verify or certify documents. No law settles whether a landlord can refuse a masked copy, so users keep their originals.
+- With DossierFacile: DossierFacile is the French government's free service. It verifies a rental file and shares it by link. Monsieur Dossier protects the files a tenant sends themselves, by email or on a portal. The two are meant to be used together.
+- Languages: French and English, for the interface and the watermark. Documents are not translated.
+- Contact: contact@monsieurdossier.com
+
+## Pages in English
+
+- [Home](https://monsieurdossier.com/en/index.html.md): what the app does in four steps, privacy, what a landlord may ask for, download and first launch, questions and answers
+- [Features](https://monsieurdossier.com/en/features.html.md): each step in detail, with its limits
+- [Monsieur Dossier and DossierFacile](https://monsieurdossier.com/en/dossierfacile.html.md): who does what, and how to use the two together
+- [Contact](https://monsieurdossier.com/en/contact.html.md): how to send feedback or report a bug
+
+## Pages en français
+
+- [Accueil](https://monsieurdossier.com/index.html.md): ce que fait l'application en quatre étapes, confidentialité, pièces qu'un bailleur peut demander, téléchargement et premier lancement, questions fréquentes
+- [Fonctionnalités](https://monsieurdossier.com/fonctionnalites.html.md): chaque étape en détail, avec ses limites
+- [Monsieur Dossier et DossierFacile](https://monsieurdossier.com/dossierfacile.html.md): qui fait quoi, et comment utiliser les deux ensemble
+- [Contact](https://monsieurdossier.com/contact.html.md): comment donner un avis ou signaler un bug
+
+## Optional
+
+- [Full text of the site, English then French](https://monsieurdossier.com/llms-full.txt): every page above in one file

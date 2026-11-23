@@ -1,0 +1,15 @@
+# Monsieur Dossier — https://monsieurdossier.com
+# Tout le site peut être lu et cité, par les moteurs de recherche comme par les assistants IA.
+# The whole site may be read and quoted, by search engines and by AI assistants alike.
+# Résumé pour les assistants / summary for assistants: https://monsieurdossier.com/llms.txt
+
+User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Allow: /
+# Fichiers de fabrication du site, sans intérêt pour un lecteur.
+Disallow: /src/
+Disallow: /build.mjs
+Disallow: /DESIGN.md
+Disallow: /README.md
+
+Sitemap: https://monsieurdossier.com/sitemap.xml

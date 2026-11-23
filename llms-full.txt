@@ -1,0 +1,627 @@
+# Monsieur Dossier: full text of the site
+
+> Every page of https://monsieurdossier.com in one file, in English and then in French. Short summary: https://monsieurdossier.com/llms.txt
+
+---
+
+# Monsieur Dossier — French rental file, ready and protected, on Mac
+
+> Monsieur Dossier is a Mac app that prepares and protects your French rental file (dossier de location): allowed documents, unneeded data hidden, each copy in the recipient’s name. In English and French, offline.
+
+Language: English · [Version française](https://monsieurdossier.com/index.html.md) · [Web page](https://monsieurdossier.com/en/) · Updated: 23 November 2026
+
+Drop in your documents. Monsieur Dossier sorts them, finds what to hide and prepares every copy in the recipient’s name, in one go. On your Mac, no account, nothing uploaded.
+
+- No account
+- 100% offline
+- English and French
+- Free beta
+- Version 1.2.0, 23 November 2026
+- [Download for Mac](https://github.com/doudandyx/monsieur-dossier-site/releases/latest/download/MonsieurDossier.dmg)
+
+## Four steps, and the whole file is ready.
+
+Allow about a minute per document.
+
+1. **Drop everything in.** PDFs, scans, iPhone photos, or a whole folder. Each document is filed under its category. One a landlord isn’t allowed to ask for gets flagged. Paste the agency’s list: you see what’s missing.
+2. **The masks are already placed.** IBAN, bank codes, social security numbers and passport MRZ lines are found in their common formats, on scans and photos too. You review and add your own. Masked text is destroyed on saving, not just covered.
+3. **One watermark for every document.** Enter the agency and the property address: the wording is written for you and stays off verification QR codes. Change the recipient: every copy is redone.
+4. **Everything saves in one go.** Every file is reopened and checked. If a check fails, it isn’t saved. One folder per send, and several documents can be combined into one file.
+
+[See all the features](https://monsieurdossier.com/en/features.html)
+
+## A rental file is a ready-made identity-theft kit.
+
+ID, tax notice, payslips, address: it’s all there. Fake listings exist to collect it.
+
+- **Fake listings.** A “landlord” asks for the full file before any viewing, then vanishes. Your documents are used to open credit lines or accounts.
+- **Unprotected attachments.** A PDF sent by email gets forwarded, copied, and sits in inboxes for years.
+- **Fake redaction.** A black box drawn in a PDF editor often leaves the text underneath, ready to copy. Blur can be reversed.
+
+## The rental file, in plain terms.
+
+In France, landlords pick tenants from a file of documents, the “dossier de location”. Here is what to know before you send it.
+
+- **Four kinds of documents.** Identity, current address, occupation (contract, student status) and income (payslips, tax notice). The list is set by law.
+- **Passport or residence permit.** Both count as ID. Monsieur Dossier finds the line of codes at the bottom of a passport (MRZ) so you can hide it. Your photo and name stay visible.
+- **The guarantor.** Many landlords ask for one. Visale, a free guarantee from Action Logement, can stand in for it under conditions: check whether you qualify on [visale.fr](https://www.visale.fr/).
+- **All in English.** The app and the watermark are available in English. Your documents are not translated: a landlord may ask for a translation.
+
+## Nothing leaves your Mac. You can check.
+
+Monsieur Dossier has no account, no server and no analytics. Turn off Wi-Fi: everything works the same.
+
+- **100% local processing.** The app only talks to itself, on 127.0.0.1. No connection to the internet.
+- **Hidden text is destroyed.** Each page is flattened into an image: what’s under a mask no longer exists in the file.
+- **Metadata removed.** Author, software, creation dates: nothing from the original is copied over.
+- **Your originals untouched.** New files are created. Yours are never changed.
+
+**How it works without the internet.** Monsieur Dossier is a Python program installed on your Mac, with everything it needs inside. Your documents are recognised and the numbers to hide are found by fixed rules. Scans and photos are read by the text recognition built into macOS, also on your Mac. No online AI, no model to download.
+
+## A landlord can’t ask for everything.
+
+In France, [décret n° 2015-1437](https://www.legifrance.gouv.fr/loda/id/JORFTEXT000031444493) sets a limited list of documents for a main residence. Anything else is forbidden, and you can refuse it. When Monsieur Dossier recognises a document that isn’t on the list, it warns you.
+
+**Allowed. Examples of documents they can ask for**
+
+- One ID document (ID card, passport, residence permit)
+- Proof of address (last 3 rent receipts, host certificate…)
+- Employment contract or employer certificate
+- Last 3 payslips
+- Latest tax notice
+
+**Forbidden. Examples of documents to refuse**
+
+- Bank statements
+- Carte Vitale (health card)
+- Criminal record
+- Medical records
+- Signed direct-debit authorisation
+- Any payment before the lease is signed
+
+Indicative, non-exhaustive list. Reference: French décret n° 2015-1437 of 5 November 2015 (amended 2019), annexes I and II. Check the current text on [legifrance.gouv.fr](https://www.legifrance.gouv.fr/loda/id/JORFTEXT000031444493).
+
+## Monsieur Dossier for Mac
+
+Free beta. Free during the beta. For Intel and Apple Silicon Macs. Your documents stay on your Mac. Version 1.2.0, 23 November 2026.
+
+[Download for Mac](https://github.com/doudandyx/monsieur-dossier-site/releases/latest/download/MonsieurDossier.dmg)
+
+### On first launch
+
+This beta is not yet validated by Apple. On first launch, macOS shows a warning: it means Apple has not checked the app, not that a problem was found. Four steps, once only.
+
+1. **Install.** Open the downloaded file and drag Monsieur Dossier into the Applications folder.
+2. **Open the app.** macOS shows the warning. Close it with “Done”: do not move the app to the Trash.
+3. **Allow it.** In System Settings, open “Privacy & Security”, scroll down to “Security” and click “Open Anyway”. The button stays there for about an hour.
+4. **Confirm.** Confirm with “Open Anyway”, then enter your Mac’s password. After that, the app opens normally.
+
+Steps for macOS 15 and later. On an older version: right-click the app, then “Open”. A version validated by Apple is being prepared. It will open without these steps.
+
+## Frequently asked questions
+
+### What is Monsieur Dossier?
+
+Monsieur Dossier is a Mac app that prepares the documents of a French rental file, the “dossier de location”. It sorts your documents, finds the numbers a landlord does not need in their common formats (IBAN, social security number, the passport’s line of codes) and places the masks, which you review. It then adds a watermark naming the recipient. Everything happens on your Mac, with no account and no internet connection.
+
+### How is this different from DossierFacile?
+
+DossierFacile is the government service: it verifies your file and shares it by link, without hiding anything. Monsieur Dossier verifies nothing: it protects the files you send yourself, by hiding what isn’t needed and naming the recipient. They work together. [See the detailed comparison](https://monsieurdossier.com/en/dossierfacile.html)
+
+### Is Monsieur Dossier an official service?
+
+No. It is an independent app, with no link to the French government or to DossierFacile. It does not certify your documents.
+
+### Is the app available?
+
+Yes, for Mac, as a free beta: download it from this page.
+
+### Is there a version for Windows, iPhone or Android?
+
+No. Monsieur Dossier runs only on Mac, with an Intel or Apple Silicon processor.
+
+### Why does macOS show a warning on first launch?
+
+Because this beta is not yet validated by Apple. The warning means Apple has not checked the app, not that a problem was found. One confirmation in System Settings is enough, once only.
+
+### Are my documents sent anywhere?
+
+No. Processing happens entirely on your Mac. The app has no server, creates no account and collects no analytics. It works without an internet connection.
+
+### Can a landlord refuse a redacted copy?
+
+No law settles it. Hide only what serves neither to assess your income nor to verify the document, and keep your originals: a landlord may ask to see them.
+
+### Why not just blur?
+
+Because blur and pixelation can be reversed. Only opaque masks are offered: a black bar, or a “frosted” look generated from random noise, never from what’s hidden.
+
+### How do I know the file is safe?
+
+After every export, the PDF is reopened and checked: no text, font, metadata or attachment left, and each masked area no longer resembles the original. If a check fails, the file isn’t saved.
+
+### What should the watermark say?
+
+The recipient, purpose and date, for example: “Copy – Rental application 12 rue des Lilas – For Agence Saône only – 11/2026”. A stolen copy becomes hard to reuse elsewhere.
+
+### Should I hide the QR code on my tax notice?
+
+No. The landlord uses it to check the document is genuine. QR codes and 2D-Doc are detected and kept free of watermark. You’re warned if a mask covers one, and the export checks they are still detected.
+
+---
+
+Monsieur Dossier — your French rental file, ready and protected. Independent app, not affiliated with the French government. No data collected.
+
+---
+
+# Features: sort, redact, watermark — Monsieur Dossier
+
+> What Monsieur Dossier does, step by step: sort your documents, find what is missing, hide, watermark, check and save.
+
+Language: English · [Version française](https://monsieurdossier.com/fonctionnalites.html.md) · [Web page](https://monsieurdossier.com/en/features.html) · Updated: 23 November 2026
+
+From a pile of files to a rental file ready to attach: what the app does at each step, and what it leaves for you to decide.
+
+## 1. Drop everything in. It gets filed.
+
+Drag your files or a whole folder into the window. Each document is read, recognised and sorted.
+
+- **PDFs, scans and photos.** A PDF from your bank, a scan, an iPhone photo: they all work. A folder comes in with its subfolders.
+- **Filed by category.** Identity, address, occupation, income: the four categories set by French law.
+- **Several people.** Flatmates and guarantors each get their own file, in the same window.
+- **Forbidden documents are flagged.** A bank statement or a health card? The app tells you a landlord isn’t allowed to ask for it, with the legal reference.
+
+Good to know: the filing is a suggestion. You can move a document to another category.
+
+## 2. Know what’s missing before you send.
+
+Paste the list of documents the agency asked for. Monsieur Dossier compares it with what you already have.
+
+- **Line by line.** Each requested document is marked provided or missing.
+- **Text or image.** Paste the text of the email, or drop in a screenshot of the list.
+- **Requests outside the legal list stand out.** If the agency asks for a document it isn’t allowed to require, you see it.
+
+Good to know: the list is read on your Mac, like everything else.
+
+## 3. The masks are already placed.
+
+When you open a document, the numbers that have no place in a rental file are already covered. You review, add your own, and confirm.
+
+- **Found for you.** IBAN, bank codes, social security number, card number, the passport’s line of codes: found in their common formats, on a PDF as well as a scan or a photo.
+- **Each area is named.** “IBAN”, “Social security no.”: you know what is hidden, and why.
+- **Your own areas.** Draw a box over anything you want to hide.
+- **Hide everywhere.** After you draw an area, the same value is searched in all your documents and offered for hiding in one click.
+- **Your signature, if you want.** A handwritten signature is offered for hiding, never hidden by default.
+- **Verification codes stay readable.** QR codes and 2D-Doc are left uncovered. You’re warned if a mask touches one.
+
+Good to know: detection covers common formats, not every case. Review each document before you confirm it.
+
+## 4. Send only the pages that matter.
+
+A tax notice or a contract often has pages the landlord doesn’t need. Leave them out of the file you send.
+
+- **One click removes a page.** One click puts it back.
+- **Pages suggested for you.** Blank pages and general-information pages (terms, legal notices, “how to pay”) are suggested.
+- **Never the pages that count.** The first page and pages carrying a verification code are not suggested.
+
+Good to know: your original file is never changed.
+
+## 5. A watermark naming the recipient, on every document.
+
+Enter the agency and the property address. The wording is written for you and applied to the whole file.
+
+- **The right wording, without writing it.** Recipient, purpose and date, for example: “Copy – Rental application 12 rue des Lilas – For Agence Saône only – 11/2026”.
+- **A preview before you save.** You see the watermark on a page as you type.
+- **Another recipient? Everything is redone.** Change the name: every copy is prepared again, and your masks stay in place.
+- **Off the verification codes.** The watermark stays clear of QR codes and 2D-Doc, so the landlord can still check the document.
+- **In French or English.** The wording follows the language you choose.
+
+Good to know: your masks are kept as long as the app stays open.
+
+## 6. Every file is checked before it is saved.
+
+A mask that leaves the text underneath protects nothing. Monsieur Dossier checks that for you, file by file.
+
+- **The hidden text no longer exists.** Each page is flattened into an image: what is under a mask is no longer in the file.
+- **The file is reopened and checked.** No text, font, metadata or attachment left, and each hidden area no longer resembles the original. If a check fails, the file isn’t saved.
+- **A second reading.** Each page is read again once masked. A sensitive number that is still readable is flagged, with a link to fix it.
+- **Nothing from the original comes along.** Author, software, creation dates: no metadata is copied over.
+
+Good to know: the second reading warns you, it does not block saving. The decision stays yours.
+
+## 7. Everything saves in one go, ready to attach.
+
+One click, one folder: the copies are named and combined the way you’re asked for them.
+
+- **One folder per send.** Named after the agency, the address and the date.
+- **Clear file names.** Each file is named after the document.
+- **Combine the way the portal asks.** Your last three payslips as one file, the rest separate: drag the documents together.
+- **A ZIP, if you prefer.** For a single attachment.
+- **With several people.** One subfolder per person, flatmates and guarantors included.
+
+Good to know: a send is prepared for one recipient at a time.
+
+## 8. It all happens on your Mac.
+
+None of these steps sends your documents anywhere.
+
+- **No account, no server.** Nothing to create, nothing to connect.
+- **A program, not a service.** Python code installed on your Mac. Numbers are found by fixed rules. Scans are read by the text recognition built into macOS, on your Mac. No online AI.
+- **No connection needed.** Turn off Wi-Fi: everything works the same, reading scans included.
+- **No usage tracking.** The app collects nothing.
+
+## Prepare your rental file.
+
+For Mac. No account, nothing uploaded. [Download for Mac](https://monsieurdossier.com/en/#download)
+
+---
+
+Monsieur Dossier — your French rental file, ready and protected. Independent app, not affiliated with the French government. No data collected.
+
+---
+
+# Monsieur Dossier and DossierFacile: who does what
+
+> Monsieur Dossier works alongside DossierFacile, the French government’s service: what each one does, and how to use them together.
+
+Language: English · [Version française](https://monsieurdossier.com/dossierfacile.html.md) · [Web page](https://monsieurdossier.com/en/dossierfacile.html) · Updated: 23 November 2026
+
+## It works alongside DossierFacile, not against it.
+
+[DossierFacile](https://www.dossierfacile.logement.gouv.fr/), the French government’s free service, verifies your file and shares it by link. Monsieur Dossier protects the files you send yourself, when the link isn’t accepted or you’re asked for attachments.
+
+| | DossierFacile | Monsieur Dossier |
+|---|---|---|
+| Its job | Verify your file and share it | Prepare and protect your files |
+| Your documents | Uploaded to government servers, with an account | Stay on your Mac, no account |
+| Verification | Yes: a government “verified” label | No: nothing is certified |
+| Sharing | One revocable link per recipient | Files you attach yourself |
+| Hidden data | None: complete documents required | IBAN, bank codes, social security no., MRZ, plus your own areas |
+| Watermark | Fixed wording, no name or date | Recipient, address and date |
+| Language | French | English and French |
+
+## How to use them together
+
+1. **Get verified.** Create your DossierFacile and share its link whenever the landlord accepts it.
+2. **Protect the rest.** Asked for files by email or on a portal? Prepare them with Monsieur Dossier.
+3. **Keep what’s checkable.** Never hide your tax number, the tax notice reference, QR codes or your photo.
+
+Monsieur Dossier is an independent app. It is not a government service, is not affiliated with DossierFacile, and does not check that your documents are genuine.
+
+---
+
+Monsieur Dossier — your French rental file, ready and protected. Independent app, not affiliated with the French government. No data collected.
+
+---
+
+# Contact — Monsieur Dossier
+
+> Feedback or a bug in Monsieur Dossier? Write to us. Never send your documents.
+
+Language: English · [Version française](https://monsieurdossier.com/contact.html.md) · [Web page](https://monsieurdossier.com/en/contact.html) · Updated: 23 November 2026
+
+## Feedback or a bug? Write to us.
+
+Monsieur Dossier is a young app: your feedback decides what comes next. Tell us what helped, what got in your way, what is missing.
+
+**Never send your documents.** No ID, no payslip, no screenshot of a document, not even as an attachment. Just describe the problem in words.
+
+Write to us at [contact@monsieurdossier.com](mailto:contact@monsieurdossier.com)
+
+For a bug: what you were doing, what you expected, what happened, and your macOS version. If the button opens nothing, copy the address and write from your usual mailbox.
+
+---
+
+Monsieur Dossier — your French rental file, ready and protected. Independent app, not affiliated with the French government. The app collects no data.
+
+---
+
+# Monsieur Dossier — Dossier de location prêt et protégé, sur Mac
+
+> Monsieur Dossier est une application Mac qui prépare et protège votre dossier de location en France : pièces autorisées, données superflues masquées, copie au nom du destinataire. En français et en anglais, hors ligne.
+
+Langue : français · [English version](https://monsieurdossier.com/en/index.html.md) · [Page web](https://monsieurdossier.com/) · Mise à jour : 23 novembre 2026
+
+Déposez vos pièces. Monsieur Dossier les range, trouve ce qu’il faut masquer et prépare toutes les copies au nom du destinataire, en une fois. Sur votre Mac, sans compte ni envoi.
+
+- Sans compte
+- 100 % hors ligne
+- Français et anglais
+- Bêta gratuite
+- Version 1.2.0 du 23 novembre 2026
+- [Télécharger pour Mac](https://github.com/doudandyx/monsieur-dossier-site/releases/latest/download/MonsieurDossier.dmg)
+
+## Quatre étapes, et tout le dossier est prêt.
+
+Comptez environ une minute par document.
+
+1. **Déposez tout.** PDF, scans, photos d’iPhone, ou un dossier entier. Chaque pièce est rangée dans sa rubrique. Celle qu’un bailleur n’a pas le droit de demander est signalée. Collez la liste de l’agence : vous voyez ce qui manque.
+2. **Les masques sont déjà posés.** IBAN, RIB, n° de sécu et ligne MRZ sont repérés aux formats courants, même sur un scan ou une photo. Vous vérifiez et ajoutez les vôtres. Le texte masqué est détruit à l’enregistrement, pas seulement caché.
+3. **Un filigrane pour toutes les pièces.** Indiquez l’agence et l’adresse du logement : le texte est composé pour vous et évite les QR codes de vérification. Changez de destinataire : toutes les copies sont refaites.
+4. **Tout s’enregistre en une fois.** Chaque fichier est rouvert et contrôlé. Si un contrôle échoue, il n’est pas enregistré. Un dossier par envoi, et plusieurs pièces peuvent être réunies en un seul fichier.
+
+[Voir toutes les fonctionnalités](https://monsieurdossier.com/fonctionnalites.html)
+
+## Un dossier de location est un kit d’usurpation d’identité tout prêt.
+
+Pièce d’identité, avis d’imposition, bulletins de salaire, adresse : tout y est. Les fausses annonces existent pour le récupérer.
+
+- **Les fausses annonces.** Un « propriétaire » demande le dossier complet avant la visite, puis disparaît. Vos documents servent à ouvrir des crédits ou des comptes.
+- **Les envois en clair.** Un PDF envoyé par e-mail circule, se transfère, reste dans des boîtes de réception pendant des années.
+- **Le faux masquage.** Un rectangle noir posé dans un éditeur PDF laisse souvent le texte dessous, copiable. Le flou se retouche.
+
+## Le dossier de location, expliqué simplement.
+
+En France, un bailleur choisit son locataire sur dossier. Voici l’essentiel avant de l’envoyer.
+
+- **Quatre familles de pièces.** Identité, domicile actuel, activité (contrat, statut étudiant) et ressources (bulletins de salaire, avis d’imposition). La liste est fixée par la loi.
+- **Passeport ou titre de séjour.** Ils valent pièce d’identité. Monsieur Dossier repère la ligne de codes en bas du passeport (MRZ) pour la masquer. Votre photo et votre nom restent visibles.
+- **Le garant.** Beaucoup de bailleurs en demandent un. La garantie Visale d’Action Logement, gratuite, peut en tenir lieu sous conditions : vérifiez votre éligibilité sur [visale.fr](https://www.visale.fr/).
+- **Tout en anglais.** L’application et le filigrane existent en anglais. Vos pièces ne sont pas traduites : un bailleur peut demander une traduction.
+
+## Rien ne quitte votre Mac. Vous pouvez le vérifier.
+
+Monsieur Dossier n’a ni compte, ni serveur, ni statistiques. Coupez le Wi-Fi : tout fonctionne pareil.
+
+- **Traitement 100 % local.** L’application ne parle qu’à elle-même, sur 127.0.0.1. Aucune connexion vers Internet.
+- **Le texte masqué est détruit.** Chaque page est aplatie en image : ce qui est sous un masque n’existe plus dans le fichier.
+- **Métadonnées effacées.** Auteur, logiciel, dates de création : rien de l’original n’est recopié.
+- **Vos originaux intacts.** De nouveaux fichiers sont créés. Les vôtres ne sont jamais modifiés.
+
+**Comment ça marche, sans Internet.** Monsieur Dossier est un programme Python installé sur votre Mac, avec tout ce qu’il lui faut. Vos documents sont reconnus et les numéros à masquer trouvés par des règles fixes. Les scans et les photos sont lus par la reconnaissance de texte intégrée à macOS, sur votre Mac elle aussi. Aucune IA en ligne, aucun modèle à télécharger.
+
+## Un bailleur ne peut pas tout vous demander.
+
+Le [décret n° 2015-1437](https://www.legifrance.gouv.fr/loda/id/JORFTEXT000031444493) fixe une liste limitée de justificatifs pour une résidence principale. Le reste est interdit, et vous pouvez le refuser. Quand Monsieur Dossier reconnaît une pièce hors liste, il vous prévient.
+
+**Autorisé. Exemples de pièces demandables**
+
+- Une pièce d’identité (CNI, passeport, titre de séjour)
+- Un justificatif de domicile (3 dernières quittances, attestation d’hébergement…)
+- Contrat de travail ou attestation employeur
+- Les 3 derniers bulletins de salaire
+- Le dernier avis d’imposition
+
+**Interdit. Exemples de pièces à refuser**
+
+- Relevés de compte bancaire
+- Carte Vitale
+- Extrait de casier judiciaire
+- Dossier médical
+- Autorisation de prélèvement signée
+- Un versement d’argent avant la signature du bail
+
+Liste indicative, non exhaustive. Référence : décret n° 2015-1437 du 5 novembre 2015 (modifié en 2019), annexes I et II. Vérifiez le texte en vigueur sur [legifrance.gouv.fr](https://www.legifrance.gouv.fr/loda/id/JORFTEXT000031444493).
+
+## Monsieur Dossier pour Mac
+
+Version bêta gratuite. Gratuite pendant la bêta. Pour les Mac Intel et Apple Silicon. Vos documents restent sur votre Mac. Version 1.2.0 du 23 novembre 2026.
+
+[Télécharger pour Mac](https://github.com/doudandyx/monsieur-dossier-site/releases/latest/download/MonsieurDossier.dmg)
+
+### Au premier lancement
+
+Cette version bêta n’est pas encore validée par Apple. Au premier lancement, macOS affiche un avertissement : il signifie qu’Apple n’a pas contrôlé l’application, pas qu’un problème a été trouvé. Quatre étapes, une seule fois.
+
+1. **Installez.** Ouvrez le fichier téléchargé et glissez Monsieur Dossier dans le dossier Applications.
+2. **Ouvrez l’application.** macOS affiche l’avertissement. Fermez-le avec « Terminé » : ne mettez pas l’application à la corbeille.
+3. **Autorisez.** Dans Réglages Système, ouvrez « Confidentialité et sécurité », descendez jusqu’à « Sécurité » et cliquez sur « Ouvrir quand même ». Le bouton reste affiché environ une heure.
+4. **Confirmez.** Validez avec « Ouvrir quand même », puis saisissez le mot de passe de votre Mac. Les fois suivantes, l’application s’ouvre normalement.
+
+Étapes valables pour macOS 15 et suivants. Sur une version plus ancienne : clic droit sur l’application, puis « Ouvrir ». Une version validée par Apple est en préparation. Elle s’ouvrira sans ces étapes.
+
+## Questions fréquentes
+
+### Qu’est-ce que Monsieur Dossier ?
+
+Monsieur Dossier est une application pour Mac qui prépare les pièces d’un dossier de location en France. Elle range vos documents, repère aux formats courants les numéros inutiles au bailleur (IBAN, numéro de sécurité sociale, ligne de codes du passeport) et pose les masques, que vous vérifiez. Elle ajoute ensuite un filigrane au nom du destinataire. Tout se fait sur votre Mac, sans compte et sans connexion Internet.
+
+### Quelle différence avec DossierFacile ?
+
+DossierFacile est le service de l’État : il vérifie votre dossier et le partage par lien, sans rien masquer. Monsieur Dossier ne vérifie rien : il protège les fichiers que vous envoyez vous-même, en masquant le superflu et en nommant le destinataire. Les deux se complètent. [Voir la comparaison détaillée](https://monsieurdossier.com/dossierfacile.html)
+
+### Monsieur Dossier est-il un service officiel ?
+
+Non. C’est une application indépendante, sans lien avec l’État ni avec DossierFacile. Elle ne certifie pas vos pièces.
+
+### L’application est-elle disponible ?
+
+Oui, pour Mac, en version bêta gratuite : téléchargez-la depuis cette page.
+
+### Existe-t-il une version pour Windows, iPhone ou Android ?
+
+Non. Monsieur Dossier fonctionne seulement sur Mac, avec un processeur Intel ou Apple Silicon.
+
+### Pourquoi macOS affiche-t-il un avertissement au premier lancement ?
+
+Parce que cette version bêta n’est pas encore validée par Apple. L’avertissement signifie qu’Apple n’a pas contrôlé l’application, pas qu’un problème a été trouvé. Une confirmation dans les Réglages Système suffit, une seule fois.
+
+### Mes documents sont-ils envoyés quelque part ?
+
+Non. Le traitement se fait entièrement sur votre Mac. L’application n’a pas de serveur, ne crée pas de compte et ne collecte aucune statistique. Elle fonctionne sans connexion Internet.
+
+### Un bailleur peut-il refuser une copie masquée ?
+
+Aucun texte ne tranche. Masquez seulement ce qui ne sert ni à juger votre solvabilité ni à vérifier la pièce, et gardez vos originaux : un bailleur peut demander à les voir.
+
+### Pourquoi pas un simple flou ?
+
+Parce qu’un flou ou une pixelisation peuvent être inversés. Seuls des masques opaques sont proposés : une bande noire, ou un effet « dépoli » généré à partir de bruit aléatoire, jamais à partir de ce qui est caché.
+
+### Comment savoir que le fichier est sûr ?
+
+Après chaque export, le PDF est rouvert et contrôlé : plus de texte, de police, de métadonnées ni de pièce jointe, et chaque zone masquée ne ressemble plus à l’original. Si un contrôle échoue, le fichier n’est pas enregistré.
+
+### Que faut-il écrire dans le filigrane ?
+
+Le destinataire, l’objet et la date, par exemple : « Copie – Dossier location 12 rue des Lilas – Usage exclusif Agence Saône – 11/2026 ». Une copie volée devient difficile à réutiliser ailleurs.
+
+### Faut-il masquer le QR code de l’avis d’imposition ?
+
+Non. Le bailleur s’en sert pour vérifier l’authenticité du document. Les QR codes et 2D-Doc sont détectés et laissés sans filigrane. Vous êtes prévenu si un masque en couvre un, et l’export contrôle qu’ils sont toujours détectés.
+
+---
+
+Monsieur Dossier — votre dossier de location, prêt et protégé. Application indépendante, non affiliée à l’État. Aucune donnée collectée.
+
+---
+
+# Fonctionnalités : ranger, masquer, filigraner — Monsieur Dossier
+
+> Ce que fait Monsieur Dossier, étape par étape : ranger les pièces, trouver ce qui manque, masquer, apposer le filigrane, contrôler et enregistrer.
+
+Langue : français · [English version](https://monsieurdossier.com/en/features.html.md) · [Page web](https://monsieurdossier.com/fonctionnalites.html) · Mise à jour : 23 novembre 2026
+
+De vos fichiers en vrac au dossier prêt à joindre : ce que l’application fait à chaque étape, et ce qu’elle vous laisse décider.
+
+## 1. Déposez tout, c’est rangé.
+
+Glissez vos fichiers ou un dossier entier dans la fenêtre. Chaque pièce est lue, reconnue et classée.
+
+- **PDF, scans et photos.** Un PDF de la banque, un scan, une photo prise à l’iPhone : tout passe. Un dossier est ajouté avec ses sous-dossiers.
+- **Rangé par rubrique.** Identité, domicile, activité, ressources : les quatre rubriques prévues par la loi.
+- **Plusieurs personnes.** Colocataires et garants ont chacun leur dossier, dans la même fenêtre.
+- **Les pièces interdites sont signalées.** Un relevé bancaire ou une carte Vitale ? L’application vous dit qu’un bailleur n’a pas le droit de le demander, avec la référence du texte.
+
+À savoir : le classement est une proposition. Vous pouvez déplacer une pièce d’une rubrique à l’autre.
+
+## 2. Sachez ce qui manque avant d’envoyer.
+
+Collez la liste de pièces demandée par l’agence. Monsieur Dossier la compare à ce que vous avez déjà.
+
+- **Ligne par ligne.** Chaque pièce demandée est marquée fournie ou manquante.
+- **Texte ou image.** Collez le texte de l’e-mail, ou déposez une capture d’écran de la liste.
+- **Les demandes hors liste ressortent.** Si l’agence demande une pièce qu’elle n’a pas le droit d’exiger, vous le voyez.
+
+À savoir : la liste est lue sur votre Mac, comme le reste.
+
+## 3. Les masques sont déjà posés.
+
+À l’ouverture d’une pièce, les numéros qui n’ont rien à faire dans un dossier de location sont déjà couverts. Vous vérifiez, vous ajoutez, vous validez.
+
+- **Repérés pour vous.** IBAN, RIB, numéro de sécurité sociale, numéro de carte, ligne de codes du passeport : trouvés aux formats courants, sur un PDF comme sur un scan ou une photo.
+- **Chaque zone est nommée.** « IBAN », « N° de sécurité sociale » : vous savez ce qui est masqué, et pourquoi.
+- **Vos propres zones.** Tracez un rectangle sur ce que vous voulez cacher.
+- **Masquer partout.** Après une zone tracée, la même valeur est cherchée dans toutes vos pièces et proposée au masquage en un clic.
+- **La signature, si vous voulez.** Une signature manuscrite est proposée au masquage, jamais masquée d’office.
+- **Les codes de vérification restent lisibles.** QR codes et 2D-Doc ne sont pas couverts. Vous êtes prévenu si un masque en touche un.
+
+À savoir : la détection couvre les formats courants, pas tous les cas. Relisez chaque pièce avant de la valider.
+
+## 4. N’envoyez que les pages utiles.
+
+Un avis d’imposition ou un contrat contient souvent des pages qui ne servent pas au bailleur. Retirez-les du fichier envoyé.
+
+- **Une page se retire en un clic.** Et se remet de la même façon.
+- **Des pages proposées.** Les pages blanches et les pages d’informations générales (conditions, mentions, « comment payer ») vous sont suggérées.
+- **Jamais les pages qui comptent.** La première page et les pages qui portent un code de vérification ne sont pas proposées.
+
+À savoir : votre fichier d’origine n’est jamais modifié.
+
+## 5. Un filigrane au nom du destinataire, sur toutes les pièces.
+
+Indiquez l’agence et l’adresse du logement. La mention est rédigée et appliquée à tout le dossier.
+
+- **La bonne mention, sans l’écrire.** Destinataire, objet et date, par exemple : « Copie – Dossier location 12 rue des Lilas – Usage exclusif Agence Saône – 11/2026 ».
+- **Un aperçu avant d’enregistrer.** Vous voyez le filigrane sur une page pendant que vous tapez.
+- **Un autre destinataire ? Tout est refait.** Changez le nom : toutes les copies sont préparées à nouveau, vos masques restent en place.
+- **Hors des codes de vérification.** Le filigrane évite les QR codes et 2D-Doc, pour que le bailleur puisse toujours contrôler le document.
+- **En français ou en anglais.** La mention suit la langue choisie.
+
+À savoir : vos masques sont gardés tant que l’application reste ouverte.
+
+## 6. Chaque fichier est contrôlé avant d’être enregistré.
+
+Un masque qui laisse le texte dessous ne protège rien. Monsieur Dossier le vérifie pour vous, fichier par fichier.
+
+- **Le texte caché n’existe plus.** Chaque page est aplatie en image : ce qui est sous un masque n’est plus dans le fichier.
+- **Le fichier est rouvert et vérifié.** Plus de texte, de police, de métadonnées ni de pièce jointe, et chaque zone masquée ne ressemble plus à l’original. Si un contrôle échoue, le fichier n’est pas enregistré.
+- **Une seconde lecture.** Chaque page est relue une fois masquée. Un numéro sensible encore lisible vous est signalé, avec un lien pour corriger.
+- **Rien de l’original ne suit.** Auteur, logiciel, dates de création : aucune métadonnée n’est recopiée.
+
+À savoir : la seconde lecture vous avertit, elle ne bloque pas l’enregistrement. La décision reste la vôtre.
+
+## 7. Tout s’enregistre en une fois, prêt à joindre.
+
+Un clic, un dossier : les copies sont nommées et regroupées comme on vous les demande.
+
+- **Un dossier par envoi.** Nommé d’après l’agence, l’adresse et la date.
+- **Des fichiers bien nommés.** Chaque fichier porte le nom de la pièce.
+- **Regroupez comme le portail le demande.** Vos trois derniers bulletins de salaire en un seul fichier, le reste séparé : glissez les pièces ensemble.
+- **Un ZIP, si vous préférez.** Pour une seule pièce jointe.
+- **À plusieurs.** Un sous-dossier par personne, colocataires et garants compris.
+
+À savoir : un envoi se prépare pour un destinataire à la fois.
+
+## 8. Tout se passe sur votre Mac.
+
+Aucune de ces étapes n’envoie vos documents quelque part.
+
+- **Sans compte ni serveur.** Rien à créer, rien à connecter.
+- **Un programme, pas un service.** Du code Python installé sur votre Mac. Les numéros sont trouvés par des règles fixes. Les scans sont lus par la reconnaissance de texte de macOS, sur votre Mac. Aucune IA en ligne.
+- **Sans connexion.** Coupez le Wi-Fi : tout fonctionne pareil, lecture des scans comprise.
+- **Aucune mesure d’usage.** L’application ne collecte rien.
+
+## Préparez votre dossier.
+
+Pour Mac. Sans compte, sans envoi. [Télécharger pour Mac](https://monsieurdossier.com/#download)
+
+---
+
+Monsieur Dossier — votre dossier de location, prêt et protégé. Application indépendante, non affiliée à l’État. Aucune donnée collectée.
+
+---
+
+# Monsieur Dossier et DossierFacile : qui fait quoi
+
+> Monsieur Dossier complète DossierFacile, le service de l’État : ce que fait chacun, et comment les utiliser ensemble.
+
+Langue : français · [English version](https://monsieurdossier.com/en/dossierfacile.html.md) · [Page web](https://monsieurdossier.com/dossierfacile.html) · Mise à jour : 23 novembre 2026
+
+## Le complément de DossierFacile, pas son concurrent.
+
+[DossierFacile](https://www.dossierfacile.logement.gouv.fr/), le service gratuit de l’État, vérifie votre dossier et le partage par lien. Monsieur Dossier protège les fichiers que vous envoyez vous-même, quand le lien n’est pas accepté ou qu’on vous demande des pièces jointes.
+
+| | DossierFacile | Monsieur Dossier |
+|---|---|---|
+| Son rôle | Vérifier votre dossier et le partager | Préparer et protéger vos fichiers |
+| Vos documents | Déposés sur les serveurs de l’État, avec un compte | Restent sur votre Mac, sans compte |
+| Vérification | Oui : label « vérifié » par l’État | Non : aucune certification |
+| Partage | Lien par destinataire, révocable | Des fichiers à joindre vous-même |
+| Données masquées | Aucune : pièces complètes exigées | IBAN, RIB, n° de sécu, MRZ, et vos zones |
+| Filigrane | Mention fixe, sans nom ni date | Destinataire, adresse et date |
+| Langue | Français | Français et anglais |
+
+## Comment les utiliser ensemble
+
+1. **Faites vérifier.** Créez votre DossierFacile et partagez son lien quand le bailleur l’accepte.
+2. **Protégez le reste.** On vous demande des fichiers par e-mail ou sur un portail ? Préparez-les avec Monsieur Dossier.
+3. **Laissez le vérifiable.** Ne masquez jamais le numéro fiscal, la référence de l’avis d’imposition, les QR codes ni votre photo.
+
+Monsieur Dossier est une application indépendante. Elle n’est ni un service de l’État ni affiliée à DossierFacile, et ne vérifie pas l’authenticité de vos pièces.
+
+---
+
+Monsieur Dossier — votre dossier de location, prêt et protégé. Application indépendante, non affiliée à l’État. Aucune donnée collectée.
+
+---
+
+# Contact — Monsieur Dossier
+
+> Un avis ou un bug sur Monsieur Dossier ? Écrivez-nous. N’envoyez jamais vos documents.
+
+Langue : français · [English version](https://monsieurdossier.com/en/contact.html.md) · [Page web](https://monsieurdossier.com/contact.html) · Mise à jour : 23 novembre 2026
+
+## Un avis, un bug ? Écrivez-nous.
+
+Monsieur Dossier est une application jeune : vos retours décident de la suite. Dites-nous ce qui vous a aidé, ce qui vous a bloqué, ce qui manque.
+
+**N’envoyez jamais vos documents.** Ni pièce d’identité, ni bulletin de paie, ni capture d’écran d’un document, même en pièce jointe. Décrivez simplement le problème avec des mots.
+
+Écrivez-nous à [contact@monsieurdossier.com](mailto:contact@monsieurdossier.com)
+
+Pour un bug : ce que vous faisiez, ce que vous attendiez, ce qui s’est passé, et votre version de macOS. Si le bouton n’ouvre rien, copiez l’adresse et écrivez depuis votre messagerie habituelle.
+
+---
+
+Monsieur Dossier — votre dossier de location, prêt et protégé. Application indépendante, non affiliée à l’État. L’application ne collecte aucune donnée.

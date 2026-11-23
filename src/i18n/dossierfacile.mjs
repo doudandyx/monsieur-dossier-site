@@ -1,0 +1,62 @@
+/* Textes de la page, en français et en anglais. Repris tels quels de dossierfacile.html le 23 novembre 2026. */
+export const T = {
+fr:{
+  back:"← Retour à l’accueil",
+  title:"Monsieur Dossier et DossierFacile : qui fait quoi",
+  crumb:"Monsieur Dossier et DossierFacile",
+  desc:"Monsieur Dossier complète DossierFacile, le service de l’État : ce que fait chacun, et comment les utiliser ensemble.",
+  cmpCap:"Comparaison de DossierFacile et de Monsieur Dossier",
+  togetherH:"Comment les utiliser ensemble",
+  dfEy:"Avec DossierFacile",
+  dfH:"Le complément de DossierFacile, pas son concurrent.",
+  dfP:"[DossierFacile](link:dossierfacile), le service gratuit de l’État, vérifie votre dossier et le partage par lien. Monsieur Dossier protège les fichiers que vous envoyez vous-même, quand le lien n’est pas accepté ou qu’on vous demande des pièces jointes.",
+  cmpHd:["","DossierFacile","Monsieur Dossier"],
+  cmp:[
+    ["Son rôle","Vérifier votre dossier et le partager","Préparer et protéger vos fichiers"],
+    ["Vos documents","Déposés sur les serveurs de l’État, avec un compte","Restent sur votre Mac, sans compte"],
+    ["Vérification","Oui : label « vérifié » par l’État","Non : aucune certification"],
+    ["Partage","Lien par destinataire, révocable","Des fichiers à joindre vous-même"],
+    ["Données masquées","Aucune : pièces complètes exigées","IBAN, RIB, n° de sécu, MRZ, et vos zones"],
+    ["Filigrane","Mention fixe, sans nom ni date","Destinataire, adresse et date"],
+    ["Langue","Français","Français et anglais"]
+  ],
+  t1h:"1. Faites vérifier",
+  t1p:"Créez votre DossierFacile et partagez son lien quand le bailleur l’accepte.",
+  t2h:"2. Protégez le reste",
+  t2p:"On vous demande des fichiers par e-mail ou sur un portail ? Préparez-les avec Monsieur Dossier.",
+  t3h:"3. Laissez le vérifiable",
+  t3p:"Ne masquez jamais le numéro fiscal, la référence de l’avis d’imposition, les QR codes ni votre photo.",
+  dfSrc:"Monsieur Dossier est une application indépendante. Elle n’est ni un service de l’État ni affiliée à DossierFacile, et ne vérifie pas l’authenticité de vos pièces.",
+  foot1:"Monsieur Dossier — votre dossier de location, prêt et protégé.",
+  foot2:"Application indépendante, non affiliée à l’État. Aucune donnée collectée.", footC:"Un avis, un bug ? Écrivez-nous"
+},
+en:{
+  back:"← Back to home",
+  title:"Monsieur Dossier and DossierFacile: who does what",
+  crumb:"Monsieur Dossier and DossierFacile",
+  desc:"Monsieur Dossier works alongside DossierFacile, the French government’s service: what each one does, and how to use them together.",
+  cmpCap:"DossierFacile and Monsieur Dossier compared",
+  togetherH:"How to use them together",
+  dfEy:"With DossierFacile",
+  dfH:"It works alongside DossierFacile, not against it.",
+  dfP:"[DossierFacile](link:dossierfacile), the French government’s free service, verifies your file and shares it by link. Monsieur Dossier protects the files you send yourself, when the link isn’t accepted or you’re asked for attachments.",
+  cmpHd:["","DossierFacile","Monsieur Dossier"],
+  cmp:[
+    ["Its job","Verify your file and share it","Prepare and protect your files"],
+    ["Your documents","Uploaded to government servers, with an account","Stay on your Mac, no account"],
+    ["Verification","Yes: a government “verified” label","No: nothing is certified"],
+    ["Sharing","One revocable link per recipient","Files you attach yourself"],
+    ["Hidden data","None: complete documents required","IBAN, bank codes, social security no., MRZ, plus your own areas"],
+    ["Watermark","Fixed wording, no name or date","Recipient, address and date"],
+    ["Language","French","English and French"]
+  ],
+  t1h:"1. Get verified",
+  t1p:"Create your DossierFacile and share its link whenever the landlord accepts it.",
+  t2h:"2. Protect the rest",
+  t2p:"Asked for files by email or on a portal? Prepare them with Monsieur Dossier.",
+  t3h:"3. Keep what’s checkable",
+  t3p:"Never hide your tax number, the tax notice reference, QR codes or your photo.",
+  dfSrc:"Monsieur Dossier is an independent app. It is not a government service, is not affiliated with DossierFacile, and does not check that your documents are genuine.",
+  foot1:"Monsieur Dossier — your French rental file, ready and protected.",
+  foot2:"Independent app, not affiliated with the French government. No data collected.", footC:"Feedback or a bug? Contact us"
+}};
