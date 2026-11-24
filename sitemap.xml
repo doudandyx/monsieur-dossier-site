@@ -56,4 +56,144 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://monsieurdossier.com/en/contact.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://monsieurdossier.com/en/contact.html"/>
   </url>
+  <url>
+    <loc>https://monsieurdossier.com/guides/</loc>
+    <lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://monsieurdossier.com/guides/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://monsieurdossier.com/en/guides/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://monsieurdossier.com/en/guides/"/>
+  </url>
+  <url>
+    <loc>https://monsieurdossier.com/en/guides/</loc>
+    <lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://monsieurdossier.com/guides/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://monsieurdossier.com/en/guides/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://monsieurdossier.com/en/guides/"/>
+  </url>
+  <url>
+    <loc>https://monsieurdossier.com/guides/documents-proprietaire-peut-demander.html</loc>
+    <lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://monsieurdossier.com/guides/documents-proprietaire-peut-demander.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://monsieurdossier.com/en/guides/documents-landlord-can-ask-france.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://monsieurdossier.com/en/guides/documents-landlord-can-ask-france.html"/>
+  </url>
+  <url>
+    <loc>https://monsieurdossier.com/en/guides/documents-landlord-can-ask-france.html</loc>
+    <lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://monsieurdossier.com/guides/documents-proprietaire-peut-demander.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://monsieurdossier.com/en/guides/documents-landlord-can-ask-france.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://monsieurdossier.com/en/guides/documents-landlord-can-ask-france.html"/>
+  </url>
+  <url>
+    <loc>https://monsieurdossier.com/guides/documents-interdits-dossier-location.html</loc>
+    <lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://monsieurdossier.com/guides/documents-interdits-dossier-location.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://monsieurdossier.com/en/guides/documents-landlord-cannot-ask-france.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://monsieurdossier.com/en/guides/documents-landlord-cannot-ask-france.html"/>
+  </url>
+  <url>
+    <loc>https://monsieurdossier.com/en/guides/documents-landlord-cannot-ask-france.html</loc>
+    <lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://monsieurdossier.com/guides/documents-interdits-dossier-location.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://monsieurdossier.com/en/guides/documents-landlord-cannot-ask-france.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://monsieurdossier.com/en/guides/documents-landlord-cannot-ask-france.html"/>
+  </url>
+  <url>
+    <loc>https://monsieurdossier.com/guides/rib-dossier-location.html</loc>
+    <lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://monsieurdossier.com/guides/rib-dossier-location.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://monsieurdossier.com/en/guides/bank-details-rib-rental-france.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://monsieurdossier.com/en/guides/bank-details-rib-rental-france.html"/>
+  </url>
+  <url>
+    <loc>https://monsieurdossier.com/en/guides/bank-details-rib-rental-france.html</loc>
+    <lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://monsieurdossier.com/guides/rib-dossier-location.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://monsieurdossier.com/en/guides/bank-details-rib-rental-france.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://monsieurdossier.com/en/guides/bank-details-rib-rental-france.html"/>
+  </url>
+  <url>
+    <loc>https://monsieurdossier.com/guides/louer-sans-garant.html</loc>
+    <lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://monsieurdossier.com/guides/louer-sans-garant.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://monsieurdossier.com/en/guides/rent-in-france-without-guarantor.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://monsieurdossier.com/en/guides/rent-in-france-without-guarantor.html"/>
+  </url>
+  <url>
+    <loc>https://monsieurdossier.com/en/guides/rent-in-france-without-guarantor.html</loc>
+    <lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://monsieurdossier.com/guides/louer-sans-garant.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://monsieurdossier.com/en/guides/rent-in-france-without-guarantor.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://monsieurdossier.com/en/guides/rent-in-france-without-guarantor.html"/>
+  </url>
+  <url>
+    <loc>https://monsieurdossier.com/guides/dossier-location-arrivee-etranger.html</loc>
+    <lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://monsieurdossier.com/guides/dossier-location-arrivee-etranger.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://monsieurdossier.com/en/guides/rental-file-france-arriving-from-abroad.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://monsieurdossier.com/en/guides/rental-file-france-arriving-from-abroad.html"/>
+  </url>
+  <url>
+    <loc>https://monsieurdossier.com/en/guides/rental-file-france-arriving-from-abroad.html</loc>
+    <lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://monsieurdossier.com/guides/dossier-location-arrivee-etranger.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://monsieurdossier.com/en/guides/rental-file-france-arriving-from-abroad.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://monsieurdossier.com/en/guides/rental-file-france-arriving-from-abroad.html"/>
+  </url>
+  <url>
+    <loc>https://monsieurdossier.com/guides/texte-filigrane-dossier-location.html</loc>
+    <lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://monsieurdossier.com/guides/texte-filigrane-dossier-location.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://monsieurdossier.com/en/guides/watermark-text-rental-documents-france.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://monsieurdossier.com/en/guides/watermark-text-rental-documents-france.html"/>
+  </url>
+  <url>
+    <loc>https://monsieurdossier.com/en/guides/watermark-text-rental-documents-france.html</loc>
+    <lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://monsieurdossier.com/guides/texte-filigrane-dossier-location.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://monsieurdossier.com/en/guides/watermark-text-rental-documents-france.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://monsieurdossier.com/en/guides/watermark-text-rental-documents-france.html"/>
+  </url>
+  <url>
+    <loc>https://monsieurdossier.com/guides/masquer-informations-dossier-location.html</loc>
+    <lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://monsieurdossier.com/guides/masquer-informations-dossier-location.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://monsieurdossier.com/en/guides/what-to-hide-rental-documents-france.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://monsieurdossier.com/en/guides/what-to-hide-rental-documents-france.html"/>
+  </url>
+  <url>
+    <loc>https://monsieurdossier.com/en/guides/what-to-hide-rental-documents-france.html</loc>
+    <lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://monsieurdossier.com/guides/masquer-informations-dossier-location.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://monsieurdossier.com/en/guides/what-to-hide-rental-documents-france.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://monsieurdossier.com/en/guides/what-to-hide-rental-documents-france.html"/>
+  </url>
+  <url>
+    <loc>https://monsieurdossier.com/guides/caviarder-pdf-mac.html</loc>
+    <lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://monsieurdossier.com/guides/caviarder-pdf-mac.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://monsieurdossier.com/en/guides/redact-pdf-mac-without-uploading.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://monsieurdossier.com/en/guides/redact-pdf-mac-without-uploading.html"/>
+  </url>
+  <url>
+    <loc>https://monsieurdossier.com/en/guides/redact-pdf-mac-without-uploading.html</loc>
+    <lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://monsieurdossier.com/guides/caviarder-pdf-mac.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://monsieurdossier.com/en/guides/redact-pdf-mac-without-uploading.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://monsieurdossier.com/en/guides/redact-pdf-mac-without-uploading.html"/>
+  </url>
+  <url>
+    <loc>https://monsieurdossier.com/guides/dossier-location-envoye-escroc.html</loc>
+    <lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://monsieurdossier.com/guides/dossier-location-envoye-escroc.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://monsieurdossier.com/en/guides/rental-documents-sent-to-scammer-france.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://monsieurdossier.com/en/guides/rental-documents-sent-to-scammer-france.html"/>
+  </url>
+  <url>
+    <loc>https://monsieurdossier.com/en/guides/rental-documents-sent-to-scammer-france.html</loc>
+    <lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://monsieurdossier.com/guides/dossier-location-envoye-escroc.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://monsieurdossier.com/en/guides/rental-documents-sent-to-scammer-france.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://monsieurdossier.com/en/guides/rental-documents-sent-to-scammer-france.html"/>
+  </url>
 </urlset>

@@ -19,7 +19,7 @@ export function orgNode() {
 }
 
 /* Les nœuds communs : l'éditeur, le site, la page et son fil d'Ariane. */
-export function baseGraph(c, { title, description, about }) {
+export function baseGraph(c, { title, description, about, crumbs }) {
   const nodes = [
     orgNode(),
     { "@type": "WebSite", "@id": SITE_ID, url: SITE.origin + "/", name: SITE.name, inLanguage: SITE.langs, publisher: { "@id": ID.org } },
@@ -29,9 +29,11 @@ export function baseGraph(c, { title, description, about }) {
       ...(about ? { about } : {}) },
   ];
   if (c.page.id !== "home") {
+    /* crumbs : le chemin sous l'accueil, quand la page n'est pas au premier niveau (un guide). */
+    const trail = crumbs || [{ name: c.p(c.L.crumb || c.L.title), url: c.selfAbs }];
     nodes.push({ "@type": "BreadcrumbList", "@id": c.selfAbs + "#breadcrumb", itemListElement: [
       { "@type": "ListItem", position: 1, name: c.S.crumbHome, item: c.abs(c.url("home")) },
-      { "@type": "ListItem", position: 2, name: c.p(c.L.crumb || c.L.title), item: c.selfAbs },
+      ...trail.map((x, i) => ({ "@type": "ListItem", position: i + 2, name: x.name, item: x.url })),
     ] });
   }
   return nodes;
@@ -46,7 +48,7 @@ const ldScript = graph => `<script type="application/ld+json">${JSON.stringify({
 
 /* ---------- document ---------- */
 
-export function documentHtml(c, { title, description, graph, body, robots, bodyClass }) {
+export function documentHtml(c, { title, description, graph, body, robots, bodyClass, ogType = "website", published }) {
   const v = SITE.assets;
   const alternates = c.page.noindex ? "" : `
 <link rel="canonical" href="${c.selfAbs}">
@@ -63,7 +65,9 @@ ${SITE.langs.map(l => `<link rel="alternate" hreflang="${l}" href="${c.altAbs[l]
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
 <meta name="robots" content="${robots || "index, follow, max-snippet:-1, max-image-preview:large"}">${alternates}
-<meta property="og:type" content="website">
+<meta property="og:type" content="${ogType}">${published ? `
+<meta property="article:published_time" content="${published}">
+<meta property="article:modified_time" content="${c.page.updated}">` : ""}
 <meta property="og:site_name" content="${SITE.name}">
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(description)}">
@@ -124,12 +128,13 @@ export function nav(c, { links = "", cta = "", markSize = 28 } = {}) {
 
 export function footer(c, { contactLink = true } = {}) {
   const { L, S } = c;
-  const pages = [["features", S.footFeat], ["dossierfacile", S.footDf]].filter(([id]) => id !== c.page.id);
+  const pages = [["features", S.footFeat], ["dossierfacile", S.footDf], ["guides", S.footGuides]].filter(([id]) => id !== c.page.id);
+  const foot1 = L.foot1 || S.foot1, foot2 = L.foot2 || S.foot2, footC = L.footC || S.footC;   /* un guide n'a pas ses propres textes de pied de page */
   return `<footer>
   <div class="wrap">
-    <span>${c.h(L.foot1)}</span>
-    <span>${c.h(L.foot2)}</span>
-    ${contactLink && L.footC ? `<a href="${c.url("contact")}">${c.h(L.footC)}</a>` : ""}
+    <span>${c.h(foot1)}</span>
+    <span>${c.h(foot2)}</span>
+    ${contactLink ? `<a href="${c.url("contact")}">${c.h(footC)}</a>` : ""}
     <div class="foot-nav" role="navigation" aria-label="${esc(S.footNav)}">
       ${pages.map(([id, label]) => `<a href="${c.url(id)}">${c.h(label)}</a>`).join("\n      ")}
       <span class="upd">${c.h(S.updated)} <time datetime="${c.page.updated}">${longDate(c.page.updated, c.lang)}</time></span>

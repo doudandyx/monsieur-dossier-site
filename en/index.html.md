@@ -73,7 +73,7 @@ In France, [décret n° 2015-1437](https://www.legifrance.gouv.fr/loda/id/JORFTE
 - Signed direct-debit authorisation
 - Any payment before the lease is signed
 
-Indicative, non-exhaustive list. Reference: French décret n° 2015-1437 of 5 November 2015 (amended 2019), annexes I and II. Check the current text on [legifrance.gouv.fr](https://www.legifrance.gouv.fr/loda/id/JORFTEXT000031444493).
+Indicative, non-exhaustive list. Reference: French décret n° 2015-1437 of 5 November 2015 (amended in 2019 and 2022), annexes I and II. Check the current text on [legifrance.gouv.fr](https://www.legifrance.gouv.fr/loda/id/JORFTEXT000031444493).
 
 ## Monsieur Dossier for Mac
 

@@ -20,10 +20,12 @@ import * as features from "./src/pages/features.mjs";
 import * as dossierfacile from "./src/pages/dossierfacile.mjs";
 import * as contact from "./src/pages/contact.mjs";
 import * as notfound from "./src/pages/notfound.mjs";
+import { guidePage, guidesIndex } from "./src/pages/guide.mjs";
+import { GUIDES } from "./src/guides/index.mjs";
 import { llmsTxt, llmsFull } from "./src/llms.mjs";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
-const MODULES = [home, features, dossierfacile, contact, notfound];
+const MODULES = [home, features, dossierfacile, contact, guidesIndex(GUIDES), ...GUIDES.map(g => guidePage(g, GUIDES)), notfound];
 const PAGES = Object.fromEntries(MODULES.map(m => [m.page.id, m]));
 const CHECK = process.argv.includes("--check");
 
@@ -41,7 +43,7 @@ function context(mod, lang) {
   const urlIn = (l, id, hash = "") => pathOf(id, l) + hash;
   /* « page:nom » et « link:nom » dans une chaîne deviennent des adresses. */
   const resolve = (s, absolute) => String(s)
-    .replace(/\(page:([a-z0-9]+)(#[\w-]+)?\)/g, (m, id, hash) => `(${(absolute ? SITE.origin : "") + url(id, hash || "")})`)
+    .replace(/\(page:([a-z0-9-]+)(#[\w-]+)?\)/g, (m, id, hash) => `(${(absolute ? SITE.origin : "") + url(id, hash || "")})`)
     .replace(/\(link:(\w+)\)/g, (m, name) => { if (!SITE.links[name]) throw new Error(`Lien inconnu : link:${name}`); return `(${SITE.links[name]})`; });
   const L = page.T[lang], S = SHARED[lang];
   const c = {

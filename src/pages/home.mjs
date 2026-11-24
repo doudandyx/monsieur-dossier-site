@@ -143,6 +143,7 @@ export function body(c) {
       <div class="prob four">
         ${cards(["n1", "n2", "n3", "n4"])}
       </div>
+      <p class="more"><a href="${c.url("guide-etranger")}">${t("nMore")}</a></p>
     </div>
   </div>
 </section>
@@ -187,6 +188,7 @@ Monsieur&nbsp;&nbsp;IPv4&nbsp;&nbsp;<span class="g">127.0.0.1:49716 (LISTEN)</sp
         ${L.noL.map(s => `<li>${c.h(s)}</li>`).join("\n        ")}
       </ul></div>
     </div>
+    <p class="more"><a href="${c.url("guide-documents")}">${t("lMore")}</a></p>
     <p class="src">${t("lSrc")}</p>
   </div>
 </section>

@@ -73,7 +73,7 @@ Le [décret n° 2015-1437](https://www.legifrance.gouv.fr/loda/id/JORFTEXT000031
 - Autorisation de prélèvement signée
 - Un versement d’argent avant la signature du bail
 
-Liste indicative, non exhaustive. Référence : décret n° 2015-1437 du 5 novembre 2015 (modifié en 2019), annexes I et II. Vérifiez le texte en vigueur sur [legifrance.gouv.fr](https://www.legifrance.gouv.fr/loda/id/JORFTEXT000031444493).
+Liste indicative, non exhaustive. Référence : décret n° 2015-1437 du 5 novembre 2015 (modifié en 2019 et en 2022), annexes I et II. Vérifiez le texte en vigueur sur [legifrance.gouv.fr](https://www.legifrance.gouv.fr/loda/id/JORFTEXT000031444493).
 
 ## Monsieur Dossier pour Mac
 

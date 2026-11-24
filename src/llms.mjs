@@ -11,19 +11,25 @@ const NOTES = {
     features: "each step in detail, with its limits",
     dossierfacile: "who does what, and how to use the two together",
     contact: "how to send feedback or report a bug",
+    guides: "the list of guides, one question each",
   },
   fr: {
     home: "ce que fait l'application en quatre étapes, confidentialité, pièces qu'un bailleur peut demander, téléchargement et premier lancement, questions fréquentes",
     features: "chaque étape en détail, avec ses limites",
     dossierfacile: "qui fait quoi, et comment utiliser les deux ensemble",
     contact: "comment donner un avis ou signaler un bug",
+    guides: "la liste des guides, une question par guide",
   },
 };
-const NAMES = { en: { home: "Home", features: "Features", dossierfacile: "Monsieur Dossier and DossierFacile", contact: "Contact" },
-                fr: { home: "Accueil", features: "Fonctionnalités", dossierfacile: "Monsieur Dossier et DossierFacile", contact: "Contact" } };
+const NAMES = { en: { home: "Home", features: "Features", dossierfacile: "Monsieur Dossier and DossierFacile", contact: "Contact", guides: "Guides" },
+                fr: { home: "Accueil", features: "Fonctionnalités", dossierfacile: "Monsieur Dossier et DossierFacile", contact: "Contact", guides: "Guides" } };
 
-const links = (contexts, lang) => contexts.filter(x => x.c.lang === lang)
+const links = (contexts, lang) => contexts.filter(x => x.c.lang === lang && NAMES[lang][x.c.page.id])
   .map(({ c }) => `- [${NAMES[lang][c.page.id]}](${c.mdAbs}): ${NOTES[lang][c.page.id]}`).join("\n");
+
+/* Un guide : sa question en titre du lien, puis le début de sa réponse. */
+const guides = (contexts, lang) => contexts.filter(x => x.c.lang === lang && x.c.page.guide)
+  .map(({ c }) => `- [${c.p(c.L.title)}](${c.mdAbs}): ${c.p(c.L.desc)}`).join("\n");
 
 export function llmsTxt(contexts) {
   const r = SITE.release, o = SITE.origin;
@@ -56,6 +62,16 @@ ${links(contexts, "en")}
 ## Pages en français
 
 ${links(contexts, "fr")}
+
+## Guides in English
+
+Each guide answers one question about renting in France, with its sources and the date it was last updated.
+
+${guides(contexts, "en")}
+
+## Guides en français
+
+${guides(contexts, "fr")}
 
 ## Optional
 

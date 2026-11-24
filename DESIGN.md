@@ -24,10 +24,12 @@ Chaque page existe en français et en anglais, à deux adresses.
 | Fonctionnalités | `/fonctionnalites.html` | `/en/features.html` | Le détail, étape par étape, avec une illustration par section |
 | DossierFacile | `/dossierfacile.html` | `/en/dossierfacile.html` | Ce que fait chacun des deux services, et comment les utiliser ensemble |
 | Contact | `/contact.html` | `/en/contact.html` | L'adresse e-mail. Le formulaire d'avis s'ajoute quand son adresse d'envoi est renseignée dans `src/site.mjs` |
+| Guides | `/guides/` | `/en/guides/` | La liste des guides, une question par guide |
+| Un guide | `/guides/….html` | `/en/guides/….html` | Une question, sa réponse, le détail et les sources. Voir « Guides » |
 | Page introuvable | `/404.html` | la même | Écrite dans les deux langues, non indexée |
 | Mentions légales | `mentions-legales.html` | | Prête, **non publiée** tant que les informations du Kbis manquent. Encore écrite à l'ancienne manière (texte posé par JavaScript) : à porter dans `src/` avant publication |
 
-**Ordre de l'accueil.** Barre du haut, titre et bouton, document d'exemple, « Comment ça marche » (quatre étapes), « Le problème », « Vous arrivez en France ? », « Confidentialité » (bande sombre), « Ce que dit la loi », téléchargement (bande bleue) et premier lancement, questions fréquentes, pied de page.
+**Ordre de l'accueil.** Barre du haut, titre et bouton, document d'exemple, « Comment ça marche » (quatre étapes), « Le problème », « Vous arrivez en France ? », « Confidentialité » (bande sombre), « Ce que dit la loi », téléchargement (bande bleue) et premier lancement, questions fréquentes, pied de page. Deux liens mènent aux guides : sous « Vous arrivez en France ? » et sous les pièces autorisées.
 
 **Page Fonctionnalités.** Un sommaire en pastilles, puis huit sections dans l'ordre d'usage : ajouter, ce qui manque, masquer, pages, filigrane, contrôle, enregistrer, sur votre Mac. Chaque section a un numéro, un titre, une phrase, des points, une ligne « À savoir » qui dit la limite, et une illustration. Le texte et l'illustration alternent de côté d'une section à l'autre.
 
@@ -157,6 +159,27 @@ Dans une chaîne, deux notations : `[texte](adresse)` pour un lien, `*texte*` po
 Typographie française : on écrit une espace simple dans les dictionnaires, et le build pose l'espace insécable avant `?`, `!`, `:`, `%`, `»` et après `«`.
 
 **Pas de point-virgule dans les textes du site**, en français comme en anglais (règle posée par Tommy le 23 novembre 2026 : il donne au texte un air écrit par une IA). On coupe en deux phrases, ou on relie par une virgule et « et ». Le build échoue s'il en trouve un dans le texte d'une page, d'une version Markdown ou de `llms.txt`. La règle vaut pour le texte lu par le visiteur, pas pour le code ni pour ce fichier.
+
+## Guides
+
+Posé le 24 novembre 2026. Un guide répond à une question sur le dossier de location. Sa forme a un but : un moteur ou un assistant IA retient la page dont le titre et le meilleur paragraphe répondent à la question posée.
+
+1. **Le titre est la question**, telle qu'on la pose, en 70 caractères au plus. Il sert de `h1` et de titre de page, sans le nom du site.
+2. **Le premier paragraphe répond en entier**, en 60 à 100 mots. Il reprend les mots de la question et se comprend seul, cité hors de la page. Il ne renvoie pas à la suite.
+3. **Chaque section a une question pour titre**, et commence par sa réponse.
+4. **On répond avant de vendre.** L'application n'apparaît qu'en fin de page, dans le bloc « Avec Monsieur Dossier », avec ce qu'elle fait pour ce sujet et sa limite. Un guide peut nommer un service de l'État ou un outil de macOS quand c'est la bonne réponse.
+5. **Chaque affirmation juridique a une source officielle**, listée en bas de page avec son lien : Légifrance, service-public, CNIL, Cybermalveillance, Banque de France. Les sources lues et leur date sont notées en tête du fichier du guide.
+6. **On lit la source soi-même, en entier, avant d'écrire.** Jamais à travers un résumé, un souvenir ou le compte rendu d'un agent : la relecture du 24 novembre 2026 a trouvé des erreurs dans les trois. Une citation entre guillemets est recopiée de la page. Le titre de chaque source porte la date que son éditeur affiche (« page vérifiée le… », « mise à jour le… »), et le champ `checked` date notre dernière lecture.
+7. **La phrase dit d'où elle vient.** Ce qu'une page officielle écrit est attribué dans la phrase : « d'après service-public.gouv.fr », « la CNIL cite », « Apple écrit ». Ce qui vient de nous est nommé comme tel : « notre lecture » pour une déduction, « notre conseil » ou « à notre avis » pour un conseil, « constat général » pour un fait technique sans source officielle. Un plafond se dit comme un plafond (« jusqu'à 3 000 € »), pas comme un montant.
+8. **La source est liée près de l'affirmation, en plus de la liste du bas de page** (demande de Tommy du 24 novembre 2026). Chaque source de la liste porte une clé courte (`k`). Dans le texte, `[texte court](src:clé)` mène à cette source : « d'après [service-public.gouv.fr](src:sp) », « le [décret](src:decret) ». Le lien fait quelques mots, jamais une phrase, et le même lien n'est pas répété dans un même paragraphe. Le build refuse une clé inconnue, et une source listée que le texte ne cite nulle part, dans chaque langue. La liste du bas garde le détail : titre de la page, éditeur, date affichée par l'éditeur, et date de notre lecture.
+9. **Pas de section « Ce que les sources ne disent pas ».** Elle a existé quelques heures, Tommy l'a retirée le 24 novembre 2026. Ce qu'une source ne dit pas s'écrit dans la phrase concernée (règle 7), ou reste en note de rédaction en tête du fichier du guide, hors page.
+10. **Un montant porte sa date.** Un plafond ou un seuil est daté dans la phrase, avec un lien vers la page officielle qui le tient à jour. Les plafonds de Visale se relisent à chaque mise à jour du guide.
+11. **Tommy relit chaque affirmation juridique avant la mise en ligne.**
+12. Un guide existe dans les deux langues, avec la même structure : le build échoue sinon. Sa date `updated` change quand le texte change.
+
+Pour ajouter un guide : un fichier dans `src/guides/`, sur le modèle des autres, et une ligne dans `src/guides/index.mjs`. Le build écrit la page et sa version Markdown, et l'ajoute à la liste des guides, au plan du site et à `llms.txt`.
+
+**Mise en page (`.guide`).** Une colonne de 820 px. Le titre, puis la réponse dans une carte teintée (`.answer`), la date, les sections avec leurs liens courts vers les sources, la liste détaillée des sources avec la date de leur lecture, le bloc de l'application sur fond gris, et trois guides liés. La liste des guides reprend les cartes à deux colonnes de l'accueil.
 
 ## Lisible sans JavaScript, par les moteurs et les assistants IA
 

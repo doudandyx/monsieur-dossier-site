@@ -1,10 +1,11 @@
 /* Outils de texte du build.
-   Les chaînes des dictionnaires sont du texte simple. Deux notations sont admises :
-   [texte](adresse) pour un lien, *texte* pour une mise en valeur.
+   Les chaînes des dictionnaires sont du texte simple. Trois notations sont admises :
+   [texte](adresse) pour un lien, *texte* pour une mise en valeur, **texte** pour un mot en gras.
    Une adresse « page:nom » ou « page:nom#ancre » désigne une page du site, dans la langue en cours. */
 
 const NBSP = String.fromCharCode(160);   /* espace insécable */
 const LINK = /\[([^\]]+)\]\(([^)\s]+)\)/g;
+const STRONG = /\*\*([^*]+)\*\*/g;
 const EM = /\*([^*]+)\*/g;
 
 /* Typographie française : espace insécable avant ? ! : % » et après «. */
@@ -17,17 +18,17 @@ export const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").r
 
 /* HTML : texte échappé, liens et mises en valeur traduits en balises. */
 export function html(s, lang) {
-  return esc(typo(s, lang)).replace(LINK, (m, t, u) => `<a href="${u}">${t}</a>`).replace(EM, "<em>$1</em>");
+  return esc(typo(s, lang)).replace(LINK, (m, t, u) => `<a href="${u}">${t}</a>`).replace(STRONG, "<strong>$1</strong>").replace(EM, "<em>$1</em>");
 }
 
 /* Texte brut : attributs, métadonnées, données structurées. */
 export function plain(s, lang) {
-  return typo(s, lang).replace(LINK, "$1").replace(EM, "$1");
+  return typo(s, lang).replace(LINK, "$1").replace(STRONG, "$1").replace(EM, "$1");
 }
 
-/* Markdown : les liens restent, la mise en valeur disparaît. */
+/* Markdown : les liens et le gras restent, la mise en valeur disparaît. */
 export function md(s, lang) {
-  return typo(s, lang).replace(EM, "$1");
+  return typo(s, lang).replace(STRONG, "<b>$1</b>").replace(EM, "$1").replace(/<b>/g, "**").replace(/<\/b>/g, "**");
 }
 
 const MONTHS = {
