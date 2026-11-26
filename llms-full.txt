@@ -168,7 +168,11 @@ Drag your files or a whole folder into the window. Each document is read, recogn
 
 - **PDFs, scans and photos.** A PDF from your bank, a scan, an iPhone photo: they all work. A folder comes in with its subfolders.
 - **Filed by category.** Identity, address, occupation, income: the four categories set by French law.
-- **Several people.** Flatmates and guarantors each get their own file, in the same window.
+- **Recognised precisely.** Employer’s certificate, professional card, balance sheets, property tax notice: each document is named for what it is.
+- **A clear name for every document.** A file called “WhatsApp Image” or “scan_0012” takes the name of its document, for example “Payslip, October 2026”.
+- **Based on your situation.** Employee, self-employed, company, student or retired: the documents expected follow your situation. The app suggests it from your documents.
+- **Your name, read from your ID.** The app suggests it, and you decide. It names the files handed to the recipient.
+- **Several people.** Flatmates and guarantors each get their own file and their own situation, in the same window.
 - **Forbidden documents are flagged.** A bank statement or a health card? The app tells you a landlord isn’t allowed to ask for it, with the legal reference.
 
 Good to know: the filing is a suggestion. You can move a document to another category.
@@ -179,6 +183,7 @@ Paste the list of documents the agency asked for. Monsieur Dossier compares it w
 
 - **Line by line.** Each requested document is marked provided or missing.
 - **Text or image.** Paste the text of the email, or drop in a screenshot of the list.
+- **Only your lines.** When the list separates employees, the self-employed and companies, each person sees only the lines that apply to them.
 - **Requests outside the legal list stand out.** If the agency asks for a document it isn’t allowed to require, you see it.
 
 Good to know: the list is read on your Mac, like everything else.
@@ -1085,7 +1090,11 @@ Glissez vos fichiers ou un dossier entier dans la fenêtre. Chaque pièce est lu
 
 - **PDF, scans et photos.** Un PDF de la banque, un scan, une photo prise à l’iPhone : tout passe. Un dossier est ajouté avec ses sous-dossiers.
 - **Rangé par rubrique.** Identité, domicile, activité, ressources : les quatre rubriques prévues par la loi.
-- **Plusieurs personnes.** Colocataires et garants ont chacun leur dossier, dans la même fenêtre.
+- **Reconnu au plus précis.** Attestation de l’employeur, carte professionnelle, bilans, avis de taxe foncière : chaque pièce est nommée pour ce qu’elle est.
+- **Un nom clair pour chaque pièce.** Un fichier appelé « WhatsApp Image » ou « scan_0012 » prend le nom de sa pièce, par exemple « Bulletin de salaire, octobre 2026 ».
+- **Selon votre situation.** Salarié, indépendant, société, étudiant ou retraité : les pièces attendues suivent votre situation. L’application la propose d’après vos pièces.
+- **Votre nom, lu sur votre pièce d’identité.** L’application vous le propose, et vous décidez. Il nomme les fichiers remis au destinataire.
+- **Plusieurs personnes.** Colocataires et garants ont chacun leur dossier et leur situation, dans la même fenêtre.
 - **Les pièces interdites sont signalées.** Un relevé bancaire ou une carte Vitale ? L’application vous dit qu’un bailleur n’a pas le droit de le demander, avec la référence du texte.
 
 À savoir : le classement est une proposition. Vous pouvez déplacer une pièce d’une rubrique à l’autre.
@@ -1096,6 +1105,7 @@ Collez la liste de pièces demandée par l’agence. Monsieur Dossier la compare
 
 - **Ligne par ligne.** Chaque pièce demandée est marquée fournie ou manquante.
 - **Texte ou image.** Collez le texte de l’e-mail, ou déposez une capture d’écran de la liste.
+- **Seulement vos lignes.** Quand la liste distingue salariés, non-salariés et sociétés, chacun ne voit que les lignes qui le concernent.
 - **Les demandes hors liste ressortent.** Si l’agence demande une pièce qu’elle n’a pas le droit d’exiger, vous le voyez.
 
 À savoir : la liste est lue sur votre Mac, comme le reste.

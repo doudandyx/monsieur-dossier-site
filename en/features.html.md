@@ -12,7 +12,11 @@ Drag your files or a whole folder into the window. Each document is read, recogn
 
 - **PDFs, scans and photos.** A PDF from your bank, a scan, an iPhone photo: they all work. A folder comes in with its subfolders.
 - **Filed by category.** Identity, address, occupation, income: the four categories set by French law.
-- **Several people.** Flatmates and guarantors each get their own file, in the same window.
+- **Recognised precisely.** Employer’s certificate, professional card, balance sheets, property tax notice: each document is named for what it is.
+- **A clear name for every document.** A file called “WhatsApp Image” or “scan_0012” takes the name of its document, for example “Payslip, October 2026”.
+- **Based on your situation.** Employee, self-employed, company, student or retired: the documents expected follow your situation. The app suggests it from your documents.
+- **Your name, read from your ID.** The app suggests it, and you decide. It names the files handed to the recipient.
+- **Several people.** Flatmates and guarantors each get their own file and their own situation, in the same window.
 - **Forbidden documents are flagged.** A bank statement or a health card? The app tells you a landlord isn’t allowed to ask for it, with the legal reference.
 
 Good to know: the filing is a suggestion. You can move a document to another category.
@@ -23,6 +27,7 @@ Paste the list of documents the agency asked for. Monsieur Dossier compares it w
 
 - **Line by line.** Each requested document is marked provided or missing.
 - **Text or image.** Paste the text of the email, or drop in a screenshot of the list.
+- **Only your lines.** When the list separates employees, the self-employed and companies, each person sees only the lines that apply to them.
 - **Requests outside the legal list stand out.** If the agency asks for a document it isn’t allowed to require, you see it.
 
 Good to know: the list is read on your Mac, like everything else.

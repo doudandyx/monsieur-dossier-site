@@ -12,7 +12,11 @@ Glissez vos fichiers ou un dossier entier dans la fenêtre. Chaque pièce est lu
 
 - **PDF, scans et photos.** Un PDF de la banque, un scan, une photo prise à l’iPhone : tout passe. Un dossier est ajouté avec ses sous-dossiers.
 - **Rangé par rubrique.** Identité, domicile, activité, ressources : les quatre rubriques prévues par la loi.
-- **Plusieurs personnes.** Colocataires et garants ont chacun leur dossier, dans la même fenêtre.
+- **Reconnu au plus précis.** Attestation de l’employeur, carte professionnelle, bilans, avis de taxe foncière : chaque pièce est nommée pour ce qu’elle est.
+- **Un nom clair pour chaque pièce.** Un fichier appelé « WhatsApp Image » ou « scan_0012 » prend le nom de sa pièce, par exemple « Bulletin de salaire, octobre 2026 ».
+- **Selon votre situation.** Salarié, indépendant, société, étudiant ou retraité : les pièces attendues suivent votre situation. L’application la propose d’après vos pièces.
+- **Votre nom, lu sur votre pièce d’identité.** L’application vous le propose, et vous décidez. Il nomme les fichiers remis au destinataire.
+- **Plusieurs personnes.** Colocataires et garants ont chacun leur dossier et leur situation, dans la même fenêtre.
 - **Les pièces interdites sont signalées.** Un relevé bancaire ou une carte Vitale ? L’application vous dit qu’un bailleur n’a pas le droit de le demander, avec la référence du texte.
 
 À savoir : le classement est une proposition. Vous pouvez déplacer une pièce d’une rubrique à l’autre.
@@ -23,6 +27,7 @@ Collez la liste de pièces demandée par l’agence. Monsieur Dossier la compare
 
 - **Ligne par ligne.** Chaque pièce demandée est marquée fournie ou manquante.
 - **Texte ou image.** Collez le texte de l’e-mail, ou déposez une capture d’écran de la liste.
+- **Seulement vos lignes.** Quand la liste distingue salariés, non-salariés et sociétés, chacun ne voit que les lignes qui le concernent.
 - **Les demandes hors liste ressortent.** Si l’agence demande une pièce qu’elle n’a pas le droit d’exiger, vous le voyez.
 
 À savoir : la liste est lue sur votre Mac, comme le reste.
