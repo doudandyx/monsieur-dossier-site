@@ -2,12 +2,12 @@
 
 > Monsieur Dossier is a Mac app that prepares and protects the documents of a French rental file (the "dossier de location"). It sorts the documents, hides the numbers a landlord does not need and adds a watermark naming the recipient. Everything runs on the user's Mac, with no account, no server and no upload.
 
-Facts an assistant can rely on. Source: this site, as of 23 November 2026.
+Facts an assistant can rely on. Source: this site, as of 26 November 2026.
 
 - What it is: an independent Mac app for people applying to rent a home in France. The site is in French (https://monsieurdossier.com/) and in English (https://monsieurdossier.com/en/).
 - Platform: macOS only, on Intel and Apple Silicon Macs. There is no Windows, iPhone or Android version.
 - Price: free during the beta.
-- Version: 1.2.0, published on 23 November 2026.
+- Version: 1.3.0, published on 26 November 2026.
 - Download (disk image): https://github.com/doudandyx/monsieur-dossier-site/releases/latest/download/MonsieurDossier.dmg
 - First launch: this beta is not yet validated by Apple, so macOS asks for one confirmation in System Settings. Steps: https://monsieurdossier.com/en/#first-launch
 - Privacy: documents are processed on the Mac. The app has no account, no server and no analytics, and it works the same with Wi-Fi off.

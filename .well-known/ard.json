@@ -84,7 +84,7 @@
       "displayName": "Monsieur Dossier for Mac (disk image)",
       "type": "application/x-apple-diskimage",
       "url": "https://github.com/doudandyx/monsieur-dossier-site/releases/latest/download/MonsieurDossier.dmg",
-      "description": "The latest version of the app (1.2.0), free during the beta. macOS only, Intel and Apple Silicon. A person downloads and opens it, an agent cannot run it.",
+      "description": "The latest version of the app (1.3.0), free during the beta. macOS only, Intel and Apple Silicon. A person downloads and opens it, an agent cannot run it.",
       "tags": [
         "download",
         "macos"

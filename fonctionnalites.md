@@ -35,7 +35,7 @@ Collez la liste de pièces demandée par l’agence. Monsieur Dossier la compare
 - **Chaque zone est nommée.** « IBAN », « N° de sécurité sociale » : vous savez ce qui est masqué, et pourquoi.
 - **Vos propres zones.** Tracez un rectangle sur ce que vous voulez cacher.
 - **Masquer partout.** Après une zone tracée, la même valeur est cherchée dans toutes vos pièces et proposée au masquage en un clic.
-- **La signature, si vous voulez.** Une signature manuscrite est proposée au masquage, jamais masquée d’office.
+- **La signature, masquée d’office.** Une signature manuscrite repérée est masquée. Un clic la rend visible si le bailleur veut la voir.
 - **Les codes de vérification restent lisibles.** QR codes et 2D-Doc ne sont pas couverts. Vous êtes prévenu si un masque en touche un.
 
 À savoir : la détection couvre les formats courants, pas tous les cas. Relisez chaque pièce avant de la valider.

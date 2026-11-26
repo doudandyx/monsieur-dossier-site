@@ -47,7 +47,7 @@ fr:{
         ["Chaque zone est nommée.","« IBAN », « N° de sécurité sociale » : vous savez ce qui est masqué, et pourquoi."],
         ["Vos propres zones.","Tracez un rectangle sur ce que vous voulez cacher."],
         ["Masquer partout.","Après une zone tracée, la même valeur est cherchée dans toutes vos pièces et proposée au masquage en un clic."],
-        ["La signature, si vous voulez.","Une signature manuscrite est proposée au masquage, jamais masquée d’office."],
+        ["La signature, masquée d’office.","Une signature manuscrite repérée est masquée. Un clic la rend visible si le bailleur veut la voir."],
         ["Les codes de vérification restent lisibles.","QR codes et 2D-Doc ne sont pas couverts. Vous êtes prévenu si un masque en touche un."]
       ],
       note:"la détection couvre les formats courants, pas tous les cas. Relisez chaque pièce avant de la valider.",
@@ -155,7 +155,7 @@ en:{
         ["Each area is named.","“IBAN”, “Social security no.”: you know what is hidden, and why."],
         ["Your own areas.","Draw a box over anything you want to hide."],
         ["Hide everywhere.","After you draw an area, the same value is searched in all your documents and offered for hiding in one click."],
-        ["Your signature, if you want.","A handwritten signature is offered for hiding, never hidden by default."],
+        ["Your signature, hidden by default.","A handwritten signature the app spots is hidden. One click shows it again if the landlord wants to see it."],
         ["Verification codes stay readable.","QR codes and 2D-Doc are left uncovered. You’re warned if a mask touches one."]
       ],
       note:"detection covers common formats, not every case. Review each document before you confirm it.",

@@ -11,7 +11,7 @@ export const SITE = {
 
   /* À CHANGER À CHAQUE VERSION PUBLIÉE, puis relancer le build. Affiché sous le bouton de téléchargement,
      repris dans les données structurées, llms.txt et les versions Markdown. */
-  release: { version: "1.2.0", date: "2026-11-23" },
+  release: { version: "1.3.0", date: "2026-11-26" },
 
   /* Gratuit pendant la bêta. À revoir avec l'achat intégré : le prix est repris dans les données structurées. */
   price: { amount: "0", currency: "EUR" },

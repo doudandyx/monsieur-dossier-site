@@ -10,7 +10,7 @@ Déposez vos pièces. Monsieur Dossier les range, trouve ce qu’il faut masquer
 - 100 % hors ligne
 - Français et anglais
 - Bêta gratuite
-- Version 1.2.0 du 23 novembre 2026
+- Version 1.3.0 du 26 novembre 2026
 - [Télécharger pour Mac](https://github.com/doudandyx/monsieur-dossier-site/releases/latest/download/MonsieurDossier.dmg)
 
 ## Quatre étapes, et tout le dossier est prêt.
@@ -77,7 +77,7 @@ Liste indicative, non exhaustive. Référence : décret n° 2015-1437 du 5 nove
 
 ## Monsieur Dossier pour Mac
 
-Version bêta gratuite. Gratuite pendant la bêta. Pour les Mac Intel et Apple Silicon. Vos documents restent sur votre Mac. Version 1.2.0 du 23 novembre 2026.
+Version bêta gratuite. Gratuite pendant la bêta. Pour les Mac Intel et Apple Silicon. Vos documents restent sur votre Mac. Version 1.3.0 du 26 novembre 2026.
 
 [Télécharger pour Mac](https://github.com/doudandyx/monsieur-dossier-site/releases/latest/download/MonsieurDossier.dmg)
 

@@ -35,7 +35,7 @@ When you open a document, the numbers that have no place in a rental file are al
 - **Each area is named.** “IBAN”, “Social security no.”: you know what is hidden, and why.
 - **Your own areas.** Draw a box over anything you want to hide.
 - **Hide everywhere.** After you draw an area, the same value is searched in all your documents and offered for hiding in one click.
-- **Your signature, if you want.** A handwritten signature is offered for hiding, never hidden by default.
+- **Your signature, hidden by default.** A handwritten signature the app spots is hidden. One click shows it again if the landlord wants to see it.
 - **Verification codes stay readable.** QR codes and 2D-Doc are left uncovered. You’re warned if a mask touches one.
 
 Good to know: detection covers common formats, not every case. Review each document before you confirm it.

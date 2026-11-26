@@ -10,7 +10,7 @@ Drop in your documents. Monsieur Dossier sorts them, finds what to hide and prep
 - 100% offline
 - English and French
 - Free beta
-- Version 1.2.0, 23 November 2026
+- Version 1.3.0, 26 November 2026
 - [Download for Mac](https://github.com/doudandyx/monsieur-dossier-site/releases/latest/download/MonsieurDossier.dmg)
 
 ## Four steps, and the whole file is ready.
@@ -77,7 +77,7 @@ Indicative, non-exhaustive list. Reference: French décret n° 2015-1437 of 5 No
 
 ## Monsieur Dossier for Mac
 
-Free beta. Free during the beta. For Intel and Apple Silicon Macs. Your documents stay on your Mac. Version 1.2.0, 23 November 2026.
+Free beta. Free during the beta. For Intel and Apple Silicon Macs. Your documents stay on your Mac. Version 1.3.0, 26 November 2026.
 
 [Download for Mac](https://github.com/doudandyx/monsieur-dossier-site/releases/latest/download/MonsieurDossier.dmg)
 
