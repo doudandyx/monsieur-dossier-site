@@ -5,7 +5,8 @@
      node build.mjs --check    n'écrit rien : échoue si une page sur le disque n'est pas à jour
 
    Ce que le build écrit : une page HTML par langue (texte dans la page, sans JavaScript), sa version Markdown
-   (même adresse + « .md »), sitemap.xml, robots.txt, llms.txt, llms-full.txt et 404.html.
+   (même adresse + « .md », et aussi « .html » remplacé par « .md »), sitemap.xml, robots.txt, llms.txt,
+   llms-full.txt, .well-known/ard.json et 404.html.
    Tout le reste (site.css, site.js, theme.js, polices, images) est écrit à la main. */
 
 import fs from "node:fs";
@@ -22,7 +23,7 @@ import * as contact from "./src/pages/contact.mjs";
 import * as notfound from "./src/pages/notfound.mjs";
 import { guidePage, guidesIndex } from "./src/pages/guide.mjs";
 import { GUIDES } from "./src/guides/index.mjs";
-import { llmsTxt, llmsFull } from "./src/llms.mjs";
+import { llmsTxt, llmsFull, ardJson } from "./src/llms.mjs";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const MODULES = [home, features, dossierfacile, contact, guidesIndex(GUIDES), ...GUIDES.map(g => guidePage(g, GUIDES)), notfound];
@@ -73,7 +74,11 @@ for (const mod of MODULES) {
     const meta = mod.meta(c);
     out.set(fileOf(mod.page.id, lang), documentHtml(c, { ...meta, graph: mod.graph(c), body: mod.body(c) }));
     const markdown = mod.markdown(c);
-    if (markdown) out.set(fileOf(mod.page.id, lang) + ".md", markdown);
+    if (markdown) {
+      out.set(fileOf(mod.page.id, lang) + ".md", markdown);
+      /* La même copie à l'adresse que les agents essaient d'abord : /index.md, /fonctionnalites.md. */
+      out.set(fileOf(mod.page.id, lang).replace(/\.html$/, ".md"), markdown);
+    }
     if (!mod.page.noindex) contexts.push({ c, mod, meta, markdown });
   }
 }
@@ -109,6 +114,7 @@ Sitemap: ${SITE.origin}/sitemap.xml
 out.set(`${SITE.indexNowKey}.txt`, SITE.indexNowKey + "\n");
 out.set("llms.txt", llmsTxt(contexts));
 out.set("llms-full.txt", llmsFull(contexts));
+out.set(".well-known/ard.json", ardJson());
 
 /* ---------- contrôles ---------- */
 

@@ -94,3 +94,39 @@ ${part("en")}
 ${part("fr")}
 `;
 }
+
+/* /.well-known/ard.json : le catalogue Agentic Resource Discovery, qui liste ce qu'un agent peut lire ici.
+   Le site est statique et n'a ni serveur MCP ni API : seulement des pages, leur texte et le téléchargement. */
+export function ardJson() {
+  const o = SITE.origin, host = o.replace(/^https:\/\//, "");
+  const trust = { identity: o, identityType: "https" };
+  const entry = (kind, name, e) => ({ identifier: `urn:air:${host}:${kind}:${name}`, ...e, auth: { status: "none" }, trustManifest: trust });
+  return JSON.stringify({
+    specVersion: "1.0",
+    host: { displayName: SITE.name, identifier: o, documentationUrl: `${o}/llms.txt` },
+    entries: [
+      entry("site", "home", {
+        displayName: `${SITE.name} website`, type: "text/html", url: `${o}/`,
+        description: "A Mac app that prepares and protects the documents of a French rental file: it sorts them, hides the numbers a landlord does not need and adds a watermark naming the recipient, all on the Mac with no account and no upload. The site also has guides on what a landlord may ask for. In French, with every page in English under /en/.",
+        tags: ["rental-file", "dossier-de-location", "privacy", "redaction", "watermark", "macos", "france"],
+        capabilities: ["read"],
+        representativeQueries: ["how to hide my IBAN in a rental application", "watermark documents for a landlord in France", "which documents can a landlord ask for in France"],
+      }),
+      entry("docs", "llms-txt", {
+        displayName: "llms.txt", type: "text/plain", url: `${o}/llms.txt`,
+        description: "Facts about the app an assistant can rely on, with links to the Markdown copy of every page in both languages.",
+        tags: ["llms-txt", "index"], capabilities: ["read"],
+      }),
+      entry("docs", "llms-full-txt", {
+        displayName: "llms-full.txt", type: "text/plain", url: `${o}/llms-full.txt`,
+        description: "The full text of every page and guide, in English and in French, in one file.",
+        tags: ["llms-txt", "full-text"], capabilities: ["read"],
+      }),
+      entry("download", "macos-app", {
+        displayName: `${SITE.name} for Mac (disk image)`, type: "application/x-apple-diskimage", url: SITE.download,
+        description: `The latest version of the app (${SITE.release.version}), free during the beta. macOS only, Intel and Apple Silicon. A person downloads and opens it, an agent cannot run it.`,
+        tags: ["download", "macos"], capabilities: ["download"],
+      }),
+    ],
+  }, null, 2) + "\n";
+}

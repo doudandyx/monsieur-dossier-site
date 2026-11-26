@@ -20,7 +20,7 @@ Le script écrit les pages et les contrôle (liens, textes des deux langues, poi
 | La version de l'app, le lien de téléchargement, l'adresse de contact | `src/site.mjs` |
 | Un guide | `src/guides/` (un fichier par guide, les deux langues), et `src/guides/index.mjs` pour l'ordre |
 | La mise en page des guides | `src/pages/guide.mjs` |
-| Le résumé pour les assistants IA (`llms.txt`) | `src/llms.mjs` |
+| Le résumé pour les assistants IA (`llms.txt`, `.well-known/ard.json`) | `src/llms.mjs` |
 | Les styles, les comportements | `site.css`, `site.js`, `theme.js` (écrits à la main) |
 
 ## À chaque version de l'application
@@ -43,7 +43,7 @@ La commande envoie les adresses de `sitemap.xml` à `api.indexnow.org`. C'est la
 
 - `index.html`, `fonctionnalites.html`, `dossierfacile.html`, `contact.html` : les pages en français. `en/` : les mêmes en anglais. `404.html` : la page introuvable. **Écrites par le build.**
 - `guides/` et `en/guides/` : les guides, une question par page, et leur liste. **Écrits par le build.** Les règles d'écriture sont dans `DESIGN.md`, section « Guides ».
-- `*.html.md` : la version Markdown de chaque page, pour les assistants IA. `llms.txt` et `llms-full.txt` : le résumé et le texte complet du site. `sitemap.xml`, `robots.txt`, le fichier de la clé IndexNow. **Écrits par le build.**
+- `*.html.md` et `*.md` : la version Markdown de chaque page, pour les assistants IA, à deux adresses (`/index.html.md` et `/index.md`, que les agents essaient d'abord). `.well-known/ard.json` : le catalogue de ce qu'un agent peut lire ici (format Agentic Resource Discovery), écrit par `src/llms.mjs`. `llms.txt` et `llms-full.txt` : le résumé et le texte complet du site. `sitemap.xml`, `robots.txt`, le fichier de la clé IndexNow. **Écrits par le build.**
 - `src/`, `build.mjs` : les sources et le script.
 - `site.css`, `site.js`, `theme.js` : la feuille de style et les scripts, communs à toutes les pages.
 - `fonts/` : les polices, servies par le site (Bricolage Grotesque, Inter, JetBrains Mono, licence OFL). Aucun appel à Google Fonts.

@@ -1,0 +1,104 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "Monsieur Dossier",
+    "identifier": "https://monsieurdossier.com",
+    "documentationUrl": "https://monsieurdossier.com/llms.txt"
+  },
+  "entries": [
+    {
+      "identifier": "urn:air:monsieurdossier.com:site:home",
+      "displayName": "Monsieur Dossier website",
+      "type": "text/html",
+      "url": "https://monsieurdossier.com/",
+      "description": "A Mac app that prepares and protects the documents of a French rental file: it sorts them, hides the numbers a landlord does not need and adds a watermark naming the recipient, all on the Mac with no account and no upload. The site also has guides on what a landlord may ask for. In French, with every page in English under /en/.",
+      "tags": [
+        "rental-file",
+        "dossier-de-location",
+        "privacy",
+        "redaction",
+        "watermark",
+        "macos",
+        "france"
+      ],
+      "capabilities": [
+        "read"
+      ],
+      "representativeQueries": [
+        "how to hide my IBAN in a rental application",
+        "watermark documents for a landlord in France",
+        "which documents can a landlord ask for in France"
+      ],
+      "auth": {
+        "status": "none"
+      },
+      "trustManifest": {
+        "identity": "https://monsieurdossier.com",
+        "identityType": "https"
+      }
+    },
+    {
+      "identifier": "urn:air:monsieurdossier.com:docs:llms-txt",
+      "displayName": "llms.txt",
+      "type": "text/plain",
+      "url": "https://monsieurdossier.com/llms.txt",
+      "description": "Facts about the app an assistant can rely on, with links to the Markdown copy of every page in both languages.",
+      "tags": [
+        "llms-txt",
+        "index"
+      ],
+      "capabilities": [
+        "read"
+      ],
+      "auth": {
+        "status": "none"
+      },
+      "trustManifest": {
+        "identity": "https://monsieurdossier.com",
+        "identityType": "https"
+      }
+    },
+    {
+      "identifier": "urn:air:monsieurdossier.com:docs:llms-full-txt",
+      "displayName": "llms-full.txt",
+      "type": "text/plain",
+      "url": "https://monsieurdossier.com/llms-full.txt",
+      "description": "The full text of every page and guide, in English and in French, in one file.",
+      "tags": [
+        "llms-txt",
+        "full-text"
+      ],
+      "capabilities": [
+        "read"
+      ],
+      "auth": {
+        "status": "none"
+      },
+      "trustManifest": {
+        "identity": "https://monsieurdossier.com",
+        "identityType": "https"
+      }
+    },
+    {
+      "identifier": "urn:air:monsieurdossier.com:download:macos-app",
+      "displayName": "Monsieur Dossier for Mac (disk image)",
+      "type": "application/x-apple-diskimage",
+      "url": "https://github.com/doudandyx/monsieur-dossier-site/releases/latest/download/MonsieurDossier.dmg",
+      "description": "The latest version of the app (1.2.0), free during the beta. macOS only, Intel and Apple Silicon. A person downloads and opens it, an agent cannot run it.",
+      "tags": [
+        "download",
+        "macos"
+      ],
+      "capabilities": [
+        "download"
+      ],
+      "auth": {
+        "status": "none"
+      },
+      "trustManifest": {
+        "identity": "https://monsieurdossier.com",
+        "identityType": "https"
+      }
+    }
+  ]
+}

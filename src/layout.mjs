@@ -55,7 +55,9 @@ export function documentHtml(c, { title, description, graph, body, robots, bodyC
 ${SITE.langs.map(l => `<link rel="alternate" hreflang="${l}" href="${c.altAbs[l]}">`).join("\n")}
 <link rel="alternate" hreflang="x-default" href="${c.altAbs[SITE.fallbackLang]}">
 <link rel="alternate" type="text/markdown" href="${c.mdAbs}" title="${esc(c.S.mdAlt)}">
-<link rel="describedby" href="${SITE.origin}/llms.txt">`;
+<link rel="describedby" href="${SITE.origin}/llms.txt">
+<link rel="alternate" type="text/plain" href="${SITE.origin}/llms.txt" title="llms.txt">
+<link rel="ard" type="application/json" href="${SITE.origin}/.well-known/ard.json">`;
   const offer = LANG_OFFER[c.other];
   return `<!doctype html>
 <html lang="${c.lang}">
